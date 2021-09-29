@@ -67,6 +67,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\AdminHomepage.aspx" />
+    <Content Include="Admin\AdminLogin.aspx" />
+    <Content Include="Admin\AnnouncementEntry.aspx" />
+    <Content Include="Admin\ClassroomListing.aspx" />
+    <Content Include="Admin\ResultListing.aspx" />
+    <Content Include="Admin\StudentEntry.aspx" />
+    <Content Include="Admin\StudentListing.aspx" />
+    <Content Include="Admin\SubjectListing.aspx" />
+    <Content Include="Admin\TeacherEntry.aspx" />
+    <Content Include="Admin\TeacherListing.aspx" />
     <Content Include="App_Data\KPMdb.mdf" />
     <Content Include="App_Data\KPMdb_log.ldf">
       <DependentUpon>KPMdb.mdf</DependentUpon>
@@ -75,11 +85,505 @@
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="Bootstrap\js\popper.min.js" />
+    <Content Include="css\ASite.css" />
+    <Content Include="css\ForumList.css" />
+    <Content Include="css\Login.css" />
     <Content Include="css\TSPSite.css" />
+    <Content Include="ForgotPassword.aspx" />
     <Content Include="ForumList.aspx" />
+    <Content Include="img\logoKPM.png" />
+    <Content Include="Login.aspx" />
+    <Content Include="ResetPassword.aspx" />
+    <Content Include="script\animo\animate+animo.css" />
+    <Content Include="script\animo\animo.js" />
+    <Content Include="script\animo\animo.min.js" />
+    <Content Include="script\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="script\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="script\bootstrap\css\bootstrap.css" />
+    <Content Include="script\bootstrap\css\bootstrap.min.css" />
+    <Content Include="script\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="script\bootstrap\js\bootstrap.js" />
+    <Content Include="script\bootstrap\js\bootstrap.min.js" />
+    <Content Include="script\chosen\chosen-sprite%402x.png" />
+    <Content Include="script\chosen\chosen-sprite.png" />
+    <Content Include="script\chosen\chosen.jquery.min.js" />
+    <Content Include="script\chosen\chosen.min.css" />
+    <Content Include="script\codemirror\addon\mode\loadmode.js" />
+    <Content Include="script\codemirror\addon\mode\multiplex.js" />
+    <Content Include="script\codemirror\addon\mode\multiplex_test.js" />
+    <Content Include="script\codemirror\addon\mode\overlay.js" />
+    <Content Include="script\codemirror\lib\codemirror.css" />
+    <Content Include="script\codemirror\lib\codemirror.js" />
+    <Content Include="script\codemirror\mode\gfm\gfm.js" />
+    <Content Include="script\codemirror\mode\gfm\index.html" />
+    <Content Include="script\codemirror\mode\gfm\test.js" />
+    <Content Include="script\codemirror\mode\markdown\index.html" />
+    <Content Include="script\codemirror\mode\markdown\markdown.js" />
+    <Content Include="script\codemirror\mode\markdown\test.js" />
+    <Content Include="script\codemirror\mode\xml\index.html" />
+    <Content Include="script\codemirror\mode\xml\xml.js" />
+    <Content Include="script\csspinner\csspinner.css" />
+    <Content Include="script\csspinner\csspinner.min.css" />
+    <Content Include="script\csspinner\src\images\csspinner.gif" />
+    <Content Include="script\datatable\extensions\AutoFill\css\dataTables.autoFill.css" />
+    <Content Include="script\datatable\extensions\AutoFill\css\dataTables.autoFill.min.css" />
+    <Content Include="script\datatable\extensions\AutoFill\examples\columns.html" />
+    <Content Include="script\datatable\extensions\AutoFill\examples\complete-callback.html" />
+    <Content Include="script\datatable\extensions\AutoFill\examples\fill-both.html" />
+    <Content Include="script\datatable\extensions\AutoFill\examples\fill-horizontal.html" />
+    <Content Include="script\datatable\extensions\AutoFill\examples\index.html" />
+    <Content Include="script\datatable\extensions\AutoFill\examples\scrolling.html" />
+    <Content Include="script\datatable\extensions\AutoFill\examples\simple.html" />
+    <Content Include="script\datatable\extensions\AutoFill\examples\step-callback.html" />
+    <Content Include="script\datatable\extensions\AutoFill\images\filler.png" />
+    <Content Include="script\datatable\extensions\AutoFill\js\dataTables.autoFill.js" />
+    <Content Include="script\datatable\extensions\AutoFill\js\dataTables.autoFill.min.js" />
+    <Content Include="script\datatable\extensions\AutoFill\Readme.txt" />
+    <Content Include="script\datatable\extensions\ColReorder\css\dataTables.colReorder.css" />
+    <Content Include="script\datatable\extensions\ColReorder\css\dataTables.colReorder.min.css" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\alt_insert.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\colvis.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\col_filter.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\fixedcolumns.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\fixedheader.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\index.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\jqueryui.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\new_init.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\predefined.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\realtime.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\reset.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\scrolling.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\server_side.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\simple.html" />
+    <Content Include="script\datatable\extensions\ColReorder\examples\state_save.html" />
+    <Content Include="script\datatable\extensions\ColReorder\images\insert.png" />
+    <Content Include="script\datatable\extensions\ColReorder\js\dataTables.colReorder.js" />
+    <Content Include="script\datatable\extensions\ColReorder\js\dataTables.colReorder.min.js" />
+    <Content Include="script\datatable\extensions\ColReorder\Readme.txt" />
+    <Content Include="script\datatable\extensions\ColVis\css\dataTables.colVis.css" />
+    <Content Include="script\datatable\extensions\ColVis\css\dataTables.colvis.jqueryui.css" />
+    <Content Include="script\datatable\extensions\ColVis\css\dataTables.colVis.min.css" />
+    <Content Include="script\datatable\extensions\ColVis\examples\button_order.html" />
+    <Content Include="script\datatable\extensions\ColVis\examples\exclude_columns.html" />
+    <Content Include="script\datatable\extensions\ColVis\examples\group_columns.html" />
+    <Content Include="script\datatable\extensions\ColVis\examples\index.html" />
+    <Content Include="script\datatable\extensions\ColVis\examples\jqueryui.html" />
+    <Content Include="script\datatable\extensions\ColVis\examples\mouseover.html" />
+    <Content Include="script\datatable\extensions\ColVis\examples\new_init.html" />
+    <Content Include="script\datatable\extensions\ColVis\examples\restore.html" />
+    <Content Include="script\datatable\extensions\ColVis\examples\simple.html" />
+    <Content Include="script\datatable\extensions\ColVis\examples\text.html" />
+    <Content Include="script\datatable\extensions\ColVis\examples\title_callback.html" />
+    <Content Include="script\datatable\extensions\ColVis\examples\two_tables.html" />
+    <Content Include="script\datatable\extensions\ColVis\examples\two_tables_identical.html" />
+    <Content Include="script\datatable\extensions\ColVis\js\dataTables.colVis.js" />
+    <Content Include="script\datatable\extensions\ColVis\js\dataTables.colVis.min.js" />
+    <Content Include="script\datatable\extensions\ColVis\Readme.txt" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\css\dataTables.bootstrap.css" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\images\back_disabled.png" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\images\back_enabled.png" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\images\back_enabled_hover.png" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\images\favicon.ico" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\images\forward_disabled.png" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\images\forward_enabled.png" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\images\forward_enabled_hover.png" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\images\sort_asc.png" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\images\sort_asc_disabled.png" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\images\sort_both.png" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\images\sort_desc.png" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\images\sort_desc_disabled.png" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\js\dataTables.bootstrap.js" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\js\dataTables.bootstrapPagination.js" />
+    <Content Include="script\datatable\extensions\FixedColumns\css\dataTables.fixedColumns.css" />
+    <Content Include="script\datatable\extensions\FixedColumns\css\dataTables.fixedColumns.min.css" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\bootstrap.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\colvis.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\col_filter.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\css_size.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\index.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\index_column.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\left_right_columns.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\right_column.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\rowspan.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\server-side-processing.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\simple.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\size_fixed.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\size_fluid.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\examples\two_columns.html" />
+    <Content Include="script\datatable\extensions\FixedColumns\js\dataTables.fixedColumns.js" />
+    <Content Include="script\datatable\extensions\FixedColumns\js\dataTables.fixedColumns.min.js" />
+    <Content Include="script\datatable\extensions\FixedColumns\Readme.txt" />
+    <Content Include="script\datatable\extensions\FixedHeader\css\dataTables.fixedHeader.css" />
+    <Content Include="script\datatable\extensions\FixedHeader\css\dataTables.fixedHeader.min.css" />
+    <Content Include="script\datatable\extensions\FixedHeader\examples\header_footer.html" />
+    <Content Include="script\datatable\extensions\FixedHeader\examples\index.html" />
+    <Content Include="script\datatable\extensions\FixedHeader\examples\simple.html" />
+    <Content Include="script\datatable\extensions\FixedHeader\examples\top_left_right.html" />
+    <Content Include="script\datatable\extensions\FixedHeader\examples\two_tables.html" />
+    <Content Include="script\datatable\extensions\FixedHeader\examples\zIndexes.html" />
+    <Content Include="script\datatable\extensions\FixedHeader\js\dataTables.fixedHeader.js" />
+    <Content Include="script\datatable\extensions\FixedHeader\js\dataTables.fixedHeader.min.js" />
+    <Content Include="script\datatable\extensions\FixedHeader\Readme.txt" />
+    <Content Include="script\datatable\extensions\KeyTable\css\dataTables.keyTable.css" />
+    <Content Include="script\datatable\extensions\KeyTable\css\dataTables.keyTable.min.css" />
+    <Content Include="script\datatable\extensions\KeyTable\examples\ajax.html" />
+    <Content Include="script\datatable\extensions\KeyTable\examples\events.html" />
+    <Content Include="script\datatable\extensions\KeyTable\examples\html.html" />
+    <Content Include="script\datatable\extensions\KeyTable\examples\index.html" />
+    <Content Include="script\datatable\extensions\KeyTable\examples\scrolling.html" />
+    <Content Include="script\datatable\extensions\KeyTable\examples\simple.html" />
+    <Content Include="script\datatable\extensions\KeyTable\js\dataTables.keyTable.js" />
+    <Content Include="script\datatable\extensions\KeyTable\js\dataTables.keyTable.min.js" />
+    <Content Include="script\datatable\extensions\KeyTable\Readme.txt" />
+    <Content Include="script\datatable\extensions\Scroller\css\dataTables.scroller.css" />
+    <Content Include="script\datatable\extensions\Scroller\css\dataTables.scroller.min.css" />
+    <Content Include="script\datatable\extensions\Scroller\examples\api_scrolling.html" />
+    <Content Include="script\datatable\extensions\Scroller\examples\data\2500.txt" />
+    <Content Include="script\datatable\extensions\Scroller\examples\data\ssp.php" />
+    <Content Include="script\datatable\extensions\Scroller\examples\index.html" />
+    <Content Include="script\datatable\extensions\Scroller\examples\large_js_source.html" />
+    <Content Include="script\datatable\extensions\Scroller\examples\server-side_processing.html" />
+    <Content Include="script\datatable\extensions\Scroller\examples\simple.html" />
+    <Content Include="script\datatable\extensions\Scroller\examples\state_saving.html" />
+    <Content Include="script\datatable\extensions\Scroller\images\loading-background.png" />
+    <Content Include="script\datatable\extensions\Scroller\js\dataTables.scroller.js" />
+    <Content Include="script\datatable\extensions\Scroller\js\dataTables.scroller.min.js" />
+    <Content Include="script\datatable\extensions\Scroller\Readme.txt" />
+    <Content Include="script\datatable\extensions\TableTools\css\dataTables.tableTools.css" />
+    <Content Include="script\datatable\extensions\TableTools\css\dataTables.tableTools.min.css" />
+    <Content Include="script\datatable\extensions\TableTools\examples\alter_buttons.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\bootstrap.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\button_text.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\collection.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\defaults.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\index.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\multiple_tables.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\multi_instance.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\new_init.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\pdf_message.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\plug-in.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\select_column.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\select_multi.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\select_os.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\select_single.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\simple.html" />
+    <Content Include="script\datatable\extensions\TableTools\examples\swf_path.html" />
+    <Content Include="script\datatable\extensions\TableTools\images\background.png" />
+    <Content Include="script\datatable\extensions\TableTools\images\collection.png" />
+    <Content Include="script\datatable\extensions\TableTools\images\collection_hover.png" />
+    <Content Include="script\datatable\extensions\TableTools\images\copy.png" />
+    <Content Include="script\datatable\extensions\TableTools\images\copy_hover.png" />
+    <Content Include="script\datatable\extensions\TableTools\images\csv.png" />
+    <Content Include="script\datatable\extensions\TableTools\images\csv_hover.png" />
+    <Content Include="script\datatable\extensions\TableTools\images\pdf.png" />
+    <Content Include="script\datatable\extensions\TableTools\images\pdf_hover.png" />
+    <Content Include="script\datatable\extensions\TableTools\images\print.png" />
+    <Content Include="script\datatable\extensions\TableTools\images\print_hover.png" />
+    <Content Include="script\datatable\extensions\TableTools\images\xls.png" />
+    <Content Include="script\datatable\extensions\TableTools\images\xls_hover.png" />
+    <Content Include="script\datatable\extensions\TableTools\js\dataTables.tableTools.js" />
+    <Content Include="script\datatable\extensions\TableTools\js\dataTables.tableTools.min.js" />
+    <Content Include="script\datatable\extensions\TableTools\Readme.txt" />
+    <Content Include="script\datatable\extensions\TableTools\swf\copy_csv_xls.swf" />
+    <Content Include="script\datatable\extensions\TableTools\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="script\datatable\media\css\jquery.dataTables.css" />
+    <Content Include="script\datatable\media\css\jquery.dataTables.min.css" />
+    <Content Include="script\datatable\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="script\datatable\media\css\jquery.dataTables_themeroller.min.css" />
+    <Content Include="script\datatable\media\images\back_disabled.png" />
+    <Content Include="script\datatable\media\images\back_enabled.png" />
+    <Content Include="script\datatable\media\images\back_enabled_hover.png" />
+    <Content Include="script\datatable\media\images\favicon.ico" />
+    <Content Include="script\datatable\media\images\forward_disabled.png" />
+    <Content Include="script\datatable\media\images\forward_enabled.png" />
+    <Content Include="script\datatable\media\images\forward_enabled_hover.png" />
+    <Content Include="script\datatable\media\images\sort_asc.png" />
+    <Content Include="script\datatable\media\images\sort_asc_disabled.png" />
+    <Content Include="script\datatable\media\images\sort_both.png" />
+    <Content Include="script\datatable\media\images\sort_desc.png" />
+    <Content Include="script\datatable\media\images\sort_desc_disabled.png" />
+    <Content Include="script\datatable\media\js\jquery.dataTables.js" />
+    <Content Include="script\datatable\media\js\jquery.dataTables.min.js" />
+    <Content Include="script\datatable\media\js\jquery.js" />
+    <Content Include="script\datetimepicker\css\bootstrap-datetimepicker.css" />
+    <Content Include="script\datetimepicker\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="script\datetimepicker\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="script\fastclick\fastclick.js" />
+    <Content Include="script\filestyle\bootstrap-filestyle.min.js" />
+    <Content Include="script\flot\excanvas.min.js" />
+    <Content Include="script\flot\jquery.flot.categories.min.js" />
+    <Content Include="script\flot\jquery.flot.min.js" />
+    <Content Include="script\flot\jquery.flot.pie.min.js" />
+    <Content Include="script\flot\jquery.flot.resize.min.js" />
+    <Content Include="script\flot\jquery.flot.time.min.js" />
+    <Content Include="script\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="script\fontawesome\css\font-awesome.css" />
+    <Content Include="script\fontawesome\css\font-awesome.min.css" />
+    <Content Include="script\fontawesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="script\fullcalendar\fullcalendar.css" />
+    <Content Include="script\fullcalendar\fullcalendar.js" />
+    <Content Include="script\fullcalendar\fullcalendar.min.js" />
+    <Content Include="script\fullcalendar\fullcalendar.print.css" />
+    <Content Include="script\gmap\jquery.gmap.min.js" />
+    <Content Include="script\inputmask\jquery.inputmask.bundle.js" />
+    <Content Include="script\inputmask\jquery.inputmask.bundle.min.js" />
+    <Content Include="script\jqueryui\css\no-theme\jquery-ui-1.10.4.custom.css" />
+    <Content Include="script\jqueryui\css\no-theme\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\animated-overlay.gif" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="script\jqueryui\css\ui-lightness\jquery-ui-1.10.4.custom.css" />
+    <Content Include="script\jqueryui\css\ui-lightness\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="script\jqueryui\js\jquery-1.10.2.js" />
+    <Content Include="script\jqueryui\js\jquery-ui-1.10.4.custom.js" />
+    <Content Include="script\jqueryui\js\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="script\jquery\jquery.min.js" />
+    <Content Include="script\marked\marked.js" />
+    <Content Include="script\modernizr\modernizr.js" />
+    <Content Include="script\moment\lang\ar-ma.js" />
+    <Content Include="script\moment\lang\ar.js" />
+    <Content Include="script\moment\lang\bg.js" />
+    <Content Include="script\moment\lang\br.js" />
+    <Content Include="script\moment\lang\bs.js" />
+    <Content Include="script\moment\lang\ca.js" />
+    <Content Include="script\moment\lang\cs.js" />
+    <Content Include="script\moment\lang\cv.js" />
+    <Content Include="script\moment\lang\cy.js" />
+    <Content Include="script\moment\lang\da.js" />
+    <Content Include="script\moment\lang\de.js" />
+    <Content Include="script\moment\lang\el.js" />
+    <Content Include="script\moment\lang\en-au.js" />
+    <Content Include="script\moment\lang\en-ca.js" />
+    <Content Include="script\moment\lang\en-gb.js" />
+    <Content Include="script\moment\lang\eo.js" />
+    <Content Include="script\moment\lang\es.js" />
+    <Content Include="script\moment\lang\et.js" />
+    <Content Include="script\moment\lang\eu.js" />
+    <Content Include="script\moment\lang\fa.js" />
+    <Content Include="script\moment\lang\fi.js" />
+    <Content Include="script\moment\lang\fo.js" />
+    <Content Include="script\moment\lang\fr-ca.js" />
+    <Content Include="script\moment\lang\fr.js" />
+    <Content Include="script\moment\lang\gl.js" />
+    <Content Include="script\moment\lang\he.js" />
+    <Content Include="script\moment\lang\hi.js" />
+    <Content Include="script\moment\lang\hr.js" />
+    <Content Include="script\moment\lang\hu.js" />
+    <Content Include="script\moment\lang\hy-am.js" />
+    <Content Include="script\moment\lang\id.js" />
+    <Content Include="script\moment\lang\is.js" />
+    <Content Include="script\moment\lang\it.js" />
+    <Content Include="script\moment\lang\ja.js" />
+    <Content Include="script\moment\lang\ka.js" />
+    <Content Include="script\moment\lang\ko.js" />
+    <Content Include="script\moment\lang\lb.js" />
+    <Content Include="script\moment\lang\lt.js" />
+    <Content Include="script\moment\lang\lv.js" />
+    <Content Include="script\moment\lang\mk.js" />
+    <Content Include="script\moment\lang\ml.js" />
+    <Content Include="script\moment\lang\mr.js" />
+    <Content Include="script\moment\lang\ms-my.js" />
+    <Content Include="script\moment\lang\nb.js" />
+    <Content Include="script\moment\lang\ne.js" />
+    <Content Include="script\moment\lang\nl.js" />
+    <Content Include="script\moment\lang\nn.js" />
+    <Content Include="script\moment\lang\pl.js" />
+    <Content Include="script\moment\lang\pt-br.js" />
+    <Content Include="script\moment\lang\pt.js" />
+    <Content Include="script\moment\lang\ro.js" />
+    <Content Include="script\moment\lang\rs.js" />
+    <Content Include="script\moment\lang\ru.js" />
+    <Content Include="script\moment\lang\sk.js" />
+    <Content Include="script\moment\lang\sl.js" />
+    <Content Include="script\moment\lang\sq.js" />
+    <Content Include="script\moment\lang\sv.js" />
+    <Content Include="script\moment\lang\ta.js" />
+    <Content Include="script\moment\lang\th.js" />
+    <Content Include="script\moment\lang\tl-ph.js" />
+    <Content Include="script\moment\lang\tr.js" />
+    <Content Include="script\moment\lang\tzm-la.js" />
+    <Content Include="script\moment\lang\tzm.js" />
+    <Content Include="script\moment\lang\uk.js" />
+    <Content Include="script\moment\lang\uz.js" />
+    <Content Include="script\moment\lang\vn.js" />
+    <Content Include="script\moment\lang\zh-cn.js" />
+    <Content Include="script\moment\lang\zh-tw.js" />
+    <Content Include="script\moment\min\langs.js" />
+    <Content Include="script\moment\min\langs.min.js" />
+    <Content Include="script\moment\min\moment-with-langs.js" />
+    <Content Include="script\moment\min\moment-with-langs.min.js" />
+    <Content Include="script\moment\min\moment.min.js" />
+    <Content Include="script\parsley\parsley.min.js" />
+    <Content Include="script\slider\css\slider.css" />
+    <Content Include="script\slider\js\bootstrap-slider.js" />
+    <Content Include="script\slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="script\sparklines\jquery.sparkline.min.js" />
+    <Content Include="script\summernote\lang\summernote-ar-AR.js" />
+    <Content Include="script\summernote\lang\summernote-bg-BG.js" />
+    <Content Include="script\summernote\lang\summernote-ca-ES.js" />
+    <Content Include="script\summernote\lang\summernote-cs-CZ.js" />
+    <Content Include="script\summernote\lang\summernote-da-DK.js" />
+    <Content Include="script\summernote\lang\summernote-de-DE.js" />
+    <Content Include="script\summernote\lang\summernote-el-GR.js" />
+    <Content Include="script\summernote\lang\summernote-es-ES.js" />
+    <Content Include="script\summernote\lang\summernote-es-EU.js" />
+    <Content Include="script\summernote\lang\summernote-fa-IR.js" />
+    <Content Include="script\summernote\lang\summernote-fi-FI.js" />
+    <Content Include="script\summernote\lang\summernote-fr-FR.js" />
+    <Content Include="script\summernote\lang\summernote-gl-ES.js" />
+    <Content Include="script\summernote\lang\summernote-he-IL.js" />
+    <Content Include="script\summernote\lang\summernote-hr-HR.js" />
+    <Content Include="script\summernote\lang\summernote-hu-HU.js" />
+    <Content Include="script\summernote\lang\summernote-id-ID.js" />
+    <Content Include="script\summernote\lang\summernote-it-IT.js" />
+    <Content Include="script\summernote\lang\summernote-ja-JP.js" />
+    <Content Include="script\summernote\lang\summernote-ko-KR.js" />
+    <Content Include="script\summernote\lang\summernote-lt-LT.js" />
+    <Content Include="script\summernote\lang\summernote-lt-LV.js" />
+    <Content Include="script\summernote\lang\summernote-mn-MN.js" />
+    <Content Include="script\summernote\lang\summernote-nb-NO.js" />
+    <Content Include="script\summernote\lang\summernote-nl-NL.js" />
+    <Content Include="script\summernote\lang\summernote-pl-PL.js" />
+    <Content Include="script\summernote\lang\summernote-pt-BR.js" />
+    <Content Include="script\summernote\lang\summernote-pt-PT.js" />
+    <Content Include="script\summernote\lang\summernote-ro-RO.js" />
+    <Content Include="script\summernote\lang\summernote-ru-RU.js" />
+    <Content Include="script\summernote\lang\summernote-sk-SK.js" />
+    <Content Include="script\summernote\lang\summernote-sl-SI.js" />
+    <Content Include="script\summernote\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="script\summernote\lang\summernote-sr-RS.js" />
+    <Content Include="script\summernote\lang\summernote-sv-SE.js" />
+    <Content Include="script\summernote\lang\summernote-ta-IN.js" />
+    <Content Include="script\summernote\lang\summernote-th-TH.js" />
+    <Content Include="script\summernote\lang\summernote-tr-TR.js" />
+    <Content Include="script\summernote\lang\summernote-uk-UA.js" />
+    <Content Include="script\summernote\lang\summernote-vi-VN.js" />
+    <Content Include="script\summernote\lang\summernote-zh-CN.js" />
+    <Content Include="script\summernote\lang\summernote-zh-TW.js" />
+    <Content Include="script\summernote\plugin\databasic\summernote-ext-databasic.css" />
+    <Content Include="script\summernote\plugin\databasic\summernote-ext-databasic.js" />
+    <Content Include="script\summernote\plugin\hello\summernote-ext-hello.js" />
+    <Content Include="script\summernote\plugin\specialchars\summernote-ext-specialchars.js" />
+    <Content Include="script\summernote\summernote-bs4.css" />
+    <Content Include="script\summernote\summernote-bs4.js" />
+    <Content Include="script\summernote\summernote-bs4.min.js" />
+    <Content Include="script\summernote\summernote-lite.css" />
+    <Content Include="script\summernote\summernote-lite.js" />
+    <Content Include="script\summernote\summernote.css" />
+    <Content Include="script\summernote\summernote.js" />
+    <Content Include="script\summernote\summernote.min.js" />
+    <Content Include="script\tagsinput\bootstrap-tagsinput.css" />
+    <Content Include="script\tagsinput\bootstrap-tagsinput.min.js" />
+    <Content Include="script\touch-punch\jquery.ui.touch-punch.min.js" />
+    <Content Include="StudentHomepage.aspx" />
+    <Content Include="TeacherHomepage.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin.Master.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin.Master.designer.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminHomepage.aspx.cs">
+      <DependentUpon>AdminHomepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminHomepage.aspx.designer.cs">
+      <DependentUpon>AdminHomepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AnnouncementEntry.aspx.cs">
+      <DependentUpon>AnnouncementEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AnnouncementEntry.aspx.designer.cs">
+      <DependentUpon>AnnouncementEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ClassroomListing.aspx.cs">
+      <DependentUpon>ClassroomListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ClassroomListing.aspx.designer.cs">
+      <DependentUpon>ClassroomListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ResultListing.aspx.cs">
+      <DependentUpon>ResultListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ResultListing.aspx.designer.cs">
+      <DependentUpon>ResultListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\StudentEntry.aspx.cs">
+      <DependentUpon>StudentEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\StudentEntry.aspx.designer.cs">
+      <DependentUpon>StudentEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\StudentListing.aspx.cs">
+      <DependentUpon>StudentListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\StudentListing.aspx.designer.cs">
+      <DependentUpon>StudentListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SubjectListing.aspx.cs">
+      <DependentUpon>SubjectListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SubjectListing.aspx.designer.cs">
+      <DependentUpon>SubjectListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TeacherEntry.aspx.cs">
+      <DependentUpon>TeacherEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TeacherEntry.aspx.designer.cs">
+      <DependentUpon>TeacherEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TeacherListing.aspx.cs">
+      <DependentUpon>TeacherListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TeacherListing.aspx.designer.cs">
+      <DependentUpon>TeacherListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASite.Master.cs">
+      <DependentUpon>ASite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASite.Master.designer.cs">
+      <DependentUpon>ASite.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ForumList.aspx.cs">
       <DependentUpon>ForumList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -87,7 +591,35 @@
     <Compile Include="ForumList.aspx.designer.cs">
       <DependentUpon>ForumList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StudentHomepage.aspx.cs">
+      <DependentUpon>StudentHomepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentHomepage.aspx.designer.cs">
+      <DependentUpon>StudentHomepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherHomepage.aspx.cs">
+      <DependentUpon>TeacherHomepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TeacherHomepage.aspx.designer.cs">
+      <DependentUpon>TeacherHomepage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TSPSite.Master.cs">
       <DependentUpon>TSPSite.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -95,10 +627,104 @@
     <Compile Include="TSPSite.Master.designer.cs">
       <DependentUpon>TSPSite.Master</DependentUpon>
     </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ASite.Master" />
+    <Content Include="admin.Master" />
     <None Include="packages.config" />
     <Content Include="TSPSite.Master" />
+    <Content Include="script\animo\LICENSE" />
+    <Content Include="script\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="script\bootstrap\css\bootstrap.css.map" />
+    <Content Include="script\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="script\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="script\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="script\csspinner\src\jade\index.jade" />
+    <Content Include="script\csspinner\src\less\core.less" />
+    <Content Include="script\csspinner\src\less\spins\bar\bar-follow.less" />
+    <Content Include="script\csspinner\src\less\spins\bar\bar.less" />
+    <Content Include="script\csspinner\src\less\spins\blade\blade.less" />
+    <Content Include="script\csspinner\src\less\spins\double-up\double-up.less" />
+    <Content Include="script\csspinner\src\less\spins\duo\duo.less" />
+    <Content Include="script\csspinner\src\less\spins\helicopter\helicopter.less" />
+    <Content Include="script\csspinner\src\less\spins\line\line-back-and-forth-grow.less" />
+    <Content Include="script\csspinner\src\less\spins\line\line-back-and-forth.less" />
+    <Content Include="script\csspinner\src\less\spins\line\line-grow.less" />
+    <Content Include="script\csspinner\src\less\spins\line\line.less" />
+    <Content Include="script\csspinner\src\less\spins\ringed\ringed.less" />
+    <Content Include="script\csspinner\src\less\spins\shadow\shadow-oval-left.less" />
+    <Content Include="script\csspinner\src\less\spins\shadow\shadow-oval-right.less" />
+    <Content Include="script\csspinner\src\less\spins\shadow\shadow.less" />
+    <Content Include="script\csspinner\src\less\spins\spherical\spherical-horizontal.less" />
+    <Content Include="script\csspinner\src\less\spins\spherical\spherical-vertical.less" />
+    <Content Include="script\csspinner\src\less\spins\traditional\traditional.less" />
+    <Content Include="script\csspinner\src\sass\csspinner.sass" />
+    <Content Include="script\csspinner\src\scss\core.scss" />
+    <Content Include="script\csspinner\src\scss\spins\bar\bar-follow.scss" />
+    <Content Include="script\csspinner\src\scss\spins\bar\bar.scss" />
+    <Content Include="script\csspinner\src\scss\spins\blade\blade.scss" />
+    <Content Include="script\csspinner\src\scss\spins\double-up\double-up.scss" />
+    <Content Include="script\csspinner\src\scss\spins\duo\duo.scss" />
+    <Content Include="script\csspinner\src\scss\spins\helicopter\helicopter.scss" />
+    <Content Include="script\csspinner\src\scss\spins\line\line-back-and-forth-grow.scss" />
+    <Content Include="script\csspinner\src\scss\spins\line\line-back-and-forth.scss" />
+    <Content Include="script\csspinner\src\scss\spins\line\line-grow.scss" />
+    <Content Include="script\csspinner\src\scss\spins\line\line.scss" />
+    <Content Include="script\csspinner\src\scss\spins\ringed\ringed.scss" />
+    <Content Include="script\csspinner\src\scss\spins\shadow\shadow-oval-left.scss" />
+    <Content Include="script\csspinner\src\scss\spins\shadow\shadow-oval-right.scss" />
+    <Content Include="script\csspinner\src\scss\spins\shadow\shadow.scss" />
+    <Content Include="script\csspinner\src\scss\spins\spherical\spherical-horizontal.scss" />
+    <Content Include="script\csspinner\src\scss\spins\spherical\spherical-vertical.scss" />
+    <Content Include="script\csspinner\src\scss\spins\traditional\traditional.scss" />
+    <Content Include="script\datatable\extensions\datatable-bootstrap\images\Sorting icons.psd" />
+    <Content Include="script\datatable\extensions\TableTools\images\psd\collection.psd" />
+    <Content Include="script\datatable\extensions\TableTools\images\psd\copy document.psd" />
+    <Content Include="script\datatable\extensions\TableTools\images\psd\file_types.psd" />
+    <Content Include="script\datatable\extensions\TableTools\images\psd\printer.psd" />
+    <Content Include="script\datatable\media\images\Sorting icons.psd" />
+    <Content Include="script\fontawesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="script\fontawesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="script\fontawesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="script\fontawesome\fonts\FontAwesome.otf" />
+    <Content Include="script\fontawesome\less\bordered-pulled.less" />
+    <Content Include="script\fontawesome\less\core.less" />
+    <Content Include="script\fontawesome\less\fixed-width.less" />
+    <Content Include="script\fontawesome\less\font-awesome.less" />
+    <Content Include="script\fontawesome\less\icons.less" />
+    <Content Include="script\fontawesome\less\larger.less" />
+    <Content Include="script\fontawesome\less\list.less" />
+    <Content Include="script\fontawesome\less\mixins.less" />
+    <Content Include="script\fontawesome\less\path.less" />
+    <Content Include="script\fontawesome\less\rotated-flipped.less" />
+    <Content Include="script\fontawesome\less\spinning.less" />
+    <Content Include="script\fontawesome\less\stacked.less" />
+    <Content Include="script\fontawesome\less\variables.less" />
+    <Content Include="script\fontawesome\scss\font-awesome.scss" />
+    <Content Include="script\fontawesome\scss\_bordered-pulled.scss" />
+    <Content Include="script\fontawesome\scss\_core.scss" />
+    <Content Include="script\fontawesome\scss\_fixed-width.scss" />
+    <Content Include="script\fontawesome\scss\_icons.scss" />
+    <Content Include="script\fontawesome\scss\_larger.scss" />
+    <Content Include="script\fontawesome\scss\_list.scss" />
+    <Content Include="script\fontawesome\scss\_mixins.scss" />
+    <Content Include="script\fontawesome\scss\_path.scss" />
+    <Content Include="script\fontawesome\scss\_rotated-flipped.scss" />
+    <Content Include="script\fontawesome\scss\_spinning.scss" />
+    <Content Include="script\fontawesome\scss\_stacked.scss" />
+    <Content Include="script\fontawesome\scss\_variables.scss" />
+    <Content Include="script\moment\LICENSE" />
+    <Content Include="script\slider\less\slider.less" />
+    <Content Include="script\summernote\font\summernote.eot" />
+    <Content Include="script\summernote\font\summernote.ttf" />
+    <Content Include="script\summernote\font\summernote.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -106,6 +732,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

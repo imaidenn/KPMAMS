@@ -2,104 +2,117 @@
 
 <!DOCTYPE html>
 
-<head runat="server">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>ParentSiteMasterPage</title>
+    <title>Teacher/Student/Parent Site Master Page</title>
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/TSPSite.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
-    <header>
-        <div class="p-1" id="topHeader">
-            <div class="container">
+    <form runat="server">
+        <header>
+            <div class="p-1" id="topHeader">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <a class="p-1" href="tel:+60123456789"><i class="fas fa-phone-alt"></i>+(60) 123456789</a>
+                            <a class="p-1" href="mailto:abc@example.com"><i class="far fa-envelope"></i>abc@exmaple.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="bottomHeader">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-dark navbar-expand-md" id="navibar">
+                        <a class="navbar-brand" href="#">
+                            <img src="img/logoKPM.png" width="50"/>
+                            <label id ="KPM">KPM Academic Management System</label>
+                        </a>
+                        <button data-toggle="collapse" data-target="#navibarToggler" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navibarToggler">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">About us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <%--<a runat="server" class="nav-link" href="#">Forum</a>--%>
+                                    <asp:HyperLink ID="hlForum" class="nav-link" href="ForumList.aspx" runat="server">Forum</asp:HyperLink>
+                                </li>
+                                <li class="nav-item dropdown ">
+                                    <a class="nav-link dropdown-toogle" data-toggle="dropdown" role="button" href="#">Tools<i class="fas fa-caret-down"></i></a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Tools1</a>
+                                        <a class="dropdown-item" href="#">Tools2</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Tools3</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Live Chat</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <asp:LinkButton class="nav-link" ID="lbLogout" runat="server" OnClick="lbLogout_Click">Logout</asp:LinkButton>
+                                </li>
+
+                                <li class="nav-item active">
+                                    <asp:LinkButton class="nav-link" ID="lbProfile" runat="server">Hello user</asp:LinkButton>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="BodyContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer class="full-footer">
+            <div class="container top-footer p-md-3 p-1">
                 <div class="row">
-                    <div class="col-12">
-                        <a class="p-1" href="tel:+60123456789"><i class="fas fa-phone-alt"></i>+(60) 123456789</a>
-                        <a class="p-1" href="mailto:abc@example.com"><i class="far fa-envelope"></i>abc@exmaple.com</a>
+                    <div class="col-md-4 pl-5 pr-5">
+                        <h3 class="p-1">About The System</h3>
+                         <p class="p-1">
+                             KPM Academic Management System is develop for secondary goverment school to allow teaher and student <a href="#">...Read more...</a>
+                         </p>
+                    </div>
+                    <div class="col-md-4 pl-5 pr-5" >
+                        <h3 class="p-1">Follow Us</h3>
+                        <a class="p-1" style="color:whitesmoke" href="https://www.facebook.com/chanhow.lim" target="_blank"><i class="p-1 fab fa-2x fa-facebook-square"></i>KPM Academic Managment System</a><br />
+                        <a class="p-1" style="color:whitesmoke" href="https://www.instagram.com/cchmeme/" target="_blank"><i class="p-1 fab fa-2x fa-instagram"></i>@KPMAMS</a><br />
+                        <a class="p-1" style="color:whitesmoke" href="https://www.youtube.com/channel/UC9jNdYamWjJOIPN9dVZYmFQ" target="_blank"><i class="p-1 fab fa-2x fa-youtube-square"></i>KPM AMS</a>
+                    </div>
+                    <div class="col-md-4 pl-5 pr-5">
+                        <h3 class="p-1">Contact Us</h3>
+                        <a class="p-1" href="tel:+60123456789"><i class="fas fa-phone-alt"></i>+(60) 123456789</a><br />
+                        <a class="p-1" href="mailto:abc@example.com"><i class="far fa-envelope"></i>abc@exmaple.com</a><br />
+                        <a class="p-1" href="https://www.google.com/maps/place/SMK+Serendah/@3.3681254,101.6121713,17z/data=!3m1!4b1!4m5!3m4!1s0x31cc69f56ad2a17d:0x22a8a54f4e6f0bd6!8m2!3d3.3680483!4d101.6143635" target="_blank" ><i class="fas fa-map-marker-alt"></i>No. 1, Jalan Cempaka, 48200 Serendah, Selangor</a><br />
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.9265740017545!2d101.6121713146021!3d3.368125352707085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc69f56ad2a17d%3A0x22a8a54f4e6f0bd6!2sSMK%20Serendah!5e0!3m2!1szh-CN!2smy!4v1625571870266!5m2!1szh-CN!2smy" ></iframe>
+                        </div>            
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="bottomHeader">
-            <div class="container-fluid">
-                <nav class="navbar navbar-dark navbar-expand-md" id="navibar">
-                    <a class="navbar-brand" href="#">
-                        <label id ="KPM">KPM Academic Management System</label>
-                    </a>
-                    <button data-toggle="collapse" data-target="#navibarToggler" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navibarToggler">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">About us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Forum</a>
-                            </li>
-                            <li class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toogle" data-toggle="dropdown" role="button" href="#">Tools<i class="fas fa-caret-down"></i></a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Tools1</a>
-                                    <a class="dropdown-item" href="#">Tools2</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Tools3</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Live Chat</a>
-                            </li>
-                        </ul>
+            <div class="container-fluid bottom-footer pt-2">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p>TARC Final Year Project</p>
                     </div>
-                </nav>
-            </div>
-        </div>
-    </header>
-    <div class="container body-content">
-        <asp:ContentPlaceHolder ID="BodyContent" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
-    <footer class="full-footer">
-        <div class="container top-footer p-md-3 p-1">
-            <div class="row">
-                <div class="col-md-4 pl-5 pr-5">
-                    <h3 class="p-1">About The System</h3>
-                     <p class="p-1">
-                         KPM Academic Management System is develop for secondary goverment school to allow teaher and student <a href="#">...Read more...</a>
-                     </p>
-                </div>
-                <div class="col-md-4 pl-5 pr-5" >
-                    <h3 class="p-1">Follow Us</h3>
-                    <a class="p-1" style="color:whitesmoke" href="https://www.facebook.com/chanhow.lim" target="_blank"><i class="p-1 fab fa-2x fa-facebook-square"></i>KPM Academic Managment System</a><br />
-                    <a class="p-1" style="color:whitesmoke" href="https://www.instagram.com/cchmeme/" target="_blank"><i class="p-1 fab fa-2x fa-instagram"></i>@KPMAMS</a><br />
-                    <a class="p-1" style="color:whitesmoke" href="https://www.youtube.com/channel/UC9jNdYamWjJOIPN9dVZYmFQ" target="_blank"><i class="p-1 fab fa-2x fa-youtube-square"></i>KPM AMS</a>
-                </div>
-                <div class="col-md-4 pl-5 pr-5">
-                    <h3 class="p-1">Contact Us</h3>
-                    <a class="p-1" href="tel:+60123456789"><i class="fas fa-phone-alt"></i>+(60) 123456789</a><br />
-                    <a class="p-1" href="mailto:abc@example.com"><i class="far fa-envelope"></i>abc@exmaple.com</a><br />
-                    <a class="p-1" href="https://www.google.com/maps/place/SMK+Serendah/@3.3681254,101.6121713,17z/data=!3m1!4b1!4m5!3m4!1s0x31cc69f56ad2a17d:0x22a8a54f4e6f0bd6!8m2!3d3.3680483!4d101.6143635" target="_blank" ><i class="fas fa-map-marker-alt"></i>No. 1, Jalan Cempaka, 48200 Serendah, Selangor</a><br />
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.9265740017545!2d101.6121713146021!3d3.368125352707085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc69f56ad2a17d%3A0x22a8a54f4e6f0bd6!2sSMK%20Serendah!5e0!3m2!1szh-CN!2smy!4v1625571870266!5m2!1szh-CN!2smy" ></iframe>
-                    </div>            
                 </div>
             </div>
-        </div>
-        <div class="container-fluid bottom-footer pt-2">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <p>TARC Final Year Project</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="Bootstrap/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="Bootstrap/js/popper.min.js"></script>
-    <script src="Bootstrap/js/bootstrap.min.js"></script>
+        </footer>
+        <script src="Bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="Bootstrap/js/popper.min.js"></script>
+        <script src="Bootstrap/js/bootstrap.min.js"></script>
+    </form>
 </body>
     
