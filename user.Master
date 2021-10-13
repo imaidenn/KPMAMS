@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="KPMAMS.admin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="user.master.cs" Inherits="KPMAMS.user" %>
 
 <!DOCTYPE html>
 
@@ -11,7 +11,7 @@
    <meta name="description" content="">
    <meta name="keywords" content="">
    <meta name="author" content="">
-   <title>Admin Master</title> 
+   <title>User Master</title> 
    <!-- Bootstrap CSS-->
    <link rel="stylesheet" href="css/bootstrap.css">
    <!-- plugins CSS-->
@@ -53,9 +53,8 @@
             <!-- END Left navbar-->
             <!-- START Right Navbar-->
             <ul class="nav navbar-nav navbar-right">
-               <li><a><b>Welcome back, Admin</b>
-            </a></li>
-
+               
+               <!-- END Messages menu (dropdown-list)-->
                <!-- START Alert menu-->
                <li class="dropdown dropdown-list">
                   <a href="javascript:void(0);" data-toggle="dropdown" data-play="bounceIn" class="dropdown-toggle">
@@ -108,15 +107,11 @@
                   </a>
                   <!-- START Dropdown menu-->
                   <ul class="dropdown-menu">
-                     <li><a href="javascript:void(0);">Profile</a>
+                     <li><asp:Button ID="btnProfile" runat="server" data-toggle="tooltip" data-title="Profile" class="btn btn-link" Text="Profile" OnClick="btnProfile_Click"/>
                      </li>
-                     <li><a href="javascript:void(0);">Settings</a>
+                      <li><asp:Button ID="btnResetPassword" runat="server" data-toggle="tooltip" data-title="Reset Password" class="btn btn-link" Text="Reset Password" OnClick="btnResetPassword_Click"/>
                      </li>
-                     <li><a href="javascript:void(0);">Notifications<div class="label label-info pull-right">5</div></a>
-                     </li>
-                     <li><a href="javascript:void(0);">Messages<div class="label label-danger pull-right">10</div></a>
-                     </li>
-                     <li><a href="javascript:void(0);">Logout</a>
+                     <li><asp:Button ID="btnLogout" runat="server" data-toggle="tooltip" data-title="Logout" class="btn btn-link" Text="Logout" OnClick="btnLogout_Click"/>
                      </li>
                   </ul>
                   <!-- END Dropdown menu-->
@@ -146,54 +141,35 @@
                <!-- START user info-->
                <li>
 
-                  <!-- START User links collapse-->
-                  <ul class="nav collapse">
-                     <li><a href="javascript:void(0);">Profile</a>
-                     </li>
-                     <li><a href="javascript:void(0);">Settings</a>
-                     </li>
-                     <li><a href="javascript:void(0);">Notifications<div class="label label-danger pull-right">120</div></a>
-                     </li>
-                     <li><a href="javascript:void(0);">Messages<div class="label label-success pull-right">300</div></a>
-                     </li>
-                     <li class="divider"></li>
-                     <li><a href="javascript:void(0);">Logout</a>
-                     </li>
-                  </ul>
-                  <!-- END User links collapse-->
+                 <li>
+                  <div data-toggle="collapse-next" class="item user-block has-submenu">
+                     <!-- User picture-->
+                     <div class="user-block-picture">
+                         <asp:Image ID="imgAvatar" runat="server" width="60" height="60" class="img-thumbnail img-circle" />
+<%--                        <img ID="imgAvatar" src="" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle">--%>
+                        <!-- Status when collapsed-->
+
+                     </div>
+
+                     <!-- Name and Role-->
+                     <div class="user-block-info">
+                        <asp:Label ID="lblUser" runat="server" class="user-block-name item-text"></asp:Label>
+
+                     </div>
+                  </div>
+
                </li>
                <!-- END user info-->
                <!-- START Menu-->
                 <li class="active">
-                  <a href="AdminHomepage.aspx" title="Home" data-toggle="collapse-next" class="has-submenu">
+                  <a href="Homepage.aspx" title="Home" data-toggle="collapse-next" class="has-submenu">
                      <em class="fa fa-home"></em>
 <%--                     <div class="label label-primary pull-right">12</div>--%>
                      <span class="item-text">Home</span>
                   </a>
-               </li>
-               <li >
-                  <a href="" title="Management" data-toggle="collapse-next" class="has-submenu">
-                     <em class="fa fa-user"></em>
-<%--                     <div class="label label-primary pull-right">12</div>--%>
-                     <span class="item-text">Management</span>
-                  </a>
-                  <!-- START SubMenu item-->
-                  <ul class="nav collapse in">
-                     <li >
-                        <a href="StudentListing.aspx" title="Student" data-toggle="" class="no-submenu">
-                           <span class="item-text">Student</span>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="TeacherListing.aspx" title="Teacher" data-toggle="" class="no-submenu"> 
-                           <span class="item-text">Teacher</span>
-                        </a>
-                     </li>
 
-                  </ul>
-                  <!-- END SubMenu item-->
                </li>
-                <li >
+               <li>
                   <a href="" title="Examination" data-toggle="collapse-next" class="has-submenu">
                      <em class="fa fa-book"></em>
 <%--                     <div class="label label-primary pull-right">12</div>--%>
@@ -202,41 +178,15 @@
                   <!-- START SubMenu item-->
                   <ul class="nav collapse in">
                      <li >
-                        <a href="ResultListing.aspx" title="Result" data-toggle="" class="no-submenu">
+                        <a href="StudentListing.aspx" title="Result" data-toggle="" class="no-submenu">
                            <span class="item-text">Result</span>
                         </a>
                      </li>
-                     <li>
-                        <a href="ExamApprove.aspx" title="Exam Approve" data-toggle="" class="no-submenu"> 
-                           <span class="item-text">Exam Approve</span>
-                        </a>
-                     </li>
 
                   </ul>
                   <!-- END SubMenu item-->
                </li>
-                 <li >
-                  <a href="" title="Classroom" data-toggle="collapse-next" class="has-submenu">
-                     <em class="fa fa-book"></em>
-<%--                     <div class="label label-primary pull-right">12</div>--%>
-                     <span class="item-text">Classroom</span>
-                  </a>
-                  <!-- START SubMenu item-->
-                  <ul class="nav collapse in">
-                     <li >
-                        <a href="ClassroomListing.aspx" title="Classroom" data-toggle="" class="no-submenu">
-                           <span class="item-text">Classroom</span>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="SubjectListing.aspx" title="Subject" data-toggle="" class="no-submenu"> 
-                           <span class="item-text">Subject</span>
-                        </a>
-                     </li>
-
-                  </ul>
-                  <!-- END SubMenu item-->
-               </li>
+               
                 
 
 
@@ -247,8 +197,9 @@
                <li class="nav-footer">
                   <div class="nav-footer-divider"></div>
                   <!-- START button group-->
-                  <div class="btn-group text-center">
-                     <button type="button" data-toggle="tooltip" data-title="Logout" class="btn btn-link" data-original-title="" title="">
+                 <div class="btn-group text-center">
+<%--                      <asp:Button ID="btnLogout" runat="server" data-toggle="tooltip" data-title="Logout" class="btn btn-link" OnClick="btnLogout_Click"/>--%>
+                     <button ID="btnLogout2" type="button" data-toggle="tooltip" data-title="Logout" class="btn btn-link" data-original-title="" title="" runat="server" onserverclick="btnLogout_Click">
                         <em class="fa fa-sign-out text-muted"></em>
                      </button>
                   </div>

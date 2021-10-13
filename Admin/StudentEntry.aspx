@@ -39,7 +39,7 @@
                      <fieldset>
 <%--                        <legend>Classic inputs</legend>--%>
                         <div class="form-group">
-                           <label class="col-sm-1 control-label">User ID</label>
+                           <label class="col-sm-1 control-label">Student ID</label>
                            <div class="col-sm-5">
                                <asp:TextBox ID="txtStudentID" runat="server" CssClass="form-control form-control-rounded" Enabled="False"></asp:TextBox>
                            </div>

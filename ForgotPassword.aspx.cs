@@ -36,12 +36,16 @@ namespace KPMAMS
             }
             if (!IsPostBack)
             {
-
-                if (!CheckResetPasswordStatus())
+                if(Request.QueryString["ResetPasswordGUID"] != "00000000-0000-0000-0000-000000000000")
                 {
-                    Response.Write(alertMsg);
-                    //Response.Redirect("Homepage.aspx");
+                    if (!CheckResetPasswordStatus())
+                    {
+                        Response.Write(alertMsg);
+                        //Response.Redirect("Homepage.aspx");
+                    }
                 }
+
+                
             }
         }
 
@@ -157,11 +161,16 @@ namespace KPMAMS
 
                         cmd.Dispose();
 
-                        cmd = new SqlCommand("UPDATE ResetPassword SET Status = 'Expired' WHERE ResetPasswordGUID = @ResetPasswordGUID", con);
-                        cmd.Parameters.AddWithValue("ResetPasswordGUID", ResetPasswordGUID);
+                        if (Request.QueryString["ResetPasswordGUID"] != "00000000-0000-0000-0000-000000000000")
+                        {
+                            cmd = new SqlCommand("UPDATE ResetPassword SET Status = 'Expired' WHERE ResetPasswordGUID = @ResetPasswordGUID", con);
+                            cmd.Parameters.AddWithValue("ResetPasswordGUID", ResetPasswordGUID);
 
-                        cmd.ExecuteNonQuery();
-                        cmd.Dispose();
+                            cmd.ExecuteNonQuery();
+                            cmd.Dispose();
+                        }
+
+                        
                         con.Close();
                     }
                     else

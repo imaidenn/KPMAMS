@@ -2,116 +2,295 @@
 
 <!DOCTYPE html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>Admin Site Master Page</title>
-    <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../css/ASite.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   <!-- Meta-->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+   <meta name="description" content="">
+   <meta name="keywords" content="">
+   <meta name="author" content="">
+   <title>Admin Master</title> 
+   <!-- Bootstrap CSS-->
+   <link rel="stylesheet" href="css/bootstrap.css">
+   <!-- plugins CSS-->
+   <link rel="stylesheet" href="script/fontawesome/css/font-awesome.min.css">
+   <link rel="stylesheet" href="script/animo/animate+animo.css">
+   <link rel="stylesheet" href="script/csspinner/csspinner.min.css"> 
+   <!-- App CSS-->
+   <link rel="stylesheet" href="css/app.css">
 </head>
-<body>
+<body style="">
     <form runat="server">
-        <header>
-            <div class="p-1" id="topHeader">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <a class="p-1" href="tel:+60123456789"><i class="fas fa-phone-alt"></i>+(60) 123456789</a>
-                            <a class="p-1" href="mailto:abc@example.com"><i class="far fa-envelope"></i>abc@exmaple.com</a>
-                        </div>
-                    </div>
-                </div>
+   <!-- START Main wrapper-->
+   <section class="wrapper">
+      <!-- START Top Navbar-->
+      <nav role="navigation" class="navbar navbar-default navbar-top navbar-fixed-top">
+         <!-- START navbar header-->
+         <div class="navbar-header">
+            <a href="javascript:void(0);" class="navbar-brand">
+               <div class="brand-logo">KPM Academy</div>
+               <div class="brand-logo-collapsed">KPM</div>
+            </a>
+         </div>
+         <!-- END navbar header-->
+         <!-- START Nav wrapper-->
+         <div class="nav-wrapper">
+            <!-- START Left navbar-->
+            <ul class="nav navbar-nav">
+               <li>
+                  <a href="javascript:void(0);" data-toggle="aside">
+                     <em class="fa fa-align-left"></em>
+                  </a>
+               </li>
+               <li>
+                  <a href="javascript:void(0);" data-toggle="navbar-search">
+                     <em class="fa fa-search"></em>
+                  </a>
+               </li>
+            </ul>
+            <!-- END Left navbar-->
+            <!-- START Right Navbar-->
+            <ul class="nav navbar-nav navbar-right">
+               <li><a><b>Welcome back, Admin</b>
+            </a></li>
+
+               <!-- START Alert menu-->
+               <li class="dropdown dropdown-list">
+                  <a href="javascript:void(0);" data-toggle="dropdown" data-play="bounceIn" class="dropdown-toggle">
+                     <em class="fa fa-bell"></em>
+                     <div class="label label-info">120</div>
+                  </a>
+                  <!-- START Dropdown menu-->
+                  <ul class="dropdown-menu">
+                     <li>
+                        <!-- START list group-->
+                        <div class="list-group">
+                           <!-- list item-->
+                           <a href="javascript:void(0);" class="list-group-item">
+                              <div class="media">
+                                 <div class="pull-left">
+                                    <em class="fa fa-envelope-o fa-2x text-success"></em>
+                                 </div>
+                                 <div class="media-body clearfix">
+                                    <div class="media-heading">Unread messages</div>
+                                    <p class="m0">
+                                       <small>You have 10 unread messages</small>
+                                    </p>
+                                 </div>
+                              </div>
+                           </a>
+                           <!-- list item-->
+                           <a href="javascript:void(0);" class="list-group-item">
+                              <div class="media">
+                                 <div class="pull-left">
+                                    <em class="fa fa-cog fa-2x"></em>
+                                 </div>
+                                 <div class="media-body clearfix">
+                                    <div class="media-heading">New settings</div>
+                                    <p class="m0">
+                                       <small>There are new settings available</small>
+                                    </p>
+                                 </div>
+                              </div>
+                           </a>
+  
+                     </li>
+                  </ul>
+                  <!-- END Dropdown menu-->
+               </li>
+               <!-- END Alert menu-->
+               <!-- START User menu-->
+               <li class="dropdown">
+                  <a href="javascript:void(0);" data-toggle="dropdown" data-play="bounceIn" class="dropdown-toggle">
+                     <em class="fa fa-user"></em>
+                  </a>
+                  <!-- START Dropdown menu-->
+                  <ul class="dropdown-menu">
+                     <li><a href="javascript:void(0);">Profile</a>
+                     </li>
+                     <li><a href="javascript:void(0);">Settings</a>
+                     </li>
+                     <li><a href="javascript:void(0);">Notifications<div class="label label-info pull-right">5</div></a>
+                     </li>
+                     <li><a href="javascript:void(0);">Messages<div class="label label-danger pull-right">10</div></a>
+                     </li>
+                     <li><a href="javascript:void(0);">Logout</a>
+                     </li>
+                  </ul>
+                  <!-- END Dropdown menu-->
+               </li>
+               <!-- END User menu-->
+
+            </ul>
+            <!-- END Right Navbar-->
+         </div>
+         <!-- END Nav wrapper-->
+         <!-- START Search form-->
+         <div role="search" class="navbar-form">
+            <div class="form-group has-feedback">
+               <input type="text" placeholder="Type and hit Enter.." class="form-control">
+               <div data-toggle="navbar-search-dismiss" class="fa fa-times form-control-feedback"></div>
             </div>
-            <div id="bottomHeader">
-                <div class="container-fluid">
-                    <nav class="navbar navbar-dark navbar-expand-md" id="navibar">
-                        <a class="navbar-brand" href="#">
-                            <img src="img/logoKPM.png" width="50"/>
-                            <label id ="KPM">KPM Academic Management System</label>
+            <button type="submit" class="hidden btn btn-default">Submit</button>
+         </div>
+         <!-- END Search form-->
+      </nav>
+      <!-- END Top Navbar-->
+      <!-- START aside-->
+      <aside class="aside">
+         <!-- START Sidebar (left)-->
+         <nav class="sidebar">
+            <ul class="nav">
+               <!-- START user info-->
+               <li>
+
+                  <!-- START User links collapse-->
+                  <ul class="nav collapse">
+                     <li><a href="javascript:void(0);">Profile</a>
+                     </li>
+                     <li><a href="javascript:void(0);">Settings</a>
+                     </li>
+                     <li><a href="javascript:void(0);">Notifications<div class="label label-danger pull-right">120</div></a>
+                     </li>
+                     <li><a href="javascript:void(0);">Messages<div class="label label-success pull-right">300</div></a>
+                     </li>
+                     <li class="divider"></li>
+                     <li><a href="javascript:void(0);">Logout</a>
+                     </li>
+                  </ul>
+                  <!-- END User links collapse-->
+               </li>
+               <!-- END user info-->
+               <!-- START Menu-->
+                <li class="active">
+                  <a href="AdminHomepage.aspx" title="Home" data-toggle="collapse-next" class="has-submenu">
+                     <em class="fa fa-home"></em>
+<%--                     <div class="label label-primary pull-right">12</div>--%>
+                     <span class="item-text">Home</span>
+                  </a>
+               </li>
+               <li >
+                  <a href="" title="Management" data-toggle="collapse-next" class="has-submenu">
+                     <em class="fa fa-user"></em>
+<%--                     <div class="label label-primary pull-right">12</div>--%>
+                     <span class="item-text">Management</span>
+                  </a>
+                  <!-- START SubMenu item-->
+                  <ul class="nav collapse in">
+                     <li >
+                        <a href="StudentListing.aspx" title="Student" data-toggle="" class="no-submenu">
+                           <span class="item-text">Student</span>
                         </a>
-                        <button data-toggle="collapse" data-target="#navibarToggler" type="button" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
-                        <div class="collapse navbar-collapse" id="navibarToggler">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">About us</a>
-                                </li>
-                                <li class="nav-item">
-                                    <%--<a runat="server" class="nav-link" href="#">Forum</a>--%>
-                                    <asp:HyperLink ID="hlForum" class="nav-link" href="ForumList.aspx" runat="server">Forum</asp:HyperLink>
-                                </li>
-                                <li class="nav-item dropdown ">
-                                    <a class="nav-link dropdown-toogle" data-toggle="dropdown" role="button" href="#">Tools<i class="fas fa-caret-down"></i></a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Tools1</a>
-                                        <a class="dropdown-item" href="#">Tools2</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Tools3</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Live Chat</a>
-                                </li>
-                            </ul>
-                            <ul class="navbar-nav" >
-                                <li class="nav-item active" >
-                                    <asp:LinkButton class="nav-link" ID="lbLogout" runat="server">Logout</asp:LinkButton>
-                                </li>
-                                <li class="nav-item active">
-                                    <asp:LinkButton class="nav-link" ID="lbProfile" runat="server">Hello Admin</asp:LinkButton>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        <div class="container body-content">
+                     </li>
+                     <li>
+                        <a href="TeacherListing.aspx" title="Teacher" data-toggle="" class="no-submenu"> 
+                           <span class="item-text">Teacher</span>
+                        </a>
+                     </li>
+
+                  </ul>
+                  <!-- END SubMenu item-->
+               </li>
+                <li >
+                  <a href="" title="Examination" data-toggle="collapse-next" class="has-submenu">
+                     <em class="fa fa-book"></em>
+<%--                     <div class="label label-primary pull-right">12</div>--%>
+                     <span class="item-text">Examination</span>
+                  </a>
+                  <!-- START SubMenu item-->
+                  <ul class="nav collapse in">
+                     <li >
+                        <a href="ResultListing.aspx" title="Result" data-toggle="" class="no-submenu">
+                           <span class="item-text">Result</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="ExamApprove.aspx" title="Exam Approve" data-toggle="" class="no-submenu"> 
+                           <span class="item-text">Exam Approve</span>
+                        </a>
+                     </li>
+
+                  </ul>
+                  <!-- END SubMenu item-->
+               </li>
+                 <li >
+                  <a href="" title="Classroom" data-toggle="collapse-next" class="has-submenu">
+                     <em class="fa fa-book"></em>
+<%--                     <div class="label label-primary pull-right">12</div>--%>
+                     <span class="item-text">Classroom</span>
+                  </a>
+                  <!-- START SubMenu item-->
+                  <ul class="nav collapse in">
+                     <li >
+                        <a href="ClassroomListing.aspx" title="Classroom" data-toggle="" class="no-submenu">
+                           <span class="item-text">Classroom</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="SubjectListing.aspx" title="Subject" data-toggle="" class="no-submenu"> 
+                           <span class="item-text">Subject</span>
+                        </a>
+                     </li>
+
+                  </ul>
+                  <!-- END SubMenu item-->
+               </li>
+                
+
+
+
+
+               <!-- END Menu-->
+               <!-- Sidebar footer    -->
+               <li class="nav-footer">
+                  <div class="nav-footer-divider"></div>
+                  <!-- START button group-->
+                  <div class="btn-group text-center">
+                     <button type="button" data-toggle="tooltip" data-title="Logout" class="btn btn-link" data-original-title="" title="">
+                        <em class="fa fa-sign-out text-muted"></em>
+                     </button>
+                  </div>
+                  <!-- END button group-->
+               </li>
+            </ul>
+         </nav>
+         <!-- END Sidebar (left)-->
+      </aside>
+      <!-- End aside-->
+
+      <!-- START Main section-->
+      <section>
+         <!-- START Page content-->
+         <section class="main-content">
+
             <asp:ContentPlaceHolder ID="BodyContent" runat="server">
             </asp:ContentPlaceHolder>
-        </div>
-        <footer class="full-footer">
-            <div class="container top-footer p-md-3 p-1">
-                <div class="row">
-                    <div class="col-md-4 pl-5 pr-5">
-                        <h3 class="p-1">About The System</h3>
-                         <p class="p-1">
-                             KPM Academic Management System is develop for secondary goverment school to allow teaher and student <a href="#">...Read more...</a>
-                         </p>
-                    </div>
-                    <div class="col-md-4 pl-5 pr-5" >
-                        <h3 class="p-1">Follow Us</h3>
-                        <a class="p-1" style="color:whitesmoke" href="https://www.facebook.com/chanhow.lim" target="_blank"><i class="p-1 fab fa-2x fa-facebook-square"></i>KPM Academic Managment System</a><br />
-                        <a class="p-1" style="color:whitesmoke" href="https://www.instagram.com/cchmeme/" target="_blank"><i class="p-1 fab fa-2x fa-instagram"></i>@KPMAMS</a><br />
-                        <a class="p-1" style="color:whitesmoke" href="https://www.youtube.com/channel/UC9jNdYamWjJOIPN9dVZYmFQ" target="_blank"><i class="p-1 fab fa-2x fa-youtube-square"></i>KPM AMS</a>
-                    </div>
-                    <div class="col-md-4 pl-5 pr-5">
-                        <h3 class="p-1">Contact Us</h3>
-                        <a class="p-1" href="tel:+60123456789"><i class="fas fa-phone-alt"></i>+(60) 123456789</a><br />
-                        <a class="p-1" href="mailto:abc@example.com"><i class="far fa-envelope"></i>abc@exmaple.com</a><br />
-                        <a class="p-1" href="https://www.google.com/maps/place/SMK+Serendah/@3.3681254,101.6121713,17z/data=!3m1!4b1!4m5!3m4!1s0x31cc69f56ad2a17d:0x22a8a54f4e6f0bd6!8m2!3d3.3680483!4d101.6143635" target="_blank" ><i class="fas fa-map-marker-alt"></i>No. 1, Jalan Cempaka, 48200 Serendah, Selangor</a><br />
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.9265740017545!2d101.6121713146021!3d3.368125352707085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc69f56ad2a17d%3A0x22a8a54f4e6f0bd6!2sSMK%20Serendah!5e0!3m2!1szh-CN!2smy!4v1625571870266!5m2!1szh-CN!2smy" ></iframe>
-                        </div>            
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid bottom-footer pt-2">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <p>TARC Final Year Project</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <script src="Bootstrap/js/jquery-3.3.1.slim.min.js"></script>
-        <script src="Bootstrap/js/popper.min.js"></script>
-        <script src="Bootstrap/js/bootstrap.min.js"></script>
-    </form>
+
+         </section>
+         <!-- END Page content-->
+      </section>
+      <!-- END Main section-->
+   </section>
+   <!-- END Main wrapper-->
+   <!-- START Scripts-->
+   <!-- Main plugins Scripts-->
+   <script src="script/jquery/jquery.min.js"></script>
+   <script src="script/bootstrap/js/bootstrap.min.js"></script>
+
+
+
+
+   <!-- App Main-->
+   <script src="app/js/app.js"></script>
+
+   <!-- END Scripts-->
+
+
+<div class="uk-notify uk-notify-top-right" style="display: none;"></div>
+        </form>
 </body>
+</html>
     
 

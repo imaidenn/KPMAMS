@@ -31,9 +31,9 @@
         });
     });
 </script>
-
+    <br />
     <div class="panel panel-default">
-               <div class="panel-heading">Teacher Listing</div>
+               <div class="panel-heading">Teacher</div>
                <div class="panel-body">
                   <form method="get" action="/" class="form-horizontal">
                      <fieldset>
@@ -52,6 +52,7 @@
                              </div>
                      </fieldset>
                       <br />
+                      <br />
                       <fieldset>
                         <div class="form-group">
 
@@ -65,6 +66,7 @@
                            </div>
                         </div>
                      </fieldset>
+                      <br />
                       <br />
                       <fieldset>
                         <div class="form-group">
@@ -89,6 +91,7 @@
                            </div>
                         </div>
                      </fieldset>
+                      <br />
                       <br />
              <fieldset>
                         <div class="form-group">

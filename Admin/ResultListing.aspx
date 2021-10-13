@@ -122,11 +122,7 @@
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="ResultGUID" HeaderText="ResultGUID" ReadOnly="True" SortExpression="ResultGUID" Visible="false"/>
                                     <asp:BoundField DataField="ResultUserID" HeaderText="Result User ID" SortExpression="ResultUserID" />
-                                    <asp:BoundField DataField="FullName" HeaderText="Result Name" SortExpression="FullName" />
-                                    <asp:BoundField DataField="Gender" HeaderText="Gender" SortExpression="Gender" />
-                                    <asp:BoundField DataField="Class" HeaderText="Class" SortExpression="Class" />
-                                    <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
-                                    <asp:BoundField DataField="JoinDate" HeaderText="Join Date" SortExpression="JoinDate" />
+
                                 </Columns>
                             </asp:GridView>
                             <asp:Label id="lblNoData" runat="server" Visible="false" Text="No data to Display"></asp:Label>

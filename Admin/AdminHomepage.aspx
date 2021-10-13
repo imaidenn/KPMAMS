@@ -11,9 +11,6 @@
 </style>
 
 <section class="main-content">
-            <asp:button type="button" id="btnAdd" runat="server" class="btn btn-labeled btn-primary pull-right" OnClick="btnAdd_Click" Text="Add Announcement"></asp:button>
-            <h3>Welcome back, Admin
-            </h3>
 
                <!-- START dashboard main content-->
                <div class="col-md-9">
@@ -83,7 +80,9 @@
                            <div class="panel-collapse">
                                <div class="panel-heading">
                          <asp:Label ID="lblTotalQty" runat="server"></asp:Label>
+                                               <asp:button type="button" id="btnAdd" runat="server" class="btn btn-labeled btn-primary pull-right" OnClick="btnAdd_Click" Text="Add Announcement"></asp:button>
                      </div>
+
                               <div class="panel-body">
                                  <asp:GridView ID="GridView1" runat="server" AllowSorting="True" CssClass="table table-condensed table-hover" Enabled="False" Width="100%" AutoGenerateColumns="False" DataKeyNames="AnnouncementGUID" OnRowDataBound="GridView1_RowDataBound" > 
                                 <Columns>

@@ -11,7 +11,7 @@ namespace KPMAMS
 {
 
 
-    public partial class StudentHomepage
+    public partial class Homepage
     {
     }
 }

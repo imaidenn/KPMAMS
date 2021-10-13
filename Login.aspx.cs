@@ -20,6 +20,12 @@ namespace KPMAMS
         String username = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["userGUID"] != null || Session["fullName"] != null || Session["role"] != null)
+            {
+                Session["userGUID"] = null;
+                Session["fullName"] = null;
+                Session["role"] = null;
+            }
             
         }
 
@@ -121,12 +127,9 @@ namespace KPMAMS
                     strRedirect = Request["ReturnUrl"];
                     if (strRedirect == null)
                     {
-                        if (userType.Equals("Teacher"))
-                            strRedirect = "TeacherHomepage.aspx";
-                        else if (userType.Equals("Parent"))
-                            strRedirect = "ParentHomepage.aspx";
-                        else if (userType.Equals("Student"))
-                            strRedirect = "StudentHomepage.aspx";
+                        if (userType.Equals("Teacher") || userType.Equals("Student") || userType.Equals("Parent"))
+                            strRedirect = "Homepage.aspx";
+                       
                         else
                             strRedirect = "Login.aspx";
 

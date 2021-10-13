@@ -487,8 +487,9 @@
     <Content Include="script\tagsinput\bootstrap-tagsinput.css" />
     <Content Include="script\tagsinput\bootstrap-tagsinput.min.js" />
     <Content Include="script\touch-punch\jquery.ui.touch-punch.min.js" />
-    <Content Include="StudentHomepage.aspx" />
-    <Content Include="TeacherHomepage.aspx" />
+    <Content Include="Homepage.aspx" />
+    <Content Include="StudentDetails.aspx" />
+    <Content Include="TeacherDetails.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
@@ -606,19 +607,26 @@
     <Compile Include="ResetPassword.aspx.designer.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="StudentHomepage.aspx.cs">
-      <DependentUpon>StudentHomepage.aspx</DependentUpon>
+    <Compile Include="Homepage.aspx.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="StudentHomepage.aspx.designer.cs">
-      <DependentUpon>StudentHomepage.aspx</DependentUpon>
+    <Compile Include="Homepage.aspx.designer.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TeacherHomepage.aspx.cs">
-      <DependentUpon>TeacherHomepage.aspx</DependentUpon>
+    <Compile Include="StudentDetails.aspx.cs">
+      <DependentUpon>StudentDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TeacherHomepage.aspx.designer.cs">
-      <DependentUpon>TeacherHomepage.aspx</DependentUpon>
+    <Compile Include="StudentDetails.aspx.designer.cs">
+      <DependentUpon>StudentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherDetails.aspx.cs">
+      <DependentUpon>TeacherDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TeacherDetails.aspx.designer.cs">
+      <DependentUpon>TeacherDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="TSPSite.Master.cs">
       <DependentUpon>TSPSite.Master</DependentUpon>
@@ -626,6 +634,13 @@
     </Compile>
     <Compile Include="TSPSite.Master.designer.cs">
       <DependentUpon>TSPSite.Master</DependentUpon>
+    </Compile>
+    <Compile Include="user.Master.cs">
+      <DependentUpon>user.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user.Master.designer.cs">
+      <DependentUpon>user.Master</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -725,6 +740,7 @@
     <Content Include="script\summernote\font\summernote.eot" />
     <Content Include="script\summernote\font\summernote.ttf" />
     <Content Include="script\summernote\font\summernote.woff" />
+    <Content Include="user.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
