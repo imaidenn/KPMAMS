@@ -109,13 +109,13 @@
                            <div class="panel-collapse">
                               <div class="panel-body">
                                   <div class="card bg-default">
-    <div class="card-body">
-        <div class="chart">
-            <!-- Chart wrapper -->
-            <canvas id="chart-sales" class="chart-canvas"></canvas>
-        </div>
-    </div>
-</div>
+                                    <div class="card-body">
+                                        <div class="chart">
+                                            <!-- Chart wrapper -->
+                                            <canvas id="chart-sales" class="chart-canvas"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
                               </div>
                            </div>
                         </div>
