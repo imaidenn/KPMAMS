@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="TeacherListing.aspx.cs" Inherits="KPMAMS.Admin.TeacherListing" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="TeacherListing.aspx.cs" Inherits="KPMAMS.Admin.TeacherListing" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <!-- Bootstrap -->

@@ -20,6 +20,8 @@
    <link rel="stylesheet" href="script/csspinner/csspinner.min.css"> 
    <!-- App CSS-->
    <link rel="stylesheet" href="css/app.css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
 </head>
 <body style="">
     <form runat="server">
@@ -186,12 +188,39 @@
                   </ul>
                   <!-- END SubMenu item-->
                </li>
+
+                <li>
+                    <a href="" title="Classroom" data-toggle="collapse-next" class="has-submenu">
+                        <em class="fa fa-book"></em>
+        <%--                     <div class="label label-primary pull-right">12</div>--%>
+                        <span class="item-text">Classroom</span>
+                    </a>
+                    <!-- START SubMenu item-->
+                    <ul class="nav collapse in">
+                        <li >
+                        <a href="ForumList.aspx" title="Forum" data-toggle="" class="no-submenu">
+                            <span class="item-text">Forum</span>
+                        </a>
+                        </li>
+                        <li >
+                        <a href="AssessmentList.aspx" title="Assessment" data-toggle="" class="no-submenu">
+                            <span class="item-text">Assessment</span>
+                        </a>
+                        </li>
+
+                    </ul>
+                    <!-- END SubMenu item-->
+                </li>
+
+                <li>
+                <a href="" title="LiveChat" class="no-submenu">
+                    <em class="fa fa-book"></em>
+<%--                     <div class="label label-primary pull-right">12</div>--%>
+                    <span class="item-text">Live Chat</span>
+                </a>
+                  <!-- END SubMenu item-->
+               </li>
                
-                
-
-
-
-
                <!-- END Menu-->
                <!-- Sidebar footer    -->
                <li class="nav-footer">

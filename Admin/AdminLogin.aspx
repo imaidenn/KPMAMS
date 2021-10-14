@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="KPMAMS.AdminLogin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="KPMAMS.AdminLogin" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 

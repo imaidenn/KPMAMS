@@ -77,9 +77,7 @@
     <Content Include="Admin\TeacherListing.aspx" />
     <Content Include="AnnouncementDetails.aspx" />
     <Content Include="App_Data\KPMdb.mdf" />
-    <Content Include="App_Data\KPMdb_log.ldf">
-      <DependentUpon>KPMdb.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Data\KPMdb_log.ldf" />
     <Content Include="Bootstrap\css\bootstrap.min.css" />
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\jquery-3.3.1.slim.min.js" />
@@ -563,13 +561,7 @@
     <Compile Include="AnnouncementDetails.aspx.designer.cs">
       <DependentUpon>AnnouncementDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ASite.Master.cs">
-      <DependentUpon>ASite.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ASite.Master.designer.cs">
-      <DependentUpon>ASite.Master</DependentUpon>
-    </Compile>
+
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -620,13 +612,6 @@
     <Compile Include="TeacherDetails.aspx.designer.cs">
       <DependentUpon>TeacherDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TSPSite.Master.cs">
-      <DependentUpon>TSPSite.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TSPSite.Master.designer.cs">
-      <DependentUpon>TSPSite.Master</DependentUpon>
-    </Compile>
     <Compile Include="user.Master.cs">
       <DependentUpon>user.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -643,10 +628,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ASite.Master" />
     <Content Include="admin.Master" />
     <None Include="packages.config" />
-    <Content Include="TSPSite.Master" />
     <Content Include="script\animo\LICENSE" />
     <Content Include="script\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="script\bootstrap\css\bootstrap.css.map" />

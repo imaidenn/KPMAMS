@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/admin.Master" ValidateRequest="false" AutoEventWireup="true" CodeBehind="AnnouncementEntry.aspx.cs" Inherits="KPMAMS.Admin.AnnouncementEntry" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/admin.Master" ValidateRequest="false" AutoEventWireup="true" CodeBehind="AnnouncementEntry.aspx.cs" Inherits="KPMAMS.Admin.AnnouncementEntry" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <!-- include libraries(jQuery, bootstrap) -->
