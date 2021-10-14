@@ -6,8 +6,10 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -296,6 +298,42 @@ namespace KPMAMS.Admin
                 return false;
             }
 
+            int n;
+            bool isNumeric = int.TryParse(txtICno.Text, out n);
+
+            if (!isNumeric)
+            {
+                DisplayAlertMsg("Please enter only number of the IC");
+                return false;
+            }
+
+            int i;
+            bool isNumeric2 = int.TryParse(txtPhoneNo.Text, out i);
+
+            if (!isNumeric2)
+            {
+                DisplayAlertMsg("Please enter only number of the phone");
+                return false;
+            }
+
+            if (txtPhoneNo.Text.Length > 11)
+            {
+                DisplayAlertMsg("Invalid phone number");
+                return false;
+            }
+
+            if (txtICno.Text.Length > 12)
+            {
+                DisplayAlertMsg("Invalid IC number");
+                return false;
+            }
+
+            if (!(Validateemail(txtEmail.Text)))
+            {
+                DisplayAlertMsg("Invalid email");
+                return false;
+            }
+
             return true;
         }
 
@@ -373,6 +411,28 @@ namespace KPMAMS.Admin
                 return false;
             }
 
+            int i;
+            bool isNumeric2 = int.TryParse(txtPhoneNo.Text, out i);
+
+            if (!isNumeric2)
+            {
+                DisplayAlertMsg("Please enter only number of the phone");
+                return false;
+            }
+
+            if (txtPhoneNo.Text.Length > 11)
+            {
+                DisplayAlertMsg("Invalid phone number");
+                return false;
+            }
+
+            if (!(Validateemail(txtEmail.Text)))
+            {
+                DisplayAlertMsg("Invalid email");
+                return false;
+            }
+
+
             return true;
         }
 
@@ -400,6 +460,20 @@ namespace KPMAMS.Admin
         {
             String myScript = String.Format("alert('{0}');", msg);
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Error", myScript, true);
+        }
+
+        protected bool Validateemail(String email)
+        {
+            try
+            {
+                MailAddress address = new MailAddress(email);
+                bool IsValid = (address.Address == email);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
