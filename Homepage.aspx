@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/user.Master" AutoEventWireup="true" CodeBehind="Homepage.aspx.cs" Inherits="KPMAMS.Homepage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/user.Master" AutoEventWireup="true" CodeBehind="Homepage.aspx.cs" Inherits="KPMAMS.Homepage" EnableEventValidation="false" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
