@@ -70,13 +70,12 @@
     <Content Include="Admin\AdminHomepage.aspx" />
     <Content Include="Admin\AdminLogin.aspx" />
     <Content Include="Admin\AnnouncementEntry.aspx" />
-    <Content Include="Admin\ClassroomListing.aspx" />
     <Content Include="Admin\ResultListing.aspx" />
     <Content Include="Admin\StudentEntry.aspx" />
     <Content Include="Admin\StudentListing.aspx" />
-    <Content Include="Admin\SubjectListing.aspx" />
     <Content Include="Admin\TeacherEntry.aspx" />
     <Content Include="Admin\TeacherListing.aspx" />
+    <Content Include="AnnouncementDetails.aspx" />
     <Content Include="App_Data\KPMdb.mdf" />
     <Content Include="App_Data\KPMdb_log.ldf">
       <DependentUpon>KPMdb.mdf</DependentUpon>
@@ -522,13 +521,6 @@
     <Compile Include="Admin\AnnouncementEntry.aspx.designer.cs">
       <DependentUpon>AnnouncementEntry.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\ClassroomListing.aspx.cs">
-      <DependentUpon>ClassroomListing.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\ClassroomListing.aspx.designer.cs">
-      <DependentUpon>ClassroomListing.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\ResultListing.aspx.cs">
       <DependentUpon>ResultListing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -550,13 +542,6 @@
     <Compile Include="Admin\StudentListing.aspx.designer.cs">
       <DependentUpon>StudentListing.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\SubjectListing.aspx.cs">
-      <DependentUpon>SubjectListing.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\SubjectListing.aspx.designer.cs">
-      <DependentUpon>SubjectListing.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\TeacherEntry.aspx.cs">
       <DependentUpon>TeacherEntry.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -570,6 +555,13 @@
     </Compile>
     <Compile Include="Admin\TeacherListing.aspx.designer.cs">
       <DependentUpon>TeacherListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AnnouncementDetails.aspx.cs">
+      <DependentUpon>AnnouncementDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnnouncementDetails.aspx.designer.cs">
+      <DependentUpon>AnnouncementDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="ASite.Master.cs">
       <DependentUpon>ASite.Master</DependentUpon>

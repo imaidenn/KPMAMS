@@ -107,16 +107,9 @@
                      <em class="fa fa-user"></em>
                   </a>
                   <!-- START Dropdown menu-->
-                  <ul class="dropdown-menu">
-                     <li><a href="javascript:void(0);">Profile</a>
-                     </li>
-                     <li><a href="javascript:void(0);">Settings</a>
-                     </li>
-                     <li><a href="javascript:void(0);">Notifications<div class="label label-info pull-right">5</div></a>
-                     </li>
-                     <li><a href="javascript:void(0);">Messages<div class="label label-danger pull-right">10</div></a>
-                     </li>
-                     <li><a href="javascript:void(0);">Logout</a>
+                                    <ul class="dropdown-menu">
+                     
+                     <li><asp:Button ID="btnLogout" runat="server" data-toggle="tooltip" data-title="Logout" class="btn btn-link" Text="Logout" OnClick="btnLogout_Click"/>
                      </li>
                   </ul>
                   <!-- END Dropdown menu-->
@@ -143,26 +136,6 @@
          <!-- START Sidebar (left)-->
          <nav class="sidebar">
             <ul class="nav">
-               <!-- START user info-->
-               <li>
-
-                  <!-- START User links collapse-->
-                  <ul class="nav collapse">
-                     <li><a href="javascript:void(0);">Profile</a>
-                     </li>
-                     <li><a href="javascript:void(0);">Settings</a>
-                     </li>
-                     <li><a href="javascript:void(0);">Notifications<div class="label label-danger pull-right">120</div></a>
-                     </li>
-                     <li><a href="javascript:void(0);">Messages<div class="label label-success pull-right">300</div></a>
-                     </li>
-                     <li class="divider"></li>
-                     <li><a href="javascript:void(0);">Logout</a>
-                     </li>
-                  </ul>
-                  <!-- END User links collapse-->
-               </li>
-               <!-- END user info-->
                <!-- START Menu-->
                 <li class="active">
                   <a href="AdminHomepage.aspx" title="Home" data-toggle="collapse-next" class="has-submenu">
@@ -175,7 +148,7 @@
                   <a href="" title="Management" data-toggle="collapse-next" class="has-submenu">
                      <em class="fa fa-user"></em>
 <%--                     <div class="label label-primary pull-right">12</div>--%>
-                     <span class="item-text">Management</span>
+                     <span class="item-text">User</span>
                   </a>
                   <!-- START SubMenu item-->
                   <ul class="nav collapse in">
@@ -215,28 +188,7 @@
                   </ul>
                   <!-- END SubMenu item-->
                </li>
-                 <li >
-                  <a href="" title="Classroom" data-toggle="collapse-next" class="has-submenu">
-                     <em class="fa fa-book"></em>
-<%--                     <div class="label label-primary pull-right">12</div>--%>
-                     <span class="item-text">Classroom</span>
-                  </a>
-                  <!-- START SubMenu item-->
-                  <ul class="nav collapse in">
-                     <li >
-                        <a href="ClassroomListing.aspx" title="Classroom" data-toggle="" class="no-submenu">
-                           <span class="item-text">Classroom</span>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="SubjectListing.aspx" title="Subject" data-toggle="" class="no-submenu"> 
-                           <span class="item-text">Subject</span>
-                        </a>
-                     </li>
 
-                  </ul>
-                  <!-- END SubMenu item-->
-               </li>
                 
 
 
@@ -248,7 +200,7 @@
                   <div class="nav-footer-divider"></div>
                   <!-- START button group-->
                   <div class="btn-group text-center">
-                     <button type="button" data-toggle="tooltip" data-title="Logout" class="btn btn-link" data-original-title="" title="">
+                     <button ID="btnLogout2" type="button" data-toggle="tooltip" data-title="Logout" class="btn btn-link" data-original-title="" title="" runat="server" onserverclick="btnLogout_Click">
                         <em class="fa fa-sign-out text-muted"></em>
                      </button>
                   </div>

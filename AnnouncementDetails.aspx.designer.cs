@@ -11,34 +11,25 @@ namespace KPMAMS
 {
 
 
-    public partial class admin
+    public partial class AnnouncementDetails
     {
 
         /// <summary>
-        /// btnLogout control.
+        /// lblTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogout;
+        protected global::System.Web.UI.WebControls.Label lblTitle;
 
         /// <summary>
-        /// btnLogout2 control.
+        /// lblContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnLogout2;
-
-        /// <summary>
-        /// BodyContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder BodyContent;
+        protected global::System.Web.UI.WebControls.Label lblContent;
     }
 }
