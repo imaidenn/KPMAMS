@@ -1,8 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user.Master" AutoEventWireup="true" CodeBehind="ForumList.aspx.cs" Inherits="KPMAMS.ForumList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript">
+    <script>
         $(document).ready(function () {
-            $(".table").prepend($("<thead></thead>").append($(this).find(""))).dataTable();
+            $.noConflict();
+            $(".table").prepend($("<thead></thead>").html($(this).find("tr:first"))).dataTable({
+                "searching": true,
+                "pageLength": 10,
+                "order": [[1, 'asc']],
+                "lengthMenu": [[1, 5, 10, 25, 50, -1], [1, 5, 10, 25, 50, "All"]],
+                columnDefs: [{
+                    'targets': [0], /* column index [0,1,2,3]*/
+                    'orderable': false, /* true or false */
+                }]
+            });
         });
     </script>
 </asp:Content>
@@ -21,12 +31,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-md-7">
                 <h3>
                     <asp:Label ID="lbClass" runat="server" Text=""></asp:Label>
                 </h3>
             </div>
-            <div class="col-md-auto" >
+            <div class="col-md-3">
                 <div class="from-group">
                     <asp:DropDownList class="form-control" ID="dlClassList" runat="server" Visible="false" OnSelectedIndexChanged ="dlClassList_SelectedIndexChanged" AutoPostBack="true" >
                     </asp:DropDownList>
@@ -38,7 +48,12 @@
         </div>
         <div class="row">
             <div class="col pt-3">
-                <asp:GridView class="table table-striped table-bordered table-responsive-md" ID="GvForumList" runat="server" AutoGenerateColumns="False" DataKeyNames="ForumGUID" OnRowDataBound="GvForumList_RowDataBound" >
+                <center>
+                    <h3>
+                        <asp:Label ID="lblNoData" runat="server" Visible="false" Text="No Data Found"></asp:Label>
+                    </h3> 
+                </center>
+                <asp:GridView class="" ID="GvForumList" CssClass="table table-striped table-responsive-md" runat="server" AutoGenerateColumns="False" OnRowDataBound="GvForumList_RowDataBound" >
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -56,4 +71,5 @@
             </div>
         </div>        
     </div>
+    <script src="script/jquery/jquery.min.js"></script>
 </asp:Content>
