@@ -62,10 +62,12 @@ namespace KPMAMS
                 if (role == "Student")
                 {
                     strSelect = "SELECT StudentGUID, ProfilePic FROM Student WHERE StudentGUID = @userGUID";
+                    uploadResult.Visible = false;
                 }
                 else if (role == "Teacher")
                 {
                     strSelect = "SELECT TeacherGUID, ProfilePic FROM Teacher WHERE TeacherGUID = @userGUID";
+                    resultDetails.Visible = false;  
                 }
                 else
                 {

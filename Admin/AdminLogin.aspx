@@ -16,6 +16,7 @@
 
 <body style="">
    <form id="LoginForm" runat="server" style="position:absolute; top:0; bottom:0" >
+<%--       <div style="position:absolute; background-color: #2c3037"><a href="Login.aspx" class="text-muted" style="background-color: #2c3037">user access</a></div>--%>
    <div style=" height: 100%; padding: 50px 0; background-color: #2c3037" class="row row-table">
       <div class="col-lg-3 col-md-6 col-sm-8 col-xs-12 align-middle">
          <!-- START panel-->

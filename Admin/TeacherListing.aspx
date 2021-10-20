@@ -112,7 +112,7 @@
                          <asp:Label ID="lblTotalQty" runat="server"></asp:Label>
                      </div>
                      <div class="panel-body">
-                        <asp:GridView ID="GridView1" runat="server" AllowSorting="True" CssClass="table table-condensed table-hover" Enabled="False" Width="100%" AutoGenerateColumns="False" DataKeyNames="TeacherGUID" OnRowDataBound="GridView1_RowDataBound" > 
+                        <asp:GridView ID="GridView1" runat="server" AllowSorting="True" CssClass="table table-bordered table-condensed table-responsive table-hover" AllowPaging="true" PageSize="10" Enabled="False" Width="100%" AutoGenerateColumns="False" DataKeyNames="TeacherGUID" OnRowDataBound="GridView1_RowDataBound" > 
                                 <Columns>
                                     <asp:TemplateField>
                                         <ItemTemplate>
@@ -126,6 +126,12 @@
                                     <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
                                     <asp:BoundField DataField="JoinDate" HeaderText="Join Date" SortExpression="JoinDate" />
                                 </Columns>
+<%--                            <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Center" />
+ 
+                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                        <SortedAscendingHeaderStyle BackColor="#808080" />
+                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                        <SortedDescendingHeaderStyle BackColor="#383838" />--%>
                             </asp:GridView>
                             <asp:Label id="lblNoData" runat="server" Visible="false" Text="No data to Display"></asp:Label>
                      </div>

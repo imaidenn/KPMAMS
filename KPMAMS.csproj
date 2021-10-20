@@ -70,6 +70,7 @@
     <Content Include="Admin\AdminHomepage.aspx" />
     <Content Include="Admin\AdminLogin.aspx" />
     <Content Include="Admin\AnnouncementEntry.aspx" />
+    <Content Include="Admin\ApproveExam.aspx" />
     <Content Include="Admin\ResultListing.aspx" />
     <Content Include="Admin\StudentEntry.aspx" />
     <Content Include="Admin\StudentListing.aspx" />
@@ -82,6 +83,7 @@
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="Bootstrap\js\popper.min.js" />
+    <Content Include="ConfirmResult.aspx" />
     <Content Include="css\ASite.css" />
     <Content Include="css\ForumList.css" />
     <Content Include="css\Login.css" />
@@ -91,6 +93,7 @@
     <Content Include="img\logoKPM.png" />
     <Content Include="Login.aspx" />
     <Content Include="ResetPassword.aspx" />
+    <Content Include="ResultDetails.aspx" />
     <Content Include="script\animo\animate+animo.css" />
     <Content Include="script\animo\animo.js" />
     <Content Include="script\animo\animo.min.js" />
@@ -487,8 +490,8 @@
     <Content Include="Homepage.aspx" />
     <Content Include="StudentDetails.aspx" />
     <Content Include="TeacherDetails.aspx" />
+    <Content Include="UploadResult.aspx" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin.Master.cs">
@@ -518,6 +521,13 @@
     </Compile>
     <Compile Include="Admin\AnnouncementEntry.aspx.designer.cs">
       <DependentUpon>AnnouncementEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ApproveExam.aspx.cs">
+      <DependentUpon>ApproveExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ApproveExam.aspx.designer.cs">
+      <DependentUpon>ApproveExam.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ResultListing.aspx.cs">
       <DependentUpon>ResultListing.aspx</DependentUpon>
@@ -561,7 +571,13 @@
     <Compile Include="AnnouncementDetails.aspx.designer.cs">
       <DependentUpon>AnnouncementDetails.aspx</DependentUpon>
     </Compile>
-
+    <Compile Include="ConfirmResult.aspx.cs">
+      <DependentUpon>ConfirmResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmResult.aspx.designer.cs">
+      <DependentUpon>ConfirmResult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -598,6 +614,13 @@
     <Compile Include="Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ResultDetails.aspx.cs">
+      <DependentUpon>ResultDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultDetails.aspx.designer.cs">
+      <DependentUpon>ResultDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="StudentDetails.aspx.cs">
       <DependentUpon>StudentDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -612,19 +635,19 @@
     <Compile Include="TeacherDetails.aspx.designer.cs">
       <DependentUpon>TeacherDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UploadResult.aspx.cs">
+      <DependentUpon>UploadResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadResult.aspx.designer.cs">
+      <DependentUpon>UploadResult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="user.Master.cs">
       <DependentUpon>user.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="user.Master.designer.cs">
       <DependentUpon>user.Master</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
