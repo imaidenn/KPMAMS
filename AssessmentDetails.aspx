@@ -1,7 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user.Master" AutoEventWireup="true" CodeBehind="ForumDetails.aspx.cs" Inherits="KPMAMS.ForumDetails" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user.Master" AutoEventWireup="true" CodeBehind="AssessmentDetails.aspx.cs" Inherits="KPMAMS.AssessmentDetails" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/ForumDetails.css" rel="stylesheet" />
-    <script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css"> 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker-standalone.css"> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript">
         $(document).ready(function () {
             $.noConflict();
             $(".table").prepend($("<thead></thead>").html($(this).find("tr:first"))).dataTable({
@@ -15,9 +20,26 @@
                 }]
             });
         });
+        $(function () {
+            $('[id*=tbDueDate]').datetimepicker({
+                format: 'DD/MM/YYYY hh:mm A',
+                icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-chevron-up",
+                    down: "fa fa-chevron-down",
+                    previous: 'fa fa-chevron-left',
+                    next: 'fa fa-chevron-right',
+                    today: 'fa fa-screenshot',
+                    clear: 'fa fa-trash',
+                    close: 'fa fa-remove'
+                }
+            });
+        });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" ></asp:ScriptManager>
     <div class="container pt-2 pb-2">
         <div class="row">
             <div class="col mx-auto">
@@ -33,7 +55,7 @@
                             <div class="col-md-2">
                                 <div class="dropdown">
                                     <asp:LinkButton ID="lbMenu" CssClass="btn btn-info btn-block dropdown-toggle" role="button" type="button" data-toggle="dropdown" Visible="false" runat="server">More<i class="fas fa-caret-down"></i></asp:LinkButton>
-                                    <div class="dropdown-menu text-center">
+                                    <div class="dropdown-menu">
                                         <asp:LinkButton ID="lbModify" CssClass="dropdown-item" runat="server" OnClick="lbModify_Click" >Modify</asp:LinkButton>
                                         <asp:LinkButton ID="lbDelete" CssClass="dropdown-item" style="color:red; font-weight: bold" runat="server" OnClick="lbDelete_Click">Delete</asp:LinkButton>
                                     </div>
@@ -50,6 +72,16 @@
                             <div class="col-md-2">
                                 <asp:Label ID="lbClass" runat="server" Text=" "></asp:Label>
                             </div>
+                            <div class="col-md-3">
+                                <asp:Label ID="lbDueDate" runat="server" Text=" "></asp:Label>
+                                <div id="divDueDate" class="datetimepicker input-group date mb-lg" runat="server">
+                                    <label>Due Date</label>
+                                    <asp:TextBox ID="tbDueDate" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <span class="input-group-addon">
+                                        <asp:LinkButton ID="lbClear" runat="server" OnClick="lbClear_Click"><i class="fas fa-minus-circle"></i></asp:LinkButton>
+                                    </span>
+                                 </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -59,11 +91,25 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p>
-                                    <asp:Label ID="lbContent" runat="server" Text=" "></asp:Label>
+                                    <asp:Label ID="lbDesc" runat="server" Text=" "></asp:Label>
                                     <div class="form-group">
                                         <asp:TextBox ID="tbContent" CssClass="form-control" Visible="false" TextMode="MultiLine" placeholder="Contents of forum" Rows="5" runat="server"></asp:TextBox>
                                     </div>
                                 </p>
+                                <div id="divFile" runat="server">
+                                    <h4>Additional file</h4>
+                                    <asp:HyperLink ID="hlFile" runat="server">
+                                        <span class="input-group-addon">
+                                            <asp:LinkButton ID="lbClearFile" runat="server" Onclick="lbClearFile_Click"><i class="fas fa-minus-circle"></i></asp:LinkButton>
+                                            <asp:LinkButton ID="lbDownload" runat="server" ><i class="fas fa-download"></i></asp:LinkButton>
+                                        </span>
+                                    </asp:HyperLink>
+                                    <asp:UpdatePanel ID="UpdatePanel" runat="server">
+                                        <ContentTemplate>
+                                            <ajaxToolkit:AsyncFileUpload runat="server" ID="AsyncFileUpload1" Mode="Auto" Visible="false" />
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -80,8 +126,8 @@
                             </div>
                             <div class="col-md-2">
                             </div>
-                            <div class="col-md-3 text-right ">
-                                <asp:Label ID="lbCreatedDate" runat="server" ></asp:Label>
+                            <div class="col-md-3">
+                                <asp:Label ID="lbCreatedDate" runat="server" Text=""></asp:Label>
                             </div>
                             <div class="col-md-3">
                                 <div class="box-comments">
@@ -89,74 +135,6 @@
                                     <div class="comment-text">
                                         <asp:Label ID="lbUserName" CssClass="username" runat="server" Text=""></asp:Label>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container" id="divComment" runat="server" >
-        <div class="row">
-            <div class="col mx-auto">
-                <div class="panel">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3>Comment</h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="row d-flex">
-                            <div class="col-md-12">
-                                <h3>
-                                    <asp:Label ID="lblNoData" runat="server" Text="No comment yet" Visible="false"></asp:Label>
-                                </h3>
-                                <asp:GridView class="table table-striped table-bordered table-responsive-md" ID="GvCommentList" runat="server" AutoGenerateColumns="False" DataKeyNames="CommentGUID" OnRowDataBound="GvCommentList_RowDataBound" OnRowCommand="GvCommentList_RowCommand" >
-                                    <Columns>
-                                        <asp:BoundField DataField="CommentGUID" HeaderText="Comment GUID" ReadOnly="True" SortExpression="CommentGUID" Visible="true"/>
-                                        <asp:TemplateField HeaderText="Comment">
-                                            <ItemTemplate>
-                                                <div class="container-fluid">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <asp:Label ID="lblCommentBy" runat="server" Text='<%# Eval("CommentBy") %>' Font-Bold="True" ForeColor="#3333FF"></asp:Label>
-                                                            comment on
-                                                            <asp:Label ID="lblCommentDate" runat="server" Text='<%# Eval("CreateDate") %>'></asp:Label>      
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <asp:Label ID="lblCommentContent" runat="server" Text='<%# Eval("Content") %>'></asp:Label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField>
-                                            <ItemTemplate>
-                                            <asp:Button ID="btnModifyComment" runat="server" class="btn btn-block btn-info btn-sm" Text="Modify" CommandName="selectModify" CommandArgument="<%# Container.DataItemIndex %>" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-                                </asp:GridView>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Comment :</label>
-                                <div class="form-group">
-                                <asp:TextBox CssClass="form-control" ID="tbComment" runat="server" TextMode="MultiLine" placeholder="Contents of comment" Rows="5"></asp:TextBox>
-                                </div>
-                                <div class="from-group">
-                                    <asp:Button ID="btnSubmit" runat="server" class="btn btn-block btn-info btn-lg" Text="Post comment" OnClick="btnSubmit_Click"/>
-                                    <asp:Button ID="btnDeleteComment" runat="server" class="btn btn-block btn-danger btn-lg" Text="Delete" Visible="false" OnClick="btnDeleteComment_Click" />
-                                    <asp:Button ID="btnCancelModify" runat="server" class="btn btn-block btn-light btn-lg" Text="Cancel" Visible="false" OnClick="btnCancelModify_Click" />
                                 </div>
                             </div>
                         </div>

@@ -38,12 +38,18 @@ namespace KPMAMS
                 SqlCommand cmd = new SqlCommand("SELECT * from Forum where ForumGUID =''", con);
                 if (Session["role"].Equals("Student"))
                 {
-                    cmd = new SqlCommand("SELECT s.ClassroomGUID, Class From Student s LEFT JOIN Classroom c ON c.ClassroomGUID = s.ClassroomGUID WHERE StudentGUID=@StudentGUID", con);
+                    cmd = new SqlCommand(
+                        "SELECT s.ClassroomGUID, Class " +
+                        "FROM Student s LEFT JOIN Classroom c ON c.ClassroomGUID = s.ClassroomGUID " +
+                        "WHERE StudentGUID=@StudentGUID", con);
                     cmd.Parameters.AddWithValue("@StudentGUID", Session["userGUID"]);
                 }
                 else
                 {
-                    cmd = new SqlCommand("SELECT tc.ClassroomGUID, Class From Teacher_Classroom tc LEFT JOIN Classroom c ON c.ClassroomGUID = tc.ClassroomGUID WHERE TeacherGUID=@TeacherGUID", con);
+                    cmd = new SqlCommand(
+                        "SELECT tc.ClassroomGUID, Class " +
+                        "FROM Teacher_Classroom tc LEFT JOIN Classroom c ON c.ClassroomGUID = tc.ClassroomGUID " +
+                        "WHERE TeacherGUID=@TeacherGUID", con);
                     cmd.Parameters.AddWithValue("@TeacherGUID", Session["userGUID"]);
                 }
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -83,7 +89,6 @@ namespace KPMAMS
         protected void btnCreateForum_Click(object sender, EventArgs e)
         {
             Response.Redirect("CreateForum.aspx");
-            ;
         }
 
         protected void GvForumList_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -107,8 +112,14 @@ namespace KPMAMS
                     con.Open();
                 }
 
-                //String strSelect = "SELECT f.ForumGUID, convert(VARCHAR(20),f.CreateDate,100) as CreateDate, convert(VARCHAR(20),f.LastUpdateDate,100) as LastUpdateDate, ClassroomGUID, Title, Count(CommentGUID) As NoOfComment From Forum f LEFT JOIN Comment c ON f.ForumGUID = c.ForumGUID Where ClassroomGUID=@ClassroomGUID GROUP BY CommentGUID, f.ForumGUID, f.CreateDate, f.LastUpdateDate, ClassroomGUID, Title";
-                String strSelect = "SELECT f.ForumGUID, '<b>'+FullName+'</b>'+' On '+convert(VARCHAR(20),f.CreateDate,100) as CreateBy, convert(VARCHAR(20),f.LastUpdateDate,100) as LastUpdateDate, f.ClassroomGUID, Title, Count(CommentGUID) As NoOfComment From Teacher t LEFT JOIN Teacher_Classroom tc ON t.TeacherGUID =tc.TeacherGUID LEFT JOIN Classroom cl ON tc.ClassroomGUID = cl.ClassroomGUID LEFT JOIN Forum f ON cl.ClassroomGUID = f.ClassroomGUID LEFT JOIN Comment c ON f.ForumGUID = c.ForumGUID Where f.ClassroomGUID=@ClassroomGUID AND t.TeacherGUID=AuthorGUID GROUP BY f.ForumGUID, f.CreateDate, f.LastUpdateDate, f.ClassroomGUID, Title, FullName";
+                String strSelect = 
+                    "SELECT f.ForumGUID, '<b>'+FullName+'</b>'+' On '+convert(VARCHAR(20),f.CreateDate,100) as CreateBy, convert(VARCHAR(20),f.LastUpdateDate,100) as LastUpdateDate, f.ClassroomGUID, Title, Count(CommentGUID) As NoOfComment " +
+                    "FROM Teacher t LEFT JOIN Teacher_Classroom tc ON t.TeacherGUID =tc.TeacherGUID " +
+                    "LEFT JOIN Classroom cl ON tc.ClassroomGUID = cl.ClassroomGUID " +
+                    "LEFT JOIN Forum f ON cl.ClassroomGUID = f.ClassroomGUID " +
+                    "LEFT JOIN Comment c ON f.ForumGUID = c.ForumGUID " +
+                    "WHERE f.ClassroomGUID=@ClassroomGUID " +
+                    "GROUP BY f.ForumGUID, f.CreateDate, f.LastUpdateDate, f.ClassroomGUID, Title, FullName";
                 SqlCommand cmd = new SqlCommand(strSelect, con);
                 cmd.Parameters.AddWithValue("@ClassroomGUID", dlClassList.SelectedValue);
                 SqlDataReader dr = cmd.ExecuteReader();

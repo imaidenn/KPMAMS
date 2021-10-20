@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user.Master" AutoEventWireup="true" CodeBehind="ForumList.aspx.cs" Inherits="KPMAMS.ForumList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user.Master" AutoEventWireup="true" CodeBehind="AssessmentList.aspx.cs" Inherits="KPMAMS.AssessmentList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
         $(document).ready(function () {
@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col">
                 <center>
-                    <h3>ForumList</h3>
+                    <h3>Assessment List</h3>
                 </center>
             </div>
         </div>
@@ -36,14 +36,19 @@
                     <asp:Label ID="lbClass" runat="server" Text=""></asp:Label>
                 </h4>
             </div>
+            <div class="col-md-2">
+                <asp:Button ID="btnCreateAssessment" class="btn btn-info btn-block btn-sm" Visible="false" runat="server" Text="Create" OnClick="btnCreateAssessment_Click" />
+            </div>
             <div class="col-md-3">
                 <div class="from-group">
                     <asp:DropDownList class="form-control" ID="dlClassList" runat="server" Visible="false" OnSelectedIndexChanged ="dlClassList_SelectedIndexChanged" AutoPostBack="true" >
                     </asp:DropDownList>
+                    <asp:DropDownList class="form-control" ID="dlStatus" runat="server" Visible="true" OnSelectedIndexChanged ="dlStatus_SelectedIndexChanged" AutoPostBack="true" >
+                        <asp:ListItem Text="Assign" Value="Assign" />
+                        <asp:ListItem Text="Submitted" Value="Submitted" />
+                        <asp:ListItem Text="Missing" Value="Missing" />
+                    </asp:DropDownList>
                 </div>
-            </div>
-            <div class="col col-md-2">
-                <asp:Button ID="btnCreateForum" class="btn btn-info btn-block btn-sm" Visible="false" runat="server" Text="Create" OnClick="btnCreateForum_Click" />
             </div>
         </div>
         <div class="row">
@@ -53,19 +58,18 @@
                         <asp:Label ID="lblNoData" runat="server" Visible="false" Text="No Data Found"></asp:Label>
                     </h3> 
                 </center>
-                <asp:GridView class="" ID="GvForumList" CssClass="table table-striped table-responsive-md" runat="server" AutoGenerateColumns="False" OnRowDataBound="GvForumList_RowDataBound" >
+                <asp:GridView class="" ID="GvAssessmentList" CssClass="table table-striped table-responsive-md" runat="server" AutoGenerateColumns="False" OnRowDataBound="GvAssessmentList_RowDataBound" >
                     <Columns>
                         <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
                                 <asp:HyperLink ID="hlView" Text="View" runat="server" ></asp:HyperLink>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="ForumGUID" HeaderText="Forum GUID" ReadOnly="True" SortExpression="ForumGUID" Visible="false"/>
+                        <asp:BoundField DataField="AssessmentGUID" HeaderText="Asessment GUID" ReadOnly="True" SortExpression="AsessmentGUID" Visible="false"/>
                         <asp:BoundField DataField="CreateBy" HeaderText="Create By" ReadOnly="True" SortExpression="CreateDate" HtmlEncode="false" />
                         <asp:BoundField DataField="LastUpdateDate" HeaderText="Last Update Date" ReadOnly="True" SortExpression="LastUpdateDate" />
-                        <asp:BoundField DataField="Content" HeaderText="Content" ReadOnly="True" SortExpression="Content" Visible="false"/>
                         <asp:BoundField DataField="Title" HeaderText="Title" ReadOnly="True" SortExpression="Title"/>
-                        <asp:BoundField DataField="NoOfComment" HeaderText="Total comment" ReadOnly="True" SortExpression="TotalComment" />
+                        <asp:BoundField DataField="DueDate" HeaderText="Due Date" ReadOnly="True" SortExpression="DueDate"/>
                     </Columns>
                 </asp:GridView>
             </div>

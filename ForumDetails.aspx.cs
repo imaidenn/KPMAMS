@@ -43,7 +43,12 @@ namespace KPMAMS
                     {
                         con.Open();
                     }
-                    String select = "Select FullName, ProfilePic, cl.Class, Title, f.Content, convert(VARCHAR(20),f.CreateDate,100), convert(VARCHAR(20),f.LastUpdateDate,100) , AuthorGUID From Teacher t LEFT JOIN Teacher_Classroom tc ON t.TeacherGUID = tc.TeacherGUID LEFT JOIN Classroom cl ON tc.ClassroomGUID = cl.ClassroomGUID LEFT JOIN Forum f ON cl.ClassroomGUID = f.ClassroomGUID Where t.TeacherGUID = AuthorGUID AND ForumGUID = @ForumGUID";
+                    String select = 
+                        "SELECT FullName, ProfilePic, cl.Class, Title, f.Content, convert(VARCHAR(20),f.CreateDate,100), convert(VARCHAR(20),f.LastUpdateDate,100) , AuthorGUID " +
+                        "FROM Teacher t LEFT JOIN Teacher_Classroom tc ON t.TeacherGUID = tc.TeacherGUID " +
+                        "LEFT JOIN Classroom cl ON tc.ClassroomGUID = cl.ClassroomGUID " +
+                        "LEFT JOIN Forum f ON cl.ClassroomGUID = f.ClassroomGUID " +
+                        "WHERE t.TeacherGUID = AuthorGUID AND ForumGUID = @ForumGUID";
                     cmd = new SqlCommand(select, con);
                     cmd.Parameters.AddWithValue("@ForumGUID", Request.QueryString["ForumGUID"]);
                     SqlDataReader dr = cmd.ExecuteReader();
@@ -189,7 +194,9 @@ namespace KPMAMS
                     {
                         con.Open();
                     }
-                    SqlCommand cmd = new SqlCommand("UPDATE Forum SET LastUpdateDate=@LastUpdateDate, Title=@Title, Content=@Content where ForumGUID=@ForumGUID", con);
+                    SqlCommand cmd = new SqlCommand(
+                        "UPDATE Forum SET LastUpdateDate=@LastUpdateDate, Title=@Title, Content=@Content " +
+                        "WHERE ForumGUID=@ForumGUID", con);
                     cmd.Parameters.AddWithValue("@LastUpdateDate", DateTime.Now);
                     cmd.Parameters.AddWithValue("@Title", tbTitle.Text.Trim());
                     cmd.Parameters.AddWithValue("@Content", tbContent.Text.Trim());
@@ -253,7 +260,10 @@ namespace KPMAMS
                     con.Open();
                 }
 
-                String strSelect = "SELECT c.CommentGUID , convert(VARCHAR(20),c.CreateDate,100) as CreateDate, CommentBy, c.Content From Comment c LEFT JOIN Forum f ON c.ForumGUID=f.ForumGUID Where f.ForumGUID=@ForumGUID Order By c.CreateDate Desc";
+                String strSelect = 
+                    "SELECT c.CommentGUID , convert(VARCHAR(20),c.CreateDate,100) as CreateDate, CommentBy, c.Content " +
+                    "FROM Comment c LEFT JOIN Forum f ON c.ForumGUID=f.ForumGUID " +
+                    "WHERE f.ForumGUID=@ForumGUID";
                 SqlCommand cmd = new SqlCommand(strSelect, con);
                 cmd.Parameters.AddWithValue("@ForumGUID", Request.QueryString["ForumGUID"]);
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -295,7 +305,8 @@ namespace KPMAMS
                             con.Open();
                         }
                         Guid CommentGUID = Guid.NewGuid();
-                        SqlCommand cmd = new SqlCommand("INSERT INTO Comment(CommentGUID,ForumGUID,CreateDate,Content,CommentBy) values (@CommentGUID,@ForumGUID,@CreateDate,@Content,@CommentBy)", con);
+                        SqlCommand cmd = new SqlCommand(
+                            "INSERT INTO Comment(CommentGUID,ForumGUID,CreateDate,Content,CommentBy) values (@CommentGUID,@ForumGUID,@CreateDate,@Content,@CommentBy)", con);
                         cmd.Parameters.AddWithValue("@CommentGUID", CommentGUID);
                         cmd.Parameters.AddWithValue("@ForumGUID", Request.QueryString["ForumGUID"]);
                         cmd.Parameters.AddWithValue("@CreateDate", DateTime.Now);
@@ -324,7 +335,9 @@ namespace KPMAMS
                             {
                                 con.Open();
                             }
-                            SqlCommand cmd = new SqlCommand("UPDATE Comment SET Content=@Content Where CommentGUID=@CommentGUID", con);
+                            SqlCommand cmd = new SqlCommand("" +
+                                "UPDATE Comment SET Content=@Content " +
+                                "WHERE CommentGUID=@CommentGUID", con);
                             cmd.Parameters.AddWithValue("@Content", tbComment.Text.Trim());
                             cmd.Parameters.AddWithValue("@CommentGUID", selectedComment);
 
@@ -388,7 +401,10 @@ namespace KPMAMS
                     {
                         con.Open();
                     }
-                    String select = "Select Content From Comment Where CommentGUID=@CommentGUID";
+                    String select = 
+                        "SELECT Content " +
+                        "FROM Comment " +
+                        "WHERE CommentGUID=@CommentGUID";
                     cmd = new SqlCommand(select, con);
                     cmd.Parameters.AddWithValue("@CommentGUID", selectedComment);
                     SqlDataReader dr = cmd.ExecuteReader();
@@ -429,7 +445,8 @@ namespace KPMAMS
                 }
                 String strDelete = "";
                 SqlCommand cmd = new SqlCommand(strDelete, con);
-                cmd = new SqlCommand("DELETE From Comment Where CommentGUID='" + selectedComment + "';", con);
+                cmd = new SqlCommand(
+                    "DELETE From Comment Where CommentGUID='" + selectedComment + "';", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
 
