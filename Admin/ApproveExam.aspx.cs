@@ -5,18 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace KPMAMS
+namespace KPMAMS.Admin
 {
-    public partial class admin : System.Web.UI.MasterPage
+    public partial class ApproveExam : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void btnLogout_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminLogin.aspx");
         }
     }
 }

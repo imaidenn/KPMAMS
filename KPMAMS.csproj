@@ -89,6 +89,7 @@
     <Content Include="Admin\AdminHomepage.aspx" />
     <Content Include="Admin\AdminLogin.aspx" />
     <Content Include="Admin\AnnouncementEntry.aspx" />
+    <Content Include="Admin\ApproveExam.aspx" />
     <Content Include="Admin\ResultListing.aspx" />
     <Content Include="Admin\StudentEntry.aspx" />
     <Content Include="Admin\StudentListing.aspx" />
@@ -123,6 +124,7 @@
     <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
     <Content Include="Scripts\jquery.signalR-2.4.2.js" />
     <Content Include="Scripts\jquery.signalR-2.4.2.min.js" />
+    <Content Include="ResultDetails.aspx" />
     <Content Include="script\animo\animate+animo.css" />
     <Content Include="script\animo\animo.js" />
     <Content Include="script\animo\animo.min.js" />
@@ -519,6 +521,7 @@
     <Content Include="Homepage.aspx" />
     <Content Include="StudentDetails.aspx" />
     <Content Include="TeacherDetails.aspx" />
+    <Content Include="UploadResult.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -549,6 +552,13 @@
     </Compile>
     <Compile Include="Admin\AnnouncementEntry.aspx.designer.cs">
       <DependentUpon>AnnouncementEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ApproveExam.aspx.cs">
+      <DependentUpon>ApproveExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ApproveExam.aspx.designer.cs">
+      <DependentUpon>ApproveExam.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ResultListing.aspx.cs">
       <DependentUpon>ResultListing.aspx</DependentUpon>
@@ -621,6 +631,13 @@
     <Compile Include="CreateForum.aspx.designer.cs">
       <DependentUpon>CreateForum.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ConfirmResult.aspx.cs">
+      <DependentUpon>ConfirmResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmResult.aspx.designer.cs">
+      <DependentUpon>ConfirmResult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -673,6 +690,13 @@
       <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="ResultDetails.aspx.cs">
+      <DependentUpon>ResultDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultDetails.aspx.designer.cs">
+      <DependentUpon>ResultDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="StudentDetails.aspx.cs">
       <DependentUpon>StudentDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -686,6 +710,13 @@
     </Compile>
     <Compile Include="TeacherDetails.aspx.designer.cs">
       <DependentUpon>TeacherDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadResult.aspx.cs">
+      <DependentUpon>UploadResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadResult.aspx.designer.cs">
+      <DependentUpon>UploadResult.aspx</DependentUpon>
     </Compile>
     <Compile Include="user.Master.cs">
       <DependentUpon>user.Master</DependentUpon>
