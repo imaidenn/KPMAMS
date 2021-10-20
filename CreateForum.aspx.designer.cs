@@ -11,17 +11,17 @@ namespace KPMAMS
 {
 
 
-    public partial class ForumList
+    public partial class CreateForum
     {
 
         /// <summary>
-        /// lbClass control.
+        /// tbTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbClass;
+        protected global::System.Web.UI.WebControls.TextBox tbTitle;
 
         /// <summary>
         /// dlClassList control.
@@ -33,30 +33,21 @@ namespace KPMAMS
         protected global::System.Web.UI.WebControls.DropDownList dlClassList;
 
         /// <summary>
-        /// btnCreateForum control.
+        /// tbContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreateForum;
+        protected global::System.Web.UI.WebControls.TextBox tbContent;
 
         /// <summary>
-        /// lblNoData control.
+        /// btnCreate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNoData;
-
-        /// <summary>
-        /// GvForumList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GvForumList;
+        protected global::System.Web.UI.WebControls.Button btnCreate;
     }
 }

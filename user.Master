@@ -20,6 +20,12 @@
    <link rel="stylesheet" href="script/csspinner/csspinner.min.css"> 
    <!-- App CSS-->
    <link rel="stylesheet" href="css/app.css">
+    <!-- Data table-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="//code.jquery.com/jquery-1.8.3.min.js"></script>
+    <%--<script src="//code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>--%>
+    <script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -218,7 +224,7 @@
                 </li>
 
                 <li>
-                <a href="" title="LiveChat" class="no-submenu">
+                <a href="LiveChat.aspx" title="LiveChat" class="no-submenu">
                     <em class="fa fa-book"></em>
 <%--                     <div class="label label-primary pull-right">12</div>--%>
                     <span class="item-text">Live Chat</span>
@@ -261,7 +267,7 @@
    <!-- END Main wrapper-->
    <!-- START Scripts-->
    <!-- Main plugins Scripts-->
-   <script src="script/jquery/jquery.min.js"></script>
+   <%--<script src="script/jquery/jquery.min.js"></script>--%>
    <script src="script/bootstrap/js/bootstrap.min.js"></script>
 
 

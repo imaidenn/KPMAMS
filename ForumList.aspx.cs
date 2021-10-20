@@ -36,7 +36,7 @@ namespace KPMAMS
                     con.Open();
                 }
                 SqlCommand cmd = new SqlCommand("SELECT * from Forum where ForumGUID =''", con);
-                if (Session["role"].Equals("s"))
+                if (Session["role"].Equals("Student"))
                 {
                     cmd = new SqlCommand("SELECT s.ClassroomGUID, Class From Student s LEFT JOIN Classroom c ON c.ClassroomGUID = s.ClassroomGUID WHERE StudentGUID=@StudentGUID", con);
                     cmd.Parameters.AddWithValue("@StudentGUID", Session["userGUID"]);
@@ -72,7 +72,7 @@ namespace KPMAMS
 
         protected void CheckRole()
         {
-            if (Session["role"].Equals("t"))
+            if (Session["role"].Equals("Teacher"))
             {
                 btnCreateForum.Visible = true;
                 dlClassList.Visible = true;
@@ -118,12 +118,13 @@ namespace KPMAMS
 
                 if (dt.Rows.Count == 0)
                 {
-                    //lblNoData.Visible = true;
+                    lblNoData.Visible = true;
                     GvForumList.DataSource = dt;
                     GvForumList.DataBind();
                 }
                 else
                 {
+                    lblNoData.Visible = false;
                     GvForumList.DataSource = dt;
                     GvForumList.DataBind();
                 }
