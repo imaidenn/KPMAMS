@@ -19,7 +19,8 @@
                     today: 'fa fa-screenshot',
                     clear: 'fa fa-trash',
                     close: 'fa fa-remove'
-                }
+                },
+                minDate: moment()
             });
         });
     </script>

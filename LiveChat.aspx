@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user.Master" AutoEventWireup="true" CodeBehind="LiveChat.aspx.cs" Inherits="KPMAMS.LiveChat" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user.Master" AutoEventWireup="True" CodeBehind="~/LiveChat.aspx.cs" Inherits="KPMAMS.LiveChat" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 

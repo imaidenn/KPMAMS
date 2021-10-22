@@ -23,6 +23,18 @@ namespace KPMAMS
             }
             if (Session["fullName"] != null)
             {
+                string filepath = Server.MapPath(UploadFolderPath);
+                System.IO.DirectoryInfo di = new DirectoryInfo(filepath);
+
+                foreach (FileInfo file in di.EnumerateFiles())
+                {
+                    file.Delete();
+                }
+                //foreach (DirectoryInfo dir in di.EnumerateDirectories())
+                //{
+                //    dir.Delete(true);
+                //}
+
                 UserName = Session["fullName"].ToString();
                 if (Session["role"].Equals("Teacher"))
                 {

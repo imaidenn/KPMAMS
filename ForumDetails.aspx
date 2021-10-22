@@ -32,7 +32,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="dropdown">
-                                    <asp:LinkButton ID="lbMenu" CssClass="btn btn-info btn-block dropdown-toggle" role="button" type="button" data-toggle="dropdown" Visible="false" runat="server">More<i class="fas fa-caret-down"></i></asp:LinkButton>
+                                    <asp:LinkButton ID="lbMenu" CssClass="btn btn-info btn-block dropdown-toggle" role="button" type="button" data-toggle="dropdown" Visible="false" runat="server">More<i style="margin-left:10px;" class="fas fa-caret-down"></i></asp:LinkButton>
                                     <div class="dropdown-menu text-center">
                                         <asp:LinkButton ID="lbModify" CssClass="dropdown-item" runat="server" OnClick="lbModify_Click" >Modify</asp:LinkButton>
                                         <asp:LinkButton ID="lbDelete" CssClass="dropdown-item" style="color:red; font-weight: bold" runat="server" OnClick="lbDelete_Click">Delete</asp:LinkButton>
