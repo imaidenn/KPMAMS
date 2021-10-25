@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user.Master" AutoEventWireup="true" CodeBehind="ForumDetails.aspx.cs" Inherits="KPMAMS.ForumDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="css/ForumDetails.css" rel="stylesheet" />
     <script>
         $(document).ready(function () {
             $.noConflict();
@@ -31,7 +32,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="dropdown">
-                                    <asp:LinkButton ID="lbMenu" CssClass="btn btn-info btn-block dropdown-toggle" role="button" type="button" data-toggle="dropdown" Visible="false" runat="server">More<i class="fas fa-caret-down"></i></asp:LinkButton>
+                                    <asp:LinkButton ID="lbMenu" CssClass="btn btn-info btn-block dropdown-toggle" role="button" type="button" data-toggle="dropdown" Visible="false" runat="server">More<i style="margin-left:10px;" class="fas fa-caret-down"></i></asp:LinkButton>
                                     <div class="dropdown-menu text-center">
                                         <asp:LinkButton ID="lbModify" CssClass="dropdown-item" runat="server" OnClick="lbModify_Click" >Modify</asp:LinkButton>
                                         <asp:LinkButton ID="lbDelete" CssClass="dropdown-item" style="color:red; font-weight: bold" runat="server" OnClick="lbDelete_Click">Delete</asp:LinkButton>
@@ -79,16 +80,14 @@
                             </div>
                             <div class="col-md-2">
                             </div>
-                            <div class="col-md-3">
-                                <asp:Label ID="lbCreatedDate" runat="server" Text=""></asp:Label>
+                            <div class="col-md-3 text-right ">
+                                <asp:Label ID="lbCreatedDate" runat="server" ></asp:Label>
                             </div>
                             <div class="col-md-3">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <asp:Image ID="ImgProfilePic" runat="server" width="50" height="50" class="img-thumbnail img-circle" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <asp:Label ID="lbUserName" runat="server" Text=""></asp:Label>
+                                <div class="box-comments">
+                                    <asp:Image ID="ImgProfilePic" runat="server" class="img-circle img-sm" />
+                                    <div class="comment-text">
+                                        <asp:Label ID="lbUserName" CssClass="username" runat="server" Text=""></asp:Label>
                                     </div>
                                 </div>
                             </div>

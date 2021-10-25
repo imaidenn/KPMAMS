@@ -54,7 +54,10 @@ namespace KPMAMS
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand("SELECT tc.ClassroomGUID, Class From Teacher_Classroom tc LEFT JOIN Classroom c ON c.ClassroomGUID = tc.ClassroomGUID WHERE TeacherGUID=@TeacherGUID", con);
+                SqlCommand cmd = new SqlCommand(
+                    "SELECT tc.ClassroomGUID, Class " +
+                    "FROM Teacher_Classroom tc LEFT JOIN Classroom c ON c.ClassroomGUID = tc.ClassroomGUID " +
+                    "WHERE TeacherGUID=@TeacherGUID", con);
                 cmd.Parameters.AddWithValue("@TeacherGUID", Session["userGUID"]);
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -92,7 +95,9 @@ namespace KPMAMS
                     con.Open();
                 }
                 Guid ForumGUID = Guid.NewGuid();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Forum(ForumGUID,ClassroomGUID,AuthorGUID,CreateDate,LastUpdateDate,Content,Title) values (@ForumGUID,@ClassroomGUID,@AuthorGUID,@CreateDate,@LastUpdateDate,@Content,@Title)", con);
+                SqlCommand cmd = new SqlCommand(
+                    "INSERT INTO Forum(ForumGUID,ClassroomGUID,AuthorGUID,CreateDate,LastUpdateDate,Content,Title) " +
+                    "values (@ForumGUID,@ClassroomGUID,@AuthorGUID,@CreateDate,@LastUpdateDate,@Content,@Title)", con);
                 cmd.Parameters.AddWithValue("@ForumGUID", ForumGUID);
                 cmd.Parameters.AddWithValue("@ClassroomGUID", dlClassList.SelectedValue);
                 cmd.Parameters.AddWithValue("@AuthorGUID", Session["userGUID"].ToString());

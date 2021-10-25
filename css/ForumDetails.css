@@ -1,0 +1,41 @@
+﻿
+.box-comments .box-comment {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+    .box-comments .box-comment img {
+        float: left;
+    }
+
+.box-comments .comment-text {
+    margin-left: 40px;
+    color: #555;
+}
+
+.box-comments .username {
+    color: #444;
+    display: block;
+    font-weight: 600;
+}
+
+    .box-comments .username .user {
+        cursor: pointer;
+    }
+
+.img-sm,
+.box-comments .box-comment img,
+.user-block.user-block-sm img {
+    float: left;
+}
+
+.img-sm,
+.box-comments .box-comment img,
+.user-block.user-block-sm img {
+    width: 30px !important;
+    height: 30px !important;
+}
+
+    .img-sm + .img-push {
+        margin-left: 40px;
+    }

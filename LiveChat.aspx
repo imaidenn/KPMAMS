@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user.Master" AutoEventWireup="true" CodeBehind="LiveChat.aspx.cs" Inherits="KPMAMS.LiveChat" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user.Master" AutoEventWireup="True" CodeBehind="~/LiveChat.aspx.cs" Inherits="KPMAMS.LiveChat" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -453,7 +453,7 @@
         }
 
         function IsValidateFile(fileF) {
-            var allowedFiles = [".doc", ".docx", ".pdf", ".txt", ".xlsx", ".xls", ".png", ".jpg", ".gif"];
+            var allowedFiles = [".doc", ".docx", ".pdf", ".txt", ".zip", ".rar", ".xlsx", ".xls", ".png", ".jpg", ".gif"];
             var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(" + allowedFiles.join('|') + ")$");
             if (!regex.test(fileF.toLowerCase())) {
                 alert("Please upload files having extensions: " + allowedFiles.join(', ') + " only.");
@@ -511,6 +511,7 @@
                             <!-- /.direct-chat-pane -->
 
                         </div>
+
 
                     </div>
                     <!-- /.box-body -->

@@ -100,9 +100,13 @@
     <Content Include="AnnouncementDetails.aspx" />
     <Content Include="App_Data\KPMdb.mdf" />
     <Content Include="App_Data\KPMdb_log.ldf" />
+    <Content Include="AssessmentDetails.aspx" />
+    <Content Include="AssessmentList.aspx" />
+    <Content Include="CreateAssessment.aspx" />
     <Content Include="CreateForum.aspx" />
     <Content Include="css\app.css" />
     <Content Include="css\bootstrap.css" />
+    <Content Include="css\ForumDetails.css" />
     <Content Include="css\LiveChat.css" />
     <Content Include="ForgotPassword.aspx" />
     <Content Include="ForumDetails.aspx" />
@@ -622,7 +626,28 @@
     <Compile Include="AnnouncementDetails.aspx.designer.cs">
       <DependentUpon>AnnouncementDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AssessmentDetails.aspx.cs">
+      <DependentUpon>AssessmentDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AssessmentDetails.aspx.designer.cs">
+      <DependentUpon>AssessmentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AssessmentList.aspx.cs">
+      <DependentUpon>AssessmentList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AssessmentList.aspx.designer.cs">
+      <DependentUpon>AssessmentList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ChatHub.cs" />
+    <Compile Include="CreateAssessment.aspx.cs">
+      <DependentUpon>CreateAssessment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateAssessment.aspx.designer.cs">
+      <DependentUpon>CreateAssessment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CreateForum.aspx.cs">
       <DependentUpon>CreateForum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
