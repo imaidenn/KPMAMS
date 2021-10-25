@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="KPMAMS.admin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="KPMAMS.Admin.admin" %>
 
 <!DOCTYPE html>
 
@@ -13,13 +13,13 @@
    <meta name="author" content="">
    <title>Admin Master</title> 
    <!-- Bootstrap CSS-->
-   <link rel="stylesheet" href="css/bootstrap.css">
+   <link rel="stylesheet" href="~/css/bootstrap.css">
    <!-- plugins CSS-->
-   <link rel="stylesheet" href="script/fontawesome/css/font-awesome.min.css">
-   <link rel="stylesheet" href="script/animo/animate+animo.css">
-   <link rel="stylesheet" href="script/csspinner/csspinner.min.css"> 
+   <link rel="stylesheet" href="~/script/fontawesome/css/font-awesome.min.css">
+   <link rel="stylesheet" href="~/script/animo/animate+animo.css">
+   <link rel="stylesheet" href="~/script/csspinner/csspinner.min.css"> 
    <!-- App CSS-->
-   <link rel="stylesheet" href="css/app.css">
+   <link rel="stylesheet" href="~/css/app.css">
 </head>
 <body style="">
     <form runat="server">
@@ -228,14 +228,14 @@
    <!-- END Main wrapper-->
    <!-- START Scripts-->
    <!-- Main plugins Scripts-->
-   <script src="script/jquery/jquery.min.js"></script>
-   <script src="script/bootstrap/js/bootstrap.min.js"></script>
+   <script src="~/script/jquery/jquery.min.js"></script>
+   <script src="~/script/bootstrap/js/bootstrap.min.js"></script>
 
 
 
 
    <!-- App Main-->
-   <script src="app/js/app.js"></script>
+   <script src="~/app/js/app.js"></script>
 
    <!-- END Scripts-->
 

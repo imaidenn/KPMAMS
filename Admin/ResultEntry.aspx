@@ -1,17 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user.Master" AutoEventWireup="true" CodeBehind="ResultDetails.aspx.cs" Inherits="KPMAMS.ResultDetails" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/admin.Master" AutoEventWireup="true" CodeBehind="ResultEntry.aspx.cs" Inherits="KPMAMS.Admin.ResultEntry" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <div class="panel panel-default">
                <div class="panel-heading">Result</div>
                <div class="panel-body">
-                   <div class="form-group">
-                           <label class="col-sm-2 control-label">Exam Semester For:</label>
-                           <div class="col-sm-5">
-                               <asp:DropDownList ID="ddlSem" runat="server" OnSelectedIndexChanged="ddlSem_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                           </div>
-
-                        </div>
                    <br />
                     <div class="row">
                            <div class="col-md-12">
@@ -108,5 +99,4 @@
 
                      </div>
                                 </div>
-   
 </asp:Content>

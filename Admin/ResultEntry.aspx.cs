@@ -8,65 +8,20 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace KPMAMS
+namespace KPMAMS.Admin
 {
-    public partial class ResultDetails : System.Web.UI.Page
+    public partial class ResultEntry : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userGUID"] != null)
+            if (Request.QueryString["StudentGUID"] != null && Request.QueryString["ExamSemester"] != null)
             {
-                
+
                 if (IsPostBack == false)
                 {
                     GetDetails();
-                    GetSemester();
 
                 }
-            }
-        }
-
-
-        protected void GetSemester()
-        {
-            try
-            {
-                string StudentGUID = Session["userGUID"].ToString();
-                DataTable dt = new DataTable();
-
-                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-                SqlConnection con = new SqlConnection(strCon);
-
-                con.Open();
-
-                String strSelect = "SELECT ExamSemester FROM Exam WHERE StudentGUID = @StudentGUID GROUP BY ExamSemester ORDER BY ExamSemester DESC";
-
-                SqlCommand cmdSelect = new SqlCommand(strSelect, con);
-                cmdSelect.Parameters.AddWithValue("@StudentGUID", StudentGUID);
-
-                SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
-
-                dt.Load(dtrSelect);
-
-                con.Close();
-
-
-                if (dt.Rows.Count > 0)
-                {
-                    ddlSem.DataTextField = dt.Columns["ExamSemester"].ToString();
-                    ddlSem.DataValueField = dt.Columns["ExamSemester"].ToString();
-                    ddlSem.DataSource = dt;
-                    ddlSem.DataBind();
-                    GetResult();
-                }
-
-
-
-
-            }
-            catch (SqlException ex)
-            {
-                string msg = ex.Message;
             }
         }
 
@@ -75,7 +30,8 @@ namespace KPMAMS
             try
             {
 
-                string StudentGUID = Session["userGUID"].ToString();
+                string StudentGUID = Request.QueryString["StudentGUID"].ToString();
+                string ExamSemester = Request.QueryString["ExamSemester"].ToString();
 
                 DataTable dt = new DataTable();
 
@@ -84,12 +40,12 @@ namespace KPMAMS
 
                 con.Open();
 
-                String strSelect = "SELECT a.Class, b.Class, a.ExamGUID, * FROM Exam a LEFT JOIN Classroom b ON a.Class = b.ClassroomGUID LEFT JOIN Subject c ON a.SubjectGUID = c.SubjectGUID " +
+                String strSelect = "SELECT a.Class, b.Class, * FROM Exam a LEFT JOIN Classroom b ON a.Class = b.ClassroomGUID LEFT JOIN Subject c ON a.SubjectGUID = c.SubjectGUID " +
                     "WHERE a.StudentGUID = @StudentGUID AND a.ExamSemester = @ExamSemester AND a.Status = 'Confirmed' ORDER BY c.SubjectName";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                 cmdSelect.Parameters.AddWithValue("@StudentGUID", StudentGUID);
-                cmdSelect.Parameters.AddWithValue("@ExamSemester", ddlSem.SelectedValue.ToString());
+                cmdSelect.Parameters.AddWithValue("@ExamSemester", ExamSemester);
 
                 SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
 
@@ -102,7 +58,6 @@ namespace KPMAMS
                 {
                     string classGUID = dt.Rows[0][0].ToString();
                     lblClass.Text = dt.Rows[0][1].ToString();
-                    string examGUID = dt.Rows[0][2].ToString();
 
                     GridView1.DataSource = dt;
                     GridView1.DataBind();
@@ -134,7 +89,7 @@ namespace KPMAMS
             try
             {
 
-                string StudentGUID = Session["userGUID"].ToString();
+                string StudentGUID = Request.QueryString["StudentGUID"].ToString();
 
                 DataTable dt = new DataTable();
 
@@ -152,16 +107,17 @@ namespace KPMAMS
 
                 dt.Load(dtrSelect);
 
+                con.Close();
+
                 if (dt.Rows.Count > 0)
                 {
                     lblName.Text = dt.Rows[0][0].ToString();
                     lblIC.Text = dt.Rows[0][1].ToString();
                     lblGender.Text = dt.Rows[0][2].ToString();
-
+                    GetResult();
                 }
 
-
-                con.Close();
+                
             }
             catch (SqlException ex)
             {
@@ -173,7 +129,8 @@ namespace KPMAMS
         {
             try
             {
-                string StudentGUID = Session["userGUID"].ToString();
+                string StudentGUID = Request.QueryString["StudentGUID"].ToString();
+                string ExamSemester = Request.QueryString["ExamSemester"].ToString();
 
                 DataTable dt = new DataTable();
 
@@ -188,7 +145,7 @@ namespace KPMAMS
                     "GROUP BY b.StudentGUID,AverageMark,b.ResultGUID,a.AverageMark,a.GPA,a.CGPA";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
-                cmdSelect.Parameters.AddWithValue("@ExamSemester", ddlSem.SelectedValue);
+                cmdSelect.Parameters.AddWithValue("@ExamSemester", ExamSemester);
                 cmdSelect.Parameters.AddWithValue("@ClassroomGUID", classGUID);
 
                 SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
@@ -197,10 +154,10 @@ namespace KPMAMS
 
                 if (dt.Rows.Count > 0)
                 {
-                    foreach(DataRow row in dt.Rows)
+                    foreach (DataRow row in dt.Rows)
                     {
                         string studentGuid = row["StudentGUID"].ToString();
-                        if (studentGuid == Session["userGUID"].ToString())
+                        if (studentGuid == Request.QueryString["StudentGUID"].ToString())
                         {
                             lblplclass.Text = row["PlaceInClass"].ToString() + "/" + (dt.Rows.Count).ToString();
                             lblAvgMark.Text = row["AverageMark"].ToString();
@@ -215,9 +172,9 @@ namespace KPMAMS
 
                 con.Close();
 
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 DisplayAlertMsg(ex.Message);
             }
@@ -227,7 +184,8 @@ namespace KPMAMS
         {
             try
             {
-                string StudentGUID = Session["userGUID"].ToString();
+                string StudentGUID = Request.QueryString["StudentGUID"].ToString();
+                string ExamSemester = Request.QueryString["ExamSemester"].ToString();
 
                 DataTable dt = new DataTable();
 
@@ -242,7 +200,7 @@ namespace KPMAMS
                     "GROUP BY b.StudentGUID,AverageMark,b.ResultGUID";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
-                cmdSelect.Parameters.AddWithValue("@ExamSemester", ddlSem.SelectedValue);
+                cmdSelect.Parameters.AddWithValue("@ExamSemester", ExamSemester);
 
                 SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
 
@@ -253,7 +211,7 @@ namespace KPMAMS
                     foreach (DataRow row in dt.Rows)
                     {
                         string studentGuid = row["StudentGUID"].ToString();
-                        if (studentGuid == Session["userGUID"].ToString())
+                        if (studentGuid == Request.QueryString["StudentGUID"].ToString())
                         {
                             lblplform.Text = row["PlaceInForm"].ToString() + "/" + (dt.Rows.Count).ToString();
 
@@ -278,7 +236,5 @@ namespace KPMAMS
             String myScript = String.Format("alert('{0}');", msg);
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Error", myScript, true);
         }
-
-    } 
-    
+    }
 }

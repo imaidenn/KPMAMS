@@ -15,15 +15,70 @@ namespace KPMAMS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetClass();
-            if (IsPostBack == false)
+            
+            if (Page.IsPostBack == false)
             {
-                GetStudent(ddlClass.SelectedValue.ToString());
-                GetSubject();
-
+                GetClass();
+                GetYear();
+                GetSemester();
 
             }
 
+
+        }
+
+        protected void GetSemester()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Clear();
+                dt.Columns.Add("Text");
+                dt.Columns.Add("Value");
+                DataRow a = dt.NewRow();
+                DataRow b = dt.NewRow();
+                DataRow c = dt.NewRow();
+                DataRow d = dt.NewRow();
+                a["Text"] = "March";
+                a["Value"] = "3March";
+                b["Text"] = "Pertengahan Tahun";
+                b["Value"] = "6PertengahanTahun";
+                c["Text"] = "August";
+                c["Value"] = "8August";
+                d["Text"] = "Akhir Tahun";
+                d["Value"] = "11AkhirTahun";
+                dt.Rows.Add(a);
+                dt.Rows.Add(b);
+                dt.Rows.Add(c);
+                dt.Rows.Add(d);
+                ddlSem.DataTextField = dt.Columns["Text"].ToString();
+                ddlSem.DataValueField = dt.Columns["Value"].ToString();
+                ddlSem.DataSource = dt;
+                ddlSem.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+            }
+        }
+
+        protected void GetYear()
+        {
+            try
+            {
+                int year = DateTime.Now.Year;
+                for (int i = year; i <= year + 7; i++)
+                {
+                    ListItem li = new ListItem(i.ToString());
+                    ddlYear.Items.Add(li);
+                }
+            
+            }
+            catch(Exception ex)
+            {
+                string msg = ex.Message;
+            }
         }
 
         protected void GetClass()
@@ -37,7 +92,7 @@ namespace KPMAMS
 
                 con.Open();
 
-                String strSelect = "SELECT ClassroomGUID, Class FROM Classroom";
+                String strSelect = "SELECT ClassroomGUID, Class FROM Classroom ORDER BY Class ASC";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
 
@@ -47,14 +102,18 @@ namespace KPMAMS
 
                 if (dt.Rows.Count > 0)
                 {
-                    ddlClass.DataTextField = dt.Columns["Class"].ToString(); // text field name of table dispalyed in dropdown       
-                    ddlClass.DataValueField = dt.Columns["ClassroomGUID"].ToString();
+                    ddlClass.DataTextField = dt.Columns["Class"].ToString(); ;   
+                    ddlClass.DataValueField = dt.Columns["ClassroomGUID"].ToString(); ;
                     ddlClass.DataSource = dt;
                     ddlClass.DataBind();
                 }
 
 
+
                 con.Close();
+
+                GetStudent(ddlClass.SelectedValue);
+
             }
             catch (SqlException ex)
             {
@@ -92,6 +151,12 @@ namespace KPMAMS
 
 
                 con.Close();
+
+                if(dt.Rows.Count > 0)
+                {
+                    GetSubject();
+                }
+                
             }
             catch (SqlException ex)
             {
@@ -194,25 +259,33 @@ namespace KPMAMS
                         mark = int.Parse(textMark);
 
 
-                        Char grade;
+                        string grade = "";
                         string textGrade = ((HtmlInputText)row.FindControl("txtGrade")).Value;
-                        grade = char.Parse(textGrade.ToUpper());
+                        if (textGrade.Length > 1)
+                        {
+                            grade = textGrade.Substring(0, 1).ToUpper().ToString() + textGrade.Substring(1, 1).ToString();
+                        }
+                        else
+                        {
+                            grade = textGrade.Substring(0, 1).ToUpper().ToString();
+                        }
 
-                        string sem = ddlSem.SelectedItem.ToString();
+                        string sem = ddlSem.SelectedValue;
                         string createBy = Session["userGUID"].ToString();
 
 
-                        String strInsert = "INSERT INTO Exam(ExamGUID,SubjectGUID,StudentGUID,Mark,Grade,ExamSemester,Status,CreatedBy,CreateDate,LastUpdateDate) VALUES(@examGUID,@subjectGUID,@studentGUID,@mark,@grade,@examSem,@status,@createdby,@createDate,@lastUpdateDate)";
+                        String strInsert = "INSERT INTO Exam(ExamGUID,SubjectGUID,StudentGUID,Class,Mark,Grade,ExamSemester,Status,CreatedBy,CreateDate,LastUpdateDate) VALUES(@examGUID,@subjectGUID,@studentGUID,@class,@mark,@grade,@examSem,@status,@createdby,@createDate,@lastUpdateDate)";
 
                         SqlCommand cmdInsert = new SqlCommand(strInsert, con);
 
                         cmdInsert.Parameters.AddWithValue("@examGUID", examGuid);
                         cmdInsert.Parameters.AddWithValue("@subjectGUID", subjectGuid);
                         cmdInsert.Parameters.AddWithValue("@studentGUID", ddlStudent.SelectedValue.ToString());
+                        cmdInsert.Parameters.AddWithValue("@class", ddlClass.SelectedValue.ToString());
                         cmdInsert.Parameters.AddWithValue("@mark", mark);
                         cmdInsert.Parameters.AddWithValue("@grade", grade);
-                        cmdInsert.Parameters.AddWithValue("@examSem", ddlSem.SelectedValue.ToString());
-                        cmdInsert.Parameters.AddWithValue("@status", "pending");
+                        cmdInsert.Parameters.AddWithValue("@examSem", ddlSem.SelectedValue.ToString()+ddlYear.SelectedValue);
+                        cmdInsert.Parameters.AddWithValue("@status", "Pending");
                         cmdInsert.Parameters.AddWithValue("@createdby", createBy);
                         cmdInsert.Parameters.AddWithValue("@createDate", DateTime.Now);
                         cmdInsert.Parameters.AddWithValue("@lastUpdateDate", DateTime.Now);
@@ -252,30 +325,53 @@ namespace KPMAMS
                         return false;
                     }
 
-                    Char grade;
+                    string grade = "";
                     string textGrade = ((HtmlInputText)row.FindControl("txtGrade")).Value;
-                    if (!(char.TryParse(textGrade, out grade)))
+
+                    if (textGrade.Length > 1)
                     {
-                        DisplayAlertMsg("Please enter only grade");
-                        return false;
+                        grade = textGrade.Substring(0, 1).ToUpper().ToString() + textGrade.Substring(1, 1).ToString();
                     }
-                    grade = char.Parse(textGrade.ToUpper());
-                     
-                    
-                    if(grade != 'A')
+                    else
                     {
-                        if(grade != 'B')
+                        grade = textGrade.Substring(0, 1).ToUpper().ToString();
+                    }
+
+
+
+                    if (grade != "A+")
+                    {
+                        if(grade != "A")
                         {
-                            if(grade != 'C')
+                            if(grade != "A-")
                             {
-                                if(grade != 'D')
+                                if(grade != "B+")
                                 {
-                                    if(grade != 'E')
+                                    if(grade != "B")
                                     {
-                                        if(grade != 'F')
+                                        if(grade != "B-")
                                         {
-                                            DisplayAlertMsg("Invalid grade");
-                                            return false;
+                                            if(grade != "C+")
+                                            {
+                                                if(grade != "C")
+                                                {
+                                                    if(grade != "C-")
+                                                    {
+                                                        if(grade != "D")
+                                                        {
+                                                            if(grade != "E")
+                                                            {
+                                                                if(grade != "F")
+                                                                {
+                                                                    DisplayAlertMsg("Invalid grade");
+                                                                    return false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            
                                         }
                                     }
                                 }
@@ -298,7 +394,7 @@ namespace KPMAMS
 
             SqlCommand cmdSelect = new SqlCommand(strSelect, con);
             cmdSelect.Parameters.AddWithValue("@Student", ddlStudent.SelectedValue.ToString());
-            cmdSelect.Parameters.AddWithValue("@Sem", ddlSem.SelectedItem.ToString());
+            cmdSelect.Parameters.AddWithValue("@Sem", ddlSem.SelectedValue+ddlYear.SelectedValue);
             cmdSelect.Parameters.AddWithValue("@Status", "Rejected");
 
             SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
@@ -308,7 +404,7 @@ namespace KPMAMS
             con.Close();
 
 
-            if (dt.Rows.Count != 0)
+            if (dt.Rows.Count > 0)
             {
                 DisplayAlertMsg("There is a record with same details is pending or accepted");
                 return false;
@@ -339,6 +435,14 @@ namespace KPMAMS
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("Homepage.aspx");
+        }
+
+        protected void ddlClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridView1.DataSource = null;
+            GridView1.DataBind();
+            GetStudent(ddlClass.SelectedValue.ToString());
+            GetSubject();
         }
     }
 }
