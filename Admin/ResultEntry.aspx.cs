@@ -77,12 +77,6 @@ namespace KPMAMS.Admin
             }
 
         }
-        protected void ddlSem_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GridView1.DataSource = null;
-            GridView1.DataBind();
-            GetResult();
-        }
 
         protected void GetDetails()
         {

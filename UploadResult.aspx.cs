@@ -274,7 +274,7 @@ namespace KPMAMS
                         string createBy = Session["userGUID"].ToString();
 
 
-                        String strInsert = "INSERT INTO Exam(ExamGUID,SubjectGUID,StudentGUID,Class,Mark,Grade,ExamSemester,Status,CreatedBy,CreateDate,LastUpdateDate) VALUES(@examGUID,@subjectGUID,@studentGUID,@class,@mark,@grade,@examSem,@status,@createdby,@createDate,@lastUpdateDate)";
+                        String strInsert = "INSERT INTO Exam(ExamGUID,SubjectGUID,StudentGUID,Class,Mark,Grade,ExamSemester,SemText,Status,CreatedBy,CreateDate,LastUpdateDate) VALUES(@examGUID,@subjectGUID,@studentGUID,@class,@mark,@grade,@examSem,@SemText,@status,@createdby,@createDate,@lastUpdateDate)";
 
                         SqlCommand cmdInsert = new SqlCommand(strInsert, con);
 
@@ -285,6 +285,7 @@ namespace KPMAMS
                         cmdInsert.Parameters.AddWithValue("@mark", mark);
                         cmdInsert.Parameters.AddWithValue("@grade", grade);
                         cmdInsert.Parameters.AddWithValue("@examSem", ddlSem.SelectedValue.ToString()+ddlYear.SelectedValue);
+                        cmdInsert.Parameters.AddWithValue("@SemText", ddlSem.SelectedItem.Text +ddlYear.SelectedValue);
                         cmdInsert.Parameters.AddWithValue("@status", "Pending");
                         cmdInsert.Parameters.AddWithValue("@createdby", createBy);
                         cmdInsert.Parameters.AddWithValue("@createDate", DateTime.Now);

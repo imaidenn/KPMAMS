@@ -39,7 +39,7 @@ namespace KPMAMS
 
                 con.Open();
 
-                String strSelect = "SELECT ExamSemester FROM Exam WHERE StudentGUID = @StudentGUID GROUP BY ExamSemester ORDER BY ExamSemester DESC";
+                String strSelect = "SELECT ExamSemester,SemText FROM Exam WHERE StudentGUID = @StudentGUID AND Status = 'Confirmed' GROUP BY ExamSemester,SemText ORDER BY ExamSemester DESC";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                 cmdSelect.Parameters.AddWithValue("@StudentGUID", StudentGUID);
@@ -53,7 +53,7 @@ namespace KPMAMS
 
                 if (dt.Rows.Count > 0)
                 {
-                    ddlSem.DataTextField = dt.Columns["ExamSemester"].ToString();
+                    ddlSem.DataTextField = dt.Columns["SemText"].ToString();
                     ddlSem.DataValueField = dt.Columns["ExamSemester"].ToString();
                     ddlSem.DataSource = dt;
                     ddlSem.DataBind();
@@ -279,6 +279,10 @@ namespace KPMAMS
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Error", myScript, true);
         }
 
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Homepage.aspx");
+        }
     } 
     
 }
