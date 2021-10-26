@@ -90,6 +90,8 @@
     <Content Include="Admin\AdminLogin.aspx" />
     <Content Include="Admin\AnnouncementEntry.aspx" />
     <Content Include="Admin\ApproveExam.aspx" />
+    <Content Include="Admin\ConfirmResult.aspx" />
+    <Content Include="Admin\ResultEntry.aspx" />
     <Content Include="Admin\ResultListing.aspx" />
     <Content Include="Admin\StudentEntry.aspx" />
     <Content Include="Admin\StudentListing.aspx" />
@@ -120,6 +122,7 @@
     <Content Include="Login.aspx" />
     <Content Include="ResetPassword.aspx" />
     <Content Include="Scripts\date.format.js" />
+    <Content Include="Admin\admin.Master" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
@@ -538,6 +541,13 @@
     <Compile Include="Admin\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="Admin\admin.Master.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin.Master.designer.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AdminHomepage.aspx.cs">
       <DependentUpon>AdminHomepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -565,6 +575,20 @@
     </Compile>
     <Compile Include="Admin\ApproveExam.aspx.designer.cs">
       <DependentUpon>ApproveExam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ConfirmResult.aspx.cs">
+      <DependentUpon>ConfirmResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ConfirmResult.aspx.designer.cs">
+      <DependentUpon>ConfirmResult.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ResultEntry.aspx.cs">
+      <DependentUpon>ResultEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ResultEntry.aspx.designer.cs">
+      <DependentUpon>ResultEntry.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ResultListing.aspx.cs">
       <DependentUpon>ResultListing.aspx</DependentUpon>

@@ -19,12 +19,12 @@
                         <div class="form-group">
                             <label class="col-sm-1 control-label">Class</label>
                            <div class="col-sm-5">
-                               <asp:DropDownList ID="ddlClass" CssClass="form-control m-b" runat="server">
+                               <asp:DropDownList ID="ddlClass" CssClass="form-control m-b" runat="server" OnSelectedIndexChanged="ddlClass_SelectedIndexChanged" AutoPostBack="true">
                                </asp:DropDownList>
                            </div>
                            <label class="col-sm-1 control-label">Student Name</label>
                            <div class="col-sm-5">
-                               <asp:DropDownList ID="ddlStudent" CssClass="form-control m-b" runat="server">
+                               <asp:DropDownList ID="ddlStudent" CssClass="form-control m-b" runat="server" >
                                </asp:DropDownList>
                            </div>
                         </div>
@@ -36,10 +36,14 @@
                            <label class="col-sm-1 control-label">Exam Semester</label>
                            <div class="col-sm-5">
                                <asp:DropDownList ID="ddlSem" CssClass="form-control m-b" runat="server">
-                                   <asp:ListItem>March</asp:ListItem>
-                                   <asp:ListItem>Pertengahan Tahun</asp:ListItem>
-                                   <asp:ListItem>August</asp:ListItem>
-                                   <asp:ListItem>Akhir Tahun</asp:ListItem>
+
+                               </asp:DropDownList>
+                           </div>
+                        </div>
+                          <div class="form-group">
+                           <label class="col-sm-1 control-label">Exam Year</label>
+                           <div class="col-sm-5">
+                               <asp:DropDownList ID="ddlYear" CssClass="form-control m-b" runat="server">
                                </asp:DropDownList>
                            </div>
                         </div>

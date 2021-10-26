@@ -151,7 +151,11 @@
                   </a>
                </li>
                <li >
+<<<<<<<< HEAD:Admin/admin.Master
                   <a href="#" title="Management" data-toggle="collapse-next" class="has-submenu">
+========
+                  <a href="" title="User Management" data-toggle="collapse-next" class="has-submenu">
+>>>>>>>> 311864a664f3d2d9678582966094d0c568309105:admin.Master
                      <em class="fa fa-user"></em>
 <%--                     <div class="label label-primary pull-right">12</div>--%>
                      <span class="item-text">User</span>
@@ -186,7 +190,7 @@
                         </a>
                      </li>
                      <li>
-                        <a href="ExamApprove.aspx" title="Exam Approve" data-toggle="" class="no-submenu"> 
+                        <a href="ApproveExam.aspx" title="Exam Approve" data-toggle="" class="no-submenu"> 
                            <span class="item-text">Exam Approve</span>
                         </a>
                      </li>
