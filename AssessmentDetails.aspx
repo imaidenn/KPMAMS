@@ -200,7 +200,9 @@
                             <div class="col-md-12">
                                 <hr>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-9">
+                            </div>
+                            <div class="col-md-3" >
                                 <asp:DropDownList class="form-control" ID="dlStatus" runat="server" Visible="true" OnSelectedIndexChanged ="dlStatus_SelectedIndexChanged" AutoPostBack="true" >
                                     <asp:ListItem Text="Submitted" Value="Submitted" />
                                     <asp:ListItem Text="Pending" Value="Pending" />

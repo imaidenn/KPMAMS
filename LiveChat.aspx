@@ -511,31 +511,34 @@
                             <!-- /.direct-chat-pane -->
 
                         </div>
-
-
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
+                        <div class="row">
+                            <div class="col-md-10">
 
-                        <textarea id="txtMessage" class="form-control"></textarea>
-
-                        <div class="input-group" style="float: right;">
-                            <input class="form-control" style="visibility: hidden;" />
-                            <span class="input-group-btn">
-                                <input type="button" class="btn btn-primary btn-flat" id="btnSendMsg" value="send" />
-
-                            </span>
-                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                <ContentTemplate>
-                                    <span class="upload-btn-wrapper">
-                                        <button id="btnFile" class="btn btn-default btn-flat"><i class="fas fa-paperclip"></i></button>
-                                        <ajaxToolkit:AsyncFileUpload OnClientUploadComplete="uploadComplete" runat="server" ID="AsyncFileUpload1"
-                                            ThrobberID="imgLoader" OnUploadedComplete="FileUploadComplete" OnClientUploadStarted="uploadStarted" />
+                                <textarea id="txtMessage" class="form-control" style="border-radius:25px;border:1px solid #000000;height:45px;"></textarea>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group" style="float: right;">
+                                    <input class="form-control" style="visibility: hidden;" />
+                                    <span class="input-group-btn">
+                                        <input type="button" class="btn btn-primary btn-flat" style="border-radius:25%;" id="btnSendMsg" value="send" />
                                     </span>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-
+                                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                        <ContentTemplate>
+                                            <span class="upload-btn-wrapper">
+                                                <button id="btnFile" class="btn btn-default btn-flat" style="border-radius:50%;"><i class="fas fa-paperclip"></i></button>
+                                                <ajaxToolkit:AsyncFileUpload OnClientUploadComplete="uploadComplete" runat="server" ID="AsyncFileUpload1"
+                                                    ThrobberID="imgLoader" OnUploadedComplete="FileUploadComplete" OnClientUploadStarted="uploadStarted" />
+                                            </span>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+                            </div>
                         </div>
+
+                        
                         <img id="imgDisplay" src="" class="user-image" style="height: 100px;" />
                     </div>
                     <!-- /.box-footer-->

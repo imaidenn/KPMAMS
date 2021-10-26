@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="StudentListing.aspx.cs" Inherits="KPMAMS.Admin.StudentListing" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Admin/admin.Master" AutoEventWireup="true" CodeBehind="StudentListing.aspx.cs" Inherits="KPMAMS.Admin.StudentListing" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <!-- Bootstrap -->
@@ -76,7 +76,7 @@
                         <div class="form-group">
                            <label class="col-sm-1 control-label">Date From</label>
                            <div class="col-sm-5">
-                               <div class="datetimepicker input-group date mb-lg">
+                               <div class="datepicker input-group date mb-lg">
                                    <asp:TextBox ID="Calendar1" CssClass="form-control" runat="server"></asp:TextBox>
                                  <span class="input-group-addon">
                                     <span class="fa-calendar fa"></span>
@@ -86,7 +86,7 @@
 
                            <label class="col-sm-1 control-label">Date To</label>
                            <div class="col-sm-5">
-                               <div class="datetimepicker input-group date mb-lg">
+                               <div class="datepicker input-group date mb-lg">
                                    <asp:TextBox ID="Calendar2" CssClass="form-control" runat="server"></asp:TextBox>
                                  <span class="input-group-addon">
                                     <span class="fa-calendar fa"></span>

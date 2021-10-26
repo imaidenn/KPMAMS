@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="StudentEntry.aspx.cs" Inherits="KPMAMS.Admin.StudentEntry" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Admin/admin.Master" AutoEventWireup="true" CodeBehind="StudentEntry.aspx.cs" Inherits="KPMAMS.Admin.StudentEntry" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
         <!-- Bootstrap -->
@@ -21,16 +21,17 @@
             });
         });
     </script>
-<script type="text/javascript">
-    $(function () {
-        $('[id*=txtJoinDate]').datepicker({
-            changeMonth: true,
-            changeYear: true,
-            format: "dd/mm/yyyy",
-            language: "tr"
+    <script type="text/javascript">
+        $(function () {
+            $('[id*=txtJoinDate]').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                format: "dd/mm/yyyy",
+                language: "tr"
+            });
         });
-    });
-</script>
+    </script>
+    
 
 <div class="panel panel-default">
                <div class="panel-heading">Student Details</div>
@@ -97,7 +98,7 @@
                         <div class="form-group">
                            <label class="col-sm-1 control-label">Birth Date</label>
                             <div class="col-sm-5">
-                               <div class="datetimepicker input-group date mb-lg">
+                               <div class="datepicker input-group date mb-lg">
                                    <asp:TextBox ID="txtBirthDate" CssClass="form-control" runat="server"></asp:TextBox>
                                  <span class="input-group-addon">
                                     <span class="fa-calendar fa"></span>
@@ -107,7 +108,7 @@
 
                            <label class="col-sm-1 control-label">Join Date</label>
                            <div class="col-sm-5">
-                               <div class="datetimepicker input-group date mb-lg">
+                               <div class="datepicker input-group date mb-lg">
                                    <asp:TextBox ID="txtJoinDate" CssClass="form-control" runat="server"></asp:TextBox>
                                  <span class="input-group-addon">
                                     <span class="fa-calendar fa"></span>
@@ -162,5 +163,4 @@
                   </form>
                </div>
             </div>
-
     </asp:Content>

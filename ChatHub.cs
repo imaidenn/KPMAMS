@@ -126,5 +126,8 @@ namespace KPMAMS
             }
 
         }
+
+        //Private Chat
+
     }
 }

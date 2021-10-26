@@ -65,21 +65,25 @@ namespace KPMAMS
                     "LEFT JOIN Submission d ON c.AssessmentGUID = d.AssessmentGUID " +
                     "WHERE d.AssessmentGUID=@AssessmentGUID AND d.Status='Submitted' AND DueDate > d.LastUpdateDate";
                 } else if (dlStatus.SelectedValue == "lateSubmit") {
+
                     strSelect =
-                        "SELECT SubmissionGUID, a.FullName, convert(VARCHAR(20), LastUpdateDate,100),[d.File] " +
-                        "FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID =b.ClassroomGUID " +
-                        "LEFT JOIN Assessment c ON b.ClassroomGUID = c.ClassroomGUID " +
-                        "LEFT JOIN Submission d ON c.AssessmentGUID = d.AssessmentGUID " +
-                        "WHERE d.AssessmentGUID=@AssessmentGUID AND Status='Submitted' AND DueDate < d.LastUpdateDate";
+                    "SELECT SubmissionGUID, a.FullName, convert(VARCHAR(20),d.LastUpdateDate,100) As LastUpdateDate,d.[File] " +
+                    "FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID =b.ClassroomGUID " +
+                    "LEFT JOIN Assessment c ON b.ClassroomGUID = c.ClassroomGUID " +
+                    "LEFT JOIN Submission d ON c.AssessmentGUID = d.AssessmentGUID " +
+                    "WHERE d.AssessmentGUID=@AssessmentGUID AND d.Status='Submitted' AND DueDate < d.LastUpdateDate";
                 }
                 else 
                 {
                     strSelect =
-                    "SELECT SubmissionGUID, a.FullName, convert(VARCHAR(20), LastUpdateDate,100),[File] " +
+                    "SELECT SubmissionGUID, a.FullName,d.[File], " +
+                    "CASE " +
+                    "WHEN d.LastUpdateDate!='' THEN '' " +
+                    "END AS LastUpdateDate " +
                     "FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID =b.ClassroomGUID " +
                     "LEFT JOIN Assessment c ON b.ClassroomGUID = c.ClassroomGUID " +
                     "LEFT JOIN Submission d ON c.AssessmentGUID = d.AssessmentGUID " +
-                    "WHERE d.AssessmentGUID=@AssessmentGUID AND Status='Pending'";
+                    "WHERE d.AssessmentGUID=@AssessmentGUID AND d.Status='Pending'";
                 }
                 
                 SqlCommand cmd = new SqlCommand(strSelect, con);
@@ -254,10 +258,10 @@ namespace KPMAMS
                         else {
                             Session["hasFile"] = true;
                             string assessmentFilePath = "~/Assessment/"+ Request.QueryString["AssessmentGUID"] +"/" + dt.Rows[0][9].ToString();
+                            hlFile.Text = dt.Rows[0][9].ToString();
                             hlFile.Attributes["href"] = ResolveUrl(assessmentFilePath);
                             lbDownload.Attributes["href"] = ResolveUrl(assessmentFilePath);
                             lbDownload.Attributes["download"] = dt.Rows[0][9].ToString();
-                            hlFile.Text = dt.Rows[0][9].ToString();
                             divFile.Visible = true;
                             lbClearFile.Visible = false;
                         }
@@ -294,6 +298,7 @@ namespace KPMAMS
             lbTitle.Visible = false;
             lbDesc.Visible = false;
             lbMenu.Visible = false;
+            divSubmissionList.Visible = false;
             tbTitle.Text = lbTitle.Text;
             tbDesc.Text = lbDesc.Text;
 
@@ -514,14 +519,14 @@ namespace KPMAMS
                     cmd.Parameters.AddWithValue("@LastUpdateDate", DateTime.Now);
                     cmd.Parameters.AddWithValue("@AssessmentGUID", Request.QueryString["AssessmentGUID"]);
                     cmd.Parameters.AddWithValue("@StudentGUID", Session["userGUID"]);
-                    cmd.Parameters.AddWithValue("@SubmissionGUID",Session["submitGUID"]) ;
+                    cmd.Parameters.AddWithValue("@SubmissionGUID",Session["submitGUID"]);
 
                     string filename = System.IO.Path.GetFileName(AsyncFileUpload2.FileName);
                     cmd.Parameters.AddWithValue("@File", filename);
 
                     if (btnSubmit.Text == "Submit")
                     {
-                        cmd.Parameters.AddWithValue("@Status", "Submmited");
+                        cmd.Parameters.AddWithValue("@Status", "Submitted");
                     }
                     else {
                         cmd.Parameters.AddWithValue("@Status", "Pending");
@@ -584,6 +589,10 @@ namespace KPMAMS
                     lbView.Attributes["href"] = ResolveUrl(submitFilePath);
                     lbDownload.Attributes["href"] = ResolveUrl(submitFilePath);
                     lbDownload.Attributes["download"] = DataBinder.Eval(e.Row.DataItem, "File").ToString();
+                    if (DataBinder.Eval(e.Row.DataItem, "File").ToString() == "") {
+                        lbView.Visible = false;
+                        lbDownload.Visible = false;
+                    }
                 }
             }
         }

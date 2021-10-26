@@ -95,13 +95,17 @@
     <Content Include="Admin\StudentListing.aspx" />
     <Content Include="Admin\TeacherEntry.aspx" />
     <Content Include="Admin\TeacherListing.aspx" />
+    <Content Include="Admin\TimetableDetails_Admin.aspx" />
+    <Content Include="Admin\TimetableList_Admin.aspx" />
     <Content Include="AnnouncementDetails.aspx" />
     <Content Include="App_Data\KPMdb.mdf" />
     <Content Include="App_Data\KPMdb_log.ldf" />
     <Content Include="AssessmentDetails.aspx" />
     <Content Include="AssessmentList.aspx" />
+    <Content Include="ChatList.aspx" />
     <Content Include="CreateAssessment.aspx" />
     <Content Include="CreateForum.aspx" />
+    <Content Include="Admin\CreateTimeTable.aspx" />
     <Content Include="css\app.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\ForumDetails.css" />
@@ -521,15 +525,17 @@
     <Content Include="Homepage.aspx" />
     <Content Include="StudentDetails.aspx" />
     <Content Include="TeacherDetails.aspx" />
+    <Content Include="TimetableDetails.aspx" />
+    <Content Include="TimetableList.aspx" />
     <Content Include="UploadResult.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admin.Master.cs">
+    <Compile Include="Admin\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin.Master.designer.cs">
+    <Compile Include="Admin\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
     <Compile Include="Admin\AdminHomepage.aspx.cs">
@@ -595,6 +601,20 @@
     <Compile Include="Admin\TeacherListing.aspx.designer.cs">
       <DependentUpon>TeacherListing.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\TimetableDetails_Admin.aspx.cs">
+      <DependentUpon>TimetableDetails_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TimetableDetails_Admin.aspx.designer.cs">
+      <DependentUpon>TimetableDetails_Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TimetableList_Admin.aspx.cs">
+      <DependentUpon>TimetableList_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TimetableList_Admin.aspx.designer.cs">
+      <DependentUpon>TimetableList_Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AnnouncementDetails.aspx.cs">
       <DependentUpon>AnnouncementDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -617,6 +637,13 @@
       <DependentUpon>AssessmentList.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChatHub.cs" />
+    <Compile Include="ChatList.aspx.cs">
+      <DependentUpon>ChatList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChatList.aspx.designer.cs">
+      <DependentUpon>ChatList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CreateAssessment.aspx.cs">
       <DependentUpon>CreateAssessment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -630,6 +657,13 @@
     </Compile>
     <Compile Include="CreateForum.aspx.designer.cs">
       <DependentUpon>CreateForum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CreateTimeTable.aspx.cs">
+      <DependentUpon>CreateTimeTable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CreateTimeTable.aspx.designer.cs">
+      <DependentUpon>CreateTimeTable.aspx</DependentUpon>
     </Compile>
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
@@ -704,6 +738,20 @@
     <Compile Include="TeacherDetails.aspx.designer.cs">
       <DependentUpon>TeacherDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TimetableDetails.aspx.cs">
+      <DependentUpon>TimetableDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TimetableDetails.aspx.designer.cs">
+      <DependentUpon>TimetableDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TimetableList.aspx.cs">
+      <DependentUpon>TimetableList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TimetableList.aspx.designer.cs">
+      <DependentUpon>TimetableList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UploadResult.aspx.cs">
       <DependentUpon>UploadResult.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -721,7 +769,7 @@
     <Compile Include="Users.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin.Master" />
+    <Content Include="Admin\admin.Master" />
     <Content Include="script\animo\LICENSE" />
     <Content Include="script\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="script\bootstrap\css\bootstrap.css.map" />
