@@ -21,15 +21,18 @@ namespace KPMAMS
             {
                 Response.Redirect("Login.aspx");
             }
+            else if (Session["role"].Equals("Student")) {
+                Response.Redirect("Homepage.aspx");
+            }
             if (Session["fullName"] != null)
             {
-                string filepath = Server.MapPath(UploadFolderPath);
-                System.IO.DirectoryInfo di = new DirectoryInfo(filepath);
+                //string filepath = Server.MapPath(UploadFolderPath);
+                //System.IO.DirectoryInfo di = new DirectoryInfo(filepath);
 
-                foreach (FileInfo file in di.EnumerateFiles())
-                {
-                    file.Delete();
-                }
+                //foreach (FileInfo file in di.EnumerateFiles())
+                //{
+                //    file.Delete();
+                //}
                 //foreach (DirectoryInfo dir in di.EnumerateDirectories())
                 //{
                 //    dir.Delete(true);

@@ -42,12 +42,26 @@ namespace KPMAMS
                     con.Open();
                 }
 
-                String strSelect =
+                string strSelect = "";
+
+                if (Session["role"].Equals("Parent"))
+                {
+                    strSelect =
                     "SELECT TimetableGUID " +
-                    "FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID=b.ClassroomGUID " +
-                    "WHERE StudentGUID=@StudentGUID";
+                    "FROM Parent a LEFT JOIN Student b ON a.ParentGUID=b.ParentGUID " +
+                    "LEFT JOIN Classroom c ON b.ClassroomGUID=c.ClassroomGUID " +
+                    "WHERE a.ParentGUID='" + Session["userGUID"] + "'";
+                }
+                else {
+
+                    strSelect =
+                        "SELECT TimetableGUID " +
+                        "FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID=b.ClassroomGUID " +
+                        "WHERE StudentGUID='" + Session["userGUID"] + "'";
+
+                }
+
                 SqlCommand cmd = new SqlCommand(strSelect, con);
-                cmd.Parameters.AddWithValue("@StudentGUID", Session["userGUID"]);
                 SqlDataReader dr = cmd.ExecuteReader();
                 dt.Load(dr);
                 con.Close();

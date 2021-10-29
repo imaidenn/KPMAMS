@@ -87,6 +87,33 @@ namespace KPMAMS
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl uploadResult;
 
         /// <summary>
+        /// forum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl forum;
+
+        /// <summary>
+        /// assessment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl assessment;
+
+        /// <summary>
+        /// livechat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl livechat;
+
+        /// <summary>
         /// btnLogout2 control.
         /// </summary>
         /// <remarks>

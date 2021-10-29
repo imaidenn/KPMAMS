@@ -104,7 +104,6 @@
     <Content Include="App_Data\KPMdb_log.ldf" />
     <Content Include="AssessmentDetails.aspx" />
     <Content Include="AssessmentList.aspx" />
-    <Content Include="ChatList.aspx" />
     <Content Include="CreateAssessment.aspx" />
     <Content Include="CreateForum.aspx" />
     <Content Include="Admin\CreateTimeTable.aspx" />
@@ -661,13 +660,6 @@
       <DependentUpon>AssessmentList.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChatHub.cs" />
-    <Compile Include="ChatList.aspx.cs">
-      <DependentUpon>ChatList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ChatList.aspx.designer.cs">
-      <DependentUpon>ChatList.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CreateAssessment.aspx.cs">
       <DependentUpon>CreateAssessment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -793,7 +785,6 @@
     <Compile Include="Users.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin\admin.Master" />
     <Content Include="script\animo\LICENSE" />
     <Content Include="script\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="script\bootstrap\css\bootstrap.css.map" />

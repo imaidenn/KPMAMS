@@ -321,9 +321,6 @@
 
                 ' <div class="box-tools pull-right">' +
                 ' <span data-toggle="tooltip" id="MsgCountP" title="0 New Messages" class="badge bg-' + PWClass + '">0</span>' +
-                ' <button type="button" class="btn btn-box-tool" data-widget="collapse">' +
-                '    <i class="fa fa-minus"></i>' +
-                '  </button>' +
                 '  <button id="imgDelete" type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button></div></div>' +
 
                 ' <div class="box-body">' +
@@ -333,18 +330,20 @@
 
                 '  </div>' +
                 '  <div class="box-footer">' +
-
-
-                '    <input type="text" id="txtPrivateMessage" name="message" placeholder="Type Message ..." class="form-control"  />' +
-
-                '  <div class="input-group">' +
-                '    <input type="text" name="message" placeholder="Type Message ..." class="form-control" style="visibility:hidden;" />' +
-                '   <span class="input-group-btn">' +
-                '          <input type="button" id="btnSendMessage" class="btn btn-' + PWClass + ' btn-flat" value="send" />' +
-                '   </span>' +
-                '  </div>' +
-
+                
+                ' <div class="row">' +
+                ' <div class="col-md-9">' +
+                '    <input type="text" id="txtPrivateMessage" name="message" placeholder="Type Message ..." class="form-control" style="border-radius:25px;border:1px solid #000000;" />' +
                 ' </div>' +
+                '<div class="col-md-3">'+
+                '  <div class="input-group">' +
+                '   <span class="input-group-btn">' +
+                '          <input type="button" id="btnSendMessage" style="border-radius:25%;" class="btn btn-' + PWClass + ' btn-flat" value="send" />' +
+                '   </span>' +
+                '    <input type="text" name="message" placeholder="Type Message ..." class="form-control" style="visibility:hidden;" />' +
+                '  </div>' +
+                '  </div>' +
+                '  </div>' +
                 ' </div></div>';
 
 
@@ -369,11 +368,12 @@
             });
 
             // Text Box event on Enter Button
-            $div.find("#txtPrivateMessage").keypress(function (e) {
-                if (e.which == 13) {
-                    $div.find("#btnSendMessage").click();
-                }
-            });
+            //$div.find("#txtPrivateMessage").keypress(function (e) {
+            //    if (e.which == 13) {
+            //        $("#btnSendMessage").click();
+            //    }
+            //});
+
 
             // Clear Message Count on Mouse over           
             $div.find("#divMessage").mouseover(function () {
@@ -411,7 +411,7 @@
                         '<div class="attachment-block clearfix">' +
                         '<a><img id="imgC" style="width:100px;" class="attachment-img" src="' + imgDisplay.src + '" alt="Attachment Image"></a>' +
                         '<div class="attachment-pushed"> ' +
-                        '<h4 class="attachment-heading"><i class="fas fa-image">  ' + args.get_fileName() + ' </i></h4> <br />' +
+                        '<h4 class="attachment-heading"><i class="fas fa-image" style="color:black;">  ' + args.get_fileName() + ' </i></h4> <br />' +
                         '<div id="at" class="attachment-text"> Dimensions : ' + imgDisplay.height + 'x' + imgDisplay.width + ', Type: ' + args.get_contentType() +
 
                         '</div>' +
@@ -419,7 +419,7 @@
                         '</div>' +
                         '<a id="btnDownload" href="' + imgDisplay.src + '" class="btn btn-default btn-xs" download="' + args.get_fileName() + '"><i class="fa fa fa-download"></i> Download</a>' +
                         '<a href="' + imgDisplay.src + '" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-camera"></i> View</a>' +
-                        '<span class="pull-right text-muted">File Size : ' + sizeKB + ' Kb</span>' +
+                        '<span class="pull-right text-muted" style="color:black;">File Size : ' + sizeKB + ' Kb</span>' +
                         '</div>';
                 }
                 else {
@@ -429,7 +429,7 @@
                         '<div class="attachment-block clearfix">' +
                         '<a><img id="imgC" style="width:100px;" class="attachment-img" src="img/file-icon.png" alt="Attachment Image"></a>' +
                         '<div class="attachment-pushed"> ' +
-                        '<h4 class="attachment-heading"><i class="fas fa-file">  ' + args.get_fileName() + ' </i></h4> <br />' +
+                        '<h4 class="attachment-heading"><i class="fas fa-file" style="color:black;">  ' + args.get_fileName() + ' </i></h4> <br />' +
                         '<div id="at" class="attachment-text"> Type: ' + args.get_contentType() +
 
                         '</div>' +
@@ -437,7 +437,7 @@
                         '</div>' +
                         '<a id="btnDownload" href="' + imgDisplay.src + '" class="btn btn-default btn-xs" download="' + args.get_fileName() + '"><i class="fa fa fa-download"></i> Download</a>' +
                         '<a href="' + imgDisplay.src + '" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-camera"></i> View</a>' +
-                        '<span class="pull-right text-muted">File Size : ' + sizeKB + ' Kb</span>' +
+                        '<span class="pull-right text-muted" style="color:black;">File Size : ' + sizeKB + ' Kb</span>' +
                         '</div>';
                 }
                 chatHub.server.sendMessageToAll(userName, msg1, date);
@@ -453,12 +453,6 @@
         }
 
         function IsValidateFile(fileF) {
-            var allowedFiles = [".doc", ".docx", ".pdf", ".txt", ".zip", ".rar", ".xlsx", ".xls", ".png", ".jpg", ".gif"];
-            var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(" + allowedFiles.join('|') + ")$");
-            if (!regex.test(fileF.toLowerCase())) {
-                alert("Please upload files having extensions: " + allowedFiles.join(', ') + " only.");
-                return false;
-            }
             return true;
         }
 
@@ -535,11 +529,9 @@
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </div>
+                                <img id="imgDisplay" src="" class="user-image" style="height: 100px;" />
                             </div>
                         </div>
-
-                        
-                        <img id="imgDisplay" src="" class="user-image" style="height: 100px;" />
                     </div>
                     <!-- /.box-footer-->
                 </div>

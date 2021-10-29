@@ -36,7 +36,7 @@ namespace KPMAMS
                     //        strRedirect = "Login.aspx";
 
                     //}
-                    Session["fullName"] = "Admin";
+                    Session["role"] = "Admin";
                     System.Threading.Thread.Sleep(2000);
                     Response.Redirect("AdminHomepage.aspx", true);
                 }

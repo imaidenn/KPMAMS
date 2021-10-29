@@ -306,18 +306,27 @@ namespace KPMAMS
                     con.Open();
 
                     SqlCommand cmd = new SqlCommand(
-                   "UPDATE TimetableSubject " +
-                   "SET " +
-                   "TimeSlot1=@TimeSlot1," +
-                   "TimeSlot2=@TimeSlot2," +
-                   "TimeSlot3=@TimeSlot3," +
-                   "TimeSlot4=@TimeSlot4," +
-                   "TimeSlot5=@TimeSlot5," +
-                   "TimeSlot6=@TimeSlot6," +
-                   "TimeSlot7=@TimeSlot7," +
-                   "TimeSlot8=@TimeSlot8," +
-                   "TimeSlot9=@TimeSlot9," +
-                   "TimeSlot10=@TimeSlot10 " +
+                      "UPDATE Timetable" +
+                      "SET " +
+                      "LastUpdateDate=@LastUpdateDate," +
+                      "WHERE TimetableGUID=@TimetableGUID", con);
+                    cmd.Parameters.AddWithValue("@TimetableGUID", Request.QueryString["TimetableGUID"]);
+                    cmd.Parameters.AddWithValue("@TimeSlot10", DateTime.Now);
+                    cmd.ExecuteNonQuery();
+
+                    cmd = new SqlCommand(
+                       "UPDATE TimetableSubject " +
+                       "SET " +
+                       "TimeSlot1=@TimeSlot1," +
+                       "TimeSlot2=@TimeSlot2," +
+                       "TimeSlot3=@TimeSlot3," +
+                       "TimeSlot4=@TimeSlot4," +
+                       "TimeSlot5=@TimeSlot5," +
+                       "TimeSlot6=@TimeSlot6," +
+                       "TimeSlot7=@TimeSlot7," +
+                       "TimeSlot8=@TimeSlot8," +
+                       "TimeSlot9=@TimeSlot9," +
+                       "TimeSlot10=@TimeSlot10 " +
                    "WHERE TimetableGUID=@TimetableGUID AND Day=@Day", con);
                     cmd.Parameters.AddWithValue("@TimetableGUID", Request.QueryString["TimetableGUID"]);
                     cmd.Parameters.AddWithValue("@Day", d);

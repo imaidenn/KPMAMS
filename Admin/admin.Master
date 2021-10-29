@@ -144,18 +144,15 @@
             <ul class="nav">
                <!-- START Menu-->
                 <li class="active">
-                  <a href="AdminHomepage.aspx" title="Home" data-toggle="collapse-next" class="has-submenu">
+                  <a href="AdminHomepage.aspx" title="Home" class="no-submenu">
                      <em class="fa fa-home"></em>
 <%--                     <div class="label label-primary pull-right">12</div>--%>
                      <span class="item-text">Home</span>
                   </a>
                </li>
                <li >
-<<<<<<<< HEAD:Admin/admin.Master
-                  <a href="#" title="Management" data-toggle="collapse-next" class="has-submenu">
-========
-                  <a href="" title="User Management" data-toggle="collapse-next" class="has-submenu">
->>>>>>>> 311864a664f3d2d9678582966094d0c568309105:admin.Master
+                  <a href="#" title="Management" data-toggle="collapse-next" class="has-submenu" />
+                  <a href="#" title="User Management" data-toggle="collapse-next" class="has-submenu">
                      <em class="fa fa-user"></em>
 <%--                     <div class="label label-primary pull-right">12</div>--%>
                      <span class="item-text">User</span>
@@ -194,16 +191,18 @@
                            <span class="item-text">Exam Approve</span>
                         </a>
                      </li>
-                      <li>
-                        <a href="TimetableList_Admin.aspx" title="Create time table" data-toggle="" class="no-submenu"> 
-                           <span class="item-text">Timetable</span>
-                        </a>
-                     </li>
                   </ul>
                   <!-- END SubMenu item-->
                </li>
 
-                
+                <li>
+                <a href="TimetableList_Admin.aspx" title="LiveChat" class="no-submenu">
+                    <em class="far fa-comment-dots"></em>
+<%--                     <div class="label label-primary pull-right">12</div>--%>
+                    <span class="item-text">Timetable</span>
+                </a>
+                  <!-- END SubMenu item-->
+               </li>
 
 
 

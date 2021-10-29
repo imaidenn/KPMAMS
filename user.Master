@@ -167,7 +167,7 @@
                <!-- END user info-->
                <!-- START Menu-->
                 <li class="active">
-                  <a href="Homepage.aspx" title="Home" data-toggle="collapse-next" class="has-submenu">
+                  <a href="Homepage.aspx" title="Home" class="no-submenu">
                      <em class="fa fa-home"></em>
 <%--                     <div class="label label-primary pull-right">12</div>--%>
                      <span class="item-text">Home</span>
@@ -205,12 +205,12 @@
                     </a>
                     <!-- START SubMenu item-->
                     <ul class="nav collapse in">
-                        <li >
+                        <li id="forum" runat="server">
                         <a href="ForumList.aspx" title="Forum" data-toggle="" class="no-submenu">
                             <span class="item-text">Forum</span>
                         </a>
                         </li>
-                        <li >
+                        <li id="assessment" runat="server" >
                         <a href="AssessmentList.aspx" title="Assessment" data-toggle="" class="no-submenu">
                             <span class="item-text">Assessment</span>
                         </a>
@@ -225,8 +225,8 @@
                     <!-- END SubMenu item-->
                 </li>
 
-                <li>
-                <a href="ChatList.aspx" title="LiveChat" class="no-submenu">
+                <li id="livechat" runat="server">
+                <a href="LiveChat.aspx" title="LiveChat" class="no-submenu">
                     <em class="far fa-comment-dots"></em>
 <%--                     <div class="label label-primary pull-right">12</div>--%>
                     <span class="item-text">Live Chat</span>

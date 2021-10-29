@@ -25,7 +25,16 @@ namespace KPMAMS
                     userGUID = Session["userGUID"].ToString();
                     fullname = Session["fullName"].ToString();
                     role = Session["role"].ToString();
-                    LoadData();
+                    if (role == "Parent")
+                    {
+                        lblUser.Text = "Welcome, " + fullname;
+                        imgAvatar.Visible = false;
+                        forum.Visible = false;
+                        assessment.Visible = false;
+                    }
+                    else {
+                        LoadData();
+                    }
                 }
                 else
                 {
@@ -39,11 +48,6 @@ namespace KPMAMS
                 DisplayAlertMsg(ex.ToString());
             }
 
-            String activePage = Request.RawUrl;
-            if (activePage.Contains("ForumList.aspx"))
-            {
-                //hlForum.Attributes.Add("class", "nav-link active");
-            }
         }
 
         protected void LoadData()
@@ -63,15 +67,12 @@ namespace KPMAMS
                 {
                     strSelect = "SELECT StudentGUID, ProfilePic FROM Student WHERE StudentGUID = @userGUID";
                     uploadResult.Visible = false;
+                    livechat.Visible = false;
                 }
                 else if (role == "Teacher")
                 {
                     strSelect = "SELECT TeacherGUID, ProfilePic FROM Teacher WHERE TeacherGUID = @userGUID";
                     resultDetails.Visible = false;  
-                }
-                else
-                {
-                    strSelect = "SELECT ParentGUID, ProfilePic FROM Parent WHERE ParentGUID = @userGUID";
                 }
 
 
@@ -93,7 +94,13 @@ namespace KPMAMS
                     {
                         image = ConfigurationManager.AppSettings["ProfileUploadPath"].ToString() + dt.Rows[0][1].ToString();
                     }
-                    imgAvatar.ImageUrl = image;
+                    if (Session["role"].Equals("Parent")){
+                        imgAvatar.Visible = false;
+                    }
+                    else{
+                        imgAvatar.ImageUrl = image;
+                    }
+                   
                     lblUser.Text = "Welcome, " + fullname;
                 }
             }

@@ -15,18 +15,32 @@
             });
         });
     </script>
+    <script type="text/javascript">
+        function PrintDiv() {
+            var divToPrint = document.getElementById('divTimetable');
+            var popupWin = window.open('', '_blank', 'width=300,height=400,location=no,left=200px');
+            popupWin.document.open();
+            popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+            popupWin.document.close();
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
     <div class="container-fluid" runat="server" >
         <div class="row">
             <div class="col mx-auto">
-                <div class="panel">
+                <div class="panel" id="divTimetable">
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-11">
                                 <h3>
                                     <asp:Label ID="lbClass" runat="server"></asp:Label>
                                 </h3>
+                            </div>
+                            <div class="col-md-1">
+                                <button class="btn btn-info" onclick="PrintDiv()">
+                                    <i class="fas fa-print"></i>
+                                </button>
                             </div>
                             <div class="col-md-12">
                                 <hr />
