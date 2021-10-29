@@ -13,11 +13,17 @@ namespace KPMAMS
         {
             try
             {
+                if (!(Session["role"]!=null))
+                {
+                    Response.Write("<script language='javascript'>alert('This page is available for admin only');</script>");
+                    Server.Transfer("AdminLogin.aspx", true);
+                }
                 if (!(Session["role"].Equals("Admin")))
                 {
                     Response.Write("<script language='javascript'>alert('This page is available for admin only');</script>");
-                    Server.Transfer("Login.aspx", true);
+                    Server.Transfer("AdminLogin.aspx", true);
                 }
+
 
             }
             catch (Exception ex)
