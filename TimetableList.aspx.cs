@@ -21,7 +21,7 @@ namespace KPMAMS
                 {
                     Response.Redirect("Login.aspx");
                 }
-                if (Session["role"].Equals("Teacher"))
+                if (Session["role"].Equals("Teacher")|| Session["role"].Equals("Parent"))
                 {
                     BindGridView();
                 }
@@ -93,14 +93,28 @@ namespace KPMAMS
                 {
                     con.Open();
                 }
-
-                String strSelect =
+                string strSelect = "";
+                if (Session["role"].Equals("Teacher"))
+                {
+                    strSelect =
                     "SELECT c.TimetableGUID,Class,convert(VARCHAR(20),c.CreateDate,100) As CreateDate,convert(VARCHAR(20),c.LastUpdateDate,100) As LastUpdateDate " +
                     "FROM Teacher_Classroom a LEFT JOIN Classroom b ON a.ClassroomGUID=b.ClassroomGUID " +
                     "LEFT JOIN Timetable c ON b.TimetableGUID =c.TimetableGUID " +
-                    "WHERE b.TimetableGUID IS NOT NULL AND a.TeacherGUID=@TeacherGUID";
+                    "WHERE b.TimetableGUID IS NOT NULL AND a.TeacherGUID='" + Session["userGUID"] + "'";
+
+                }
+                else {
+                    strSelect =
+                        "SELECT d.TimetableGUID,Class,convert(VARCHAR(20),d.CreateDate,100) As CreateDate,convert(VARCHAR(20),d.LastUpdateDate,100) As LastUpdateDate " +
+                        "FROM Parent a LEFT JOIN Student b ON a.ParentGUID=b.ParentGUID " +
+                        "LEFT JOIN Classroom c ON b.ClassroomGUID=c.ClassroomGUID " +
+                        "LEFT JOIN Timetable d ON c.TimetableGUID=d.TimetableGUID " +
+                        "WHERE c.TimetableGUID IS NOT NULL AND a.ParentGUID='" + Session["userGUID"] + "' " +
+                        "GROUP BY d.TimetableGUID,Class,d.CreateDate,d.LastUpdateDate";
+                }
+                
                 SqlCommand cmd = new SqlCommand(strSelect, con);
-                cmd.Parameters.AddWithValue("@TeacherGUID", Session["userGUID"]);
+
                 SqlDataReader dr = cmd.ExecuteReader();
                 dt.Load(dr);
                 con.Close();

@@ -119,6 +119,7 @@
     <Content Include="img\logoKPM.png" />
     <Content Include="LiveChat.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="ParentDetails.aspx" />
     <Content Include="ResetPassword.aspx" />
     <Content Include="Scripts\date.format.js" />
     <Content Include="Admin\admin.Master" />
@@ -717,6 +718,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Messages.cs" />
+    <Compile Include="ParentDetails.aspx.cs">
+      <DependentUpon>ParentDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ParentDetails.aspx.designer.cs">
+      <DependentUpon>ParentDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>

@@ -117,6 +117,25 @@
                            </div>
                         </div>
                      </fieldset>
+                      <fieldset>
+                        <div class="form-group">
+                           <label class="col-sm-1 control-label">Parent IC Number</label>
+
+                           <div class="col-sm-5">
+                               <div class="input-group">
+                                   <asp:TextBox ID="txtParentIC" placeholder="Enter Parent Ic Number" runat="server" CssClass="form-control form-control-rounded"></asp:TextBox>
+                                 <span class="input-group-addon">
+                                     <asp:LinkButton ID="lbCheckParent" runat="server" OnClick="lbCheckParent_Click" Text="Check"></asp:LinkButton>
+                                 </span>
+                              </div>
+                           </div>
+                           <label class="col-sm-1 control-label">Parent Name</label>
+                           <div class="col-sm-5">
+                               <asp:TextBox ID="txtParentName" placeholder="Enter Parent Name" runat="server" CssClass="form-control form-control-rounded" Enabled="false"></asp:TextBox>
+                           </div>
+                        </div>
+                     </fieldset>
+
                       <br />
                       
                       <fieldset class="last-child">

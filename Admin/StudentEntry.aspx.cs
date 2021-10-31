@@ -26,12 +26,14 @@ namespace KPMAMS.Admin
             {
                 if (Request.QueryString["StudentGUID"] != null)
                 {
+                    lbCheckParent.Visible = false;
                     LoadExistingData();
                 }
                 else
                 {
                     GetUserID();
-
+                    Session["checkParent"] = false;
+                    
                 }
 
             }
@@ -49,7 +51,11 @@ namespace KPMAMS.Admin
 
                 con.Open();
 
-                String strSelect = "SELECT a.StudentGUID, a.StudentUserID, a.FullName, a.ICNo, a.ProfilePic, a.Gender, a.PhoneNo, a.Email, a.Address, b.Class, a.Status, CONVERT(varchar,a.DateOfBirth) as BirthDate, CONVERT(varchar,a.JoinDate,1) as JoinDate FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID WHERE a.StudentGUID = @StudentGUID";
+                String strSelect = 
+                    "SELECT a.StudentGUID, a.StudentUserID, a.FullName, a.ICNo, a.ProfilePic, a.Gender, a.PhoneNo, a.Email, a.Address, b.Class, a.Status, CONVERT(varchar,a.DateOfBirth) as BirthDate, CONVERT(varchar,a.JoinDate,1) as JoinDate,c.icNo,c.fullName " +
+                    "FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID " +
+                    "LEFT JOIN Parent c ON a.ParentGUID=c.ParentGUID " +
+                    "WHERE a.StudentGUID = @StudentGUID";
                            
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                 cmdSelect.Parameters.AddWithValue("@StudentGUID", StudentGUID);
@@ -69,6 +75,8 @@ namespace KPMAMS.Admin
                     txtBirthDate.Enabled = false;
                     ddlGender.Enabled = false;
                     txtICno.Enabled = false;
+                    txtParentIC.Enabled = false;
+                    txtParentName.Enabled = false;
 
                     txtStudentID.Text = dt.Rows[0][1].ToString();
                     txtName.Text = dt.Rows[0][2].ToString();
@@ -78,6 +86,9 @@ namespace KPMAMS.Admin
                     txtBirthDate.Text = dt.Rows[0][11].ToString();
                     txtJoinDate.Text = dt.Rows[0][12].ToString();
                     txtPhoneNo.Text = dt.Rows[0][6].ToString();
+                    txtParentIC.Text = dt.Rows[0][13].ToString();
+                    txtParentName.Text = dt.Rows[0][14].ToString();
+
 
                     String gender = dt.Rows[0][5].ToString();
                     ddlGender.SelectedValue = gender;
@@ -185,6 +196,53 @@ namespace KPMAMS.Admin
             
         }
 
+
+        protected void GetParentUserID()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(strCon);
+
+                con.Open();
+
+                String strSelect = "SELECT ParentUserID FROM Parent ORDER BY ParentUserID DESC ";
+
+                SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+
+                SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
+
+                dt.Load(dtrSelect);
+
+                if (dt.Rows.Count > 0)
+                {
+                    String newparentID = dt.Rows[0][0].ToString();
+                    String number = "";
+                    foreach (char c in newparentID)
+                    {
+                        if (Char.IsNumber(c))
+                        {
+                            number += c;
+                        }
+                    }
+                    Session["ParentUserID"] = "p" + (int.Parse(number) + 1).ToString();
+                }
+                else
+                {
+                    Session["ParentUserID"] = "p0001";
+                }
+
+                con.Close();
+            }
+            catch (SqlException ex)
+            {
+                string msg = ex.Message;
+            }
+
+        }
+
         protected string Encrypt(string cipherText)
         {
             string EncryptionKey = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
@@ -212,6 +270,29 @@ namespace KPMAMS.Admin
             bool addBool = false;
             try
             {
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(strCon);
+                con.Open();
+                String strInsert = "";
+                if (Session["ParentGUID"].Equals(""))
+                {
+                    GetParentUserID();
+                    Session["ParentGUID"] = Guid.NewGuid();
+                    strInsert = 
+                        "INSERT INTO Parent(ParentGUID,ParentUserID,Password,FullName,Status,CreateDate,ICNo) " +
+                        "VALUES (@ParentGUID,@ParentUserID,@Password,@FullName,@Status,@CreateDate,@ICNo)";
+                    SqlCommand cmd = new SqlCommand(strInsert, con);
+                    cmd.Parameters.AddWithValue("@ParentGUID",Session["ParentGUID"]);
+                    cmd.Parameters.AddWithValue("@ParentUserID", Session["ParentUserID"]);
+                    cmd.Parameters.AddWithValue("@Password", Encrypt(txtParentIC.Text.Trim()));
+                    cmd.Parameters.AddWithValue("@FullName", txtParentName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Status", "Active");
+                    cmd.Parameters.AddWithValue("@CreateDate", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@ICNo", txtParentIC.Text.Trim());
+
+                    cmd.ExecuteNonQuery();
+                }
+
                 String password = Encrypt(txtICno.Text);
                 DateTime joinDate = DateTime.ParseExact(txtJoinDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 DateTime birthDate = DateTime.ParseExact(txtBirthDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -225,13 +306,8 @@ namespace KPMAMS.Admin
                 imageUpload.PostedFile.SaveAs(ProfileFullSavePath);
 
 
-                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-                SqlConnection con = new SqlConnection(strCon);
-
-                con.Open();
-
-                String strInsert = "INSERT INTO Student(StudentGUID,Password,StudentUserID,FullName,ICNo,Email,PhoneNo,Address,JoinDate,DateOfBirth,Gender,Status,ProfilePic,ClassroomGUID,CreateDate,LastUpdateDate) " +
-                    "VALUES ('" + Guid.NewGuid() + "',@Password,@StudentID,@StudentName,@StudentIC,@Email,@PhoneNo,@Address,@JoinDate,@BirthDate,@Gender,@status,@ProfilePic,@ClassroomGUID,@CreateDate,@LastUpdateDate)";
+                strInsert = "INSERT INTO Student(StudentGUID,Password,StudentUserID,FullName,ICNo,Email,PhoneNo,Address,JoinDate,DateOfBirth,Gender,Status,ProfilePic,ClassroomGUID,CreateDate,LastUpdateDate,ParentGUID) " +
+                    "VALUES ('" + Guid.NewGuid() + "',@Password,@StudentID,@StudentName,@StudentIC,@Email,@PhoneNo,@Address,@JoinDate,@BirthDate,@Gender,@status,@ProfilePic,@ClassroomGUID,@CreateDate,@LastUpdateDate,@ParentGUID)";
 
                 SqlCommand cmdInsert = new SqlCommand(strInsert, con);
 
@@ -250,6 +326,7 @@ namespace KPMAMS.Admin
                 cmdInsert.Parameters.AddWithValue("@ClassroomGUID", ddlClass.SelectedValue.ToString());
                 cmdInsert.Parameters.AddWithValue("@CreateDate", DateTime.Now);
                 cmdInsert.Parameters.AddWithValue("@LastUpdateDate", DateTime.Now);
+                cmdInsert.Parameters.AddWithValue("@ParentGUID", Session["ParentGUID"]);
 
                 cmdInsert.ExecuteNonQuery();
 
@@ -298,12 +375,20 @@ namespace KPMAMS.Admin
                 return false;
             }
 
-            int n;
-            bool isNumeric = int.TryParse(txtICno.Text, out n);
+            if (Session["checkParent"].Equals(false)) {
+                DisplayAlertMsg("Please check the parent ic first");
+                return false;
+            }
 
-            if (!isNumeric)
+            if (txtParentName.Text.Equals(""))
             {
-                DisplayAlertMsg("Please enter only number of the IC");
+                DisplayAlertMsg("Please enter parent name");
+                return false;
+            }
+
+            if (!(checkNo(txtICno.Text)))
+            {
+                DisplayAlertMsg("Plases enter number only IC");
                 return false;
             }
 
@@ -316,13 +401,13 @@ namespace KPMAMS.Admin
                 return false;
             }
 
-            if (txtPhoneNo.Text.Length > 11)
+            if (!(ValidatephoneNo(txtPhoneNo.Text)))
             {
                 DisplayAlertMsg("Invalid phone number");
                 return false;
             }
 
-            if (txtICno.Text.Length > 12)
+            if (txtICno.Text.Length != 12)
             {
                 DisplayAlertMsg("Invalid IC number");
                 return false;
@@ -336,6 +421,29 @@ namespace KPMAMS.Admin
 
             return true;
         }
+
+        private bool ValidatephoneNo(string phoneNo)
+        {
+            string pattern = @"^(\+?6?01)[02-46-9]-*[0-9]{7}$|^(\+?6?01)[1]-*[0-9]{8}$";
+            Match m = Regex.Match(phoneNo, pattern, RegexOptions.IgnoreCase);
+            if (m.Success)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool checkNo(string number)
+        {
+            string pattern = @"^[0-9]+$";
+            Match m = Regex.Match(number, pattern, RegexOptions.IgnoreCase);
+            if (m.Success)
+            {
+                return true;
+            }
+            return false;
+        }
+
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -474,6 +582,94 @@ namespace KPMAMS.Admin
             {
                 return false;
             }
+        }
+
+        protected bool checkParent()
+        {
+            if (txtParentIC.Text.Equals(""))
+            {
+                DisplayAlertMsg("Please enter the Parent IC number");
+                return false;
+            }
+            else if (txtParentIC.Text.Length != 12) {
+                DisplayAlertMsg("Please enter valid ic number");
+                return false;
+            }
+            else {
+                if (!(checkNo(txtParentIC.Text)))
+                {
+                    DisplayAlertMsg("Plases enter number only IC");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
+
+
+        protected void lbCheckParent_Click(object sender, EventArgs e)
+        {
+            Session["ParentGUID"] = "";
+            txtParentName.Text = "";
+            Session["checkParent"] = false;
+            if (lbCheckParent.Text == "Cancel")
+            {
+                txtParentIC.Text = "";
+                lbCheckParent.Text = "Check";
+                txtParentIC.Enabled = true;
+                txtParentName.Enabled = false;
+            }
+            else {
+                if (checkParent())
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+
+                        string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                        SqlConnection con = new SqlConnection(strCon);
+
+                        con.Open();
+
+                        String strSelect =
+                            "SELECT fullName,ParentGUID " +
+                            "FROM Parent " +
+                            "WHERE IcNo=@IcNO";
+
+                        SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+                        cmdSelect.Parameters.AddWithValue("@IcNO", txtParentIC.Text);
+
+                        SqlDataReader dr = cmdSelect.ExecuteReader();
+
+                        dt.Load(dr);
+
+                        con.Close();
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            txtParentName.Text = dt.Rows[0][0].ToString();
+                            DisplayAlertMsg("Parent is exist in the database");
+                            Session["ParentGUID"] = dt.Rows[0][1].ToString();
+                        }
+                        else
+                        {
+                            DisplayAlertMsg("Parent not exist in the database, please enter parent name");
+                            txtParentName.Enabled = true;
+
+                        }
+                        txtParentIC.Enabled = false;
+                        Session["checkParent"] = true;
+                        lbCheckParent.Text = "Cancel";
+                    }
+                    catch (SqlException ex)
+                    {
+                        string msg = ex.Message;
+                        DisplayAlertMsg("Error to check parent");
+                    }
+                }
+            }
+            
         }
     }
 }

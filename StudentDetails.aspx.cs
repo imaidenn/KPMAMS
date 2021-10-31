@@ -36,7 +36,11 @@ namespace KPMAMS
 
                 con.Open();
 
-                String strSelect = "SELECT a.StudentGUID, a.StudentUserID, a.FullName, a.ICNo, a.ProfilePic, a.Gender, a.PhoneNo, a.Email, a.Address, b.Class, CONVERT(varchar,a.DateOfBirth) as BirthDate, CONVERT(varchar,a.JoinDate,1) as JoinDate FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID WHERE a.StudentGUID = @StudentGUID";
+                String strSelect = 
+                    "SELECT a.StudentGUID, a.StudentUserID, a.FullName, a.ICNo, a.ProfilePic, a.Gender, a.PhoneNo, a.Email, a.Address, b.Class, CONVERT(varchar,a.DateOfBirth) as BirthDate, CONVERT(varchar,a.JoinDate,1) as JoinDate,c.ParentUserID,c.fullName " +
+                    "FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID " +
+                    "LEFT JOIN Parent c ON a.ParentGUID=c.ParentGUID " +
+                    "WHERE a.StudentGUID = @StudentGUID";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                 cmdSelect.Parameters.AddWithValue("@StudentGUID", StudentGUID);
@@ -57,7 +61,8 @@ namespace KPMAMS
                     txtBirthDate.Text = dt.Rows[0][10].ToString();
                     txtJoinDate.Text = dt.Rows[0][11].ToString();
                     txtPhoneNo.Text = dt.Rows[0][6].ToString();
-
+                    txtParentID.Text = dt.Rows[0][12].ToString();
+                    txtParentName.Text = dt.Rows[0][13].ToString();
                     txtGender.Text = dt.Rows[0][5].ToString();
 
                     txtClass.Text = dt.Rows[0][9].ToString();

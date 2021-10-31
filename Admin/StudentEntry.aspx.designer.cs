@@ -96,6 +96,33 @@ namespace KPMAMS.Admin
         protected global::System.Web.UI.WebControls.TextBox txtJoinDate;
 
         /// <summary>
+        /// txtParentIC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtParentIC;
+
+        /// <summary>
+        /// lbCheckParent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbCheckParent;
+
+        /// <summary>
+        /// txtParentName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtParentName;
+
+        /// <summary>
         /// ddlClass control.
         /// </summary>
         /// <remarks>
