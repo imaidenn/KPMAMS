@@ -15,10 +15,47 @@ namespace KPMAMS.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            GetSemester();
             GetYear();
             if (IsPostBack == false)
             {
                 GetExamListing();
+            }
+        }
+
+        protected void GetSemester()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Clear();
+                dt.Columns.Add("Text");
+                dt.Columns.Add("Value");
+                DataRow a = dt.NewRow();
+                DataRow b = dt.NewRow();
+                DataRow c = dt.NewRow();
+                DataRow d = dt.NewRow();
+                a["Text"] = "March";
+                a["Value"] = "3March";
+                b["Text"] = "Pertengahan Tahun";
+                b["Value"] = "6PertengahanTahun";
+                c["Text"] = "August";
+                c["Value"] = "8August";
+                d["Text"] = "Akhir Tahun";
+                d["Value"] = "11AkhirTahun";
+                dt.Rows.Add(a);
+                dt.Rows.Add(b);
+                dt.Rows.Add(c);
+                dt.Rows.Add(d);
+                ddlSem.DataTextField = dt.Columns["Text"].ToString();
+                ddlSem.DataValueField = dt.Columns["Value"].ToString();
+                ddlSem.DataSource = dt;
+                ddlSem.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
             }
         }
 
@@ -79,7 +116,7 @@ namespace KPMAMS.Admin
 
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
-                cmdSelect.Parameters.AddWithValue("@ExamSem", ddlSem.SelectedItem.Text+ddlYear.SelectedItem.Text);
+                cmdSelect.Parameters.AddWithValue("@ExamSem", ddlSem.SelectedValue+ddlYear.SelectedItem.Text);
                 cmdSelect.Parameters.AddWithValue("@StudentName", txtStudentName.Text);
                 cmdSelect.Parameters.AddWithValue("@Class", txtClass.Text);
                 cmdSelect.Parameters.AddWithValue("@DateFrom", DateFrom);

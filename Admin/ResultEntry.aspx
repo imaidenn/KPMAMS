@@ -9,26 +9,26 @@
                               <div class="box-placeholder">
                                  <div class="row">
                                     <div class="col-md-6">
-                                       <label class="col-sm-3 control-label">Name :</label>
+                                       <label class="col-sm-3 control-label">Student Name :</label>
                                     <div class="col-sm-5">
                                     <asp:Label ID="lblName" runat="server"></asp:Label>
                            </div>
                                     </div>
                                     <div class="col-md-6">
-                                          <label class="col-sm-3 control-label">Class :</label>
+                                          <label class="col-sm-3 control-label">Student Class :</label>
                                     <div class="col-sm-5">
                                     <asp:Label ID="lblClass" runat="server"></asp:Label>
                            </div>
                                     </div>
                                      <br />
                                      <div class="col-md-6">
-                                          <label class="col-sm-3 control-label">IC No:</label>
+                                          <label class="col-sm-3 control-label">Student IC No:</label>
                                     <div class="col-sm-5">
                                     <asp:Label ID="lblIC" runat="server"></asp:Label>
                            </div>
                                     </div>
                                      <div class="col-md-6">
-                                          <label class="col-sm-3 control-label">Gender :</label>
+                                          <label class="col-sm-3 control-label">Student Gender :</label>
                                     <div class="col-sm-5">
                                     <asp:Label ID="lblGender" runat="server"></asp:Label>
                            </div>
@@ -59,13 +59,13 @@
                               <div class="box-placeholder">
                                  <div class="row">
                                     <div class="col-md-6">
-                                       <label class="col-sm-3 control-label">Place in Class :</label>
+                                       <label class="col-sm-3 control-label">Position in Class :</label>
                                     <div class="col-sm-5">
                                     <asp:Label ID="lblplclass" runat="server"></asp:Label>
                            </div>
                                     </div>
                                     <div class="col-md-6">
-                                          <label class="col-sm-3 control-label">Place in Form :</label>
+                                          <label class="col-sm-3 control-label">Position in Form :</label>
                                     <div class="col-sm-5">
                                     <asp:Label ID="lblplform" runat="server"></asp:Label>
                            </div>

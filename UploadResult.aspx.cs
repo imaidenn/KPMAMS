@@ -112,7 +112,7 @@ namespace KPMAMS
 
                 con.Close();
 
-                GetStudent(ddlClass.SelectedValue);
+                GetStudent();
 
             }
             catch (SqlException ex)
@@ -121,10 +121,12 @@ namespace KPMAMS
             }
         }
 
-        protected void GetStudent(String classGUID)
+        protected void GetStudent()
         {
             try
             {
+                ddlStudent.DataSource = null;
+                ddlStudent.DataBind();
                 DataTable dt = new DataTable();
 
                 string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -135,7 +137,7 @@ namespace KPMAMS
                 String strSelect = "SELECT StudentGUID,Fullname FROM Student WHERE ClassroomGUID= @class";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
-                cmdSelect.Parameters.AddWithValue("@class", classGUID);
+                cmdSelect.Parameters.AddWithValue("@class", ddlClass.SelectedValue);
 
                 SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
 
@@ -168,6 +170,7 @@ namespace KPMAMS
         {
             try
             {
+
                 DataTable dt = new DataTable();
 
                 string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -191,19 +194,23 @@ namespace KPMAMS
                 totalQty = dt.Rows.Count;
 
 
-                if (dt.Rows.Count == 0)
-                {
-                    lblNoData.Visible = true;
 
-                }
-                else
-                {
-                    lblNoData.Visible = false;
+                    if (dt.Rows.Count == 0)
+                    {
+                        lblNoData.Visible = true;
 
-                }
+                    }
+                    else
+                    {
+                        lblNoData.Visible = false;
 
-                GridView1.DataSource = dt;
+                    }
+
+                    GridView1.DataSource = dt;
                 GridView1.DataBind();
+
+
+               
                 
             }
             catch(Exception ex)
@@ -440,10 +447,16 @@ namespace KPMAMS
 
         protected void ddlClass_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GridView1.DataSource = null;
-            GridView1.DataBind();
-            GetStudent(ddlClass.SelectedValue.ToString());
-            GetSubject();
+            ddlStudent.Items.Clear();
+            if (ddlStudent.Items.Count == 0)
+            {
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+            }
+
+
+            GetStudent();
+
         }
     }
 }

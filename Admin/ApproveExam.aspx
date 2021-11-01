@@ -59,10 +59,6 @@
                         <label class="col-sm-1 control-label">Exam Semester</label>
                            <div class="col-sm-5">
                                <asp:DropDownList ID="ddlSem" runat="server" CssClass="form-control m-b">
-                                   <asp:ListItem>March</asp:ListItem>
-                                   <asp:ListItem>Pertengahan Tahun</asp:ListItem>
-                                   <asp:ListItem>August</asp:ListItem>
-                                   <asp:ListItem>Akhir Tahun</asp:ListItem>
                                </asp:DropDownList>
                            </div>
                           <div class="form-group">

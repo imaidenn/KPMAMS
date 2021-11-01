@@ -218,6 +218,21 @@
                             <span class="item-text">Assessment</span>
                         </a>
                         </li>
+                        <li >
+                        <a href="CreateMeeting.aspx" title="CreateMeeting" data-toggle="" class="no-submenu">
+                            <span class="item-text">Create Meeting</span>
+                        </a>
+                        </li>
+                        <li >
+                        <a href="MeetingList.aspx" title="MeetingList" data-toggle="" class="no-submenu">
+                            <span class="item-text">Meeting List</span>
+                        </a>
+                        </li>
+                        <li id="attendanceList" runat="server" >
+                        <a href="AttendanceList.aspx" title="AttendanceList" data-toggle="" class="no-submenu">
+                            <span class="item-text">Attendance</span>
+                        </a>
+                        </li>
 
                     </ul>
                     <!-- END SubMenu item-->

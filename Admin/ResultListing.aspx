@@ -24,11 +24,11 @@
 
                            <label class="col-sm-1 control-label">Exam Semester</label>
                            <div class="col-sm-5">
-                               <asp:DropDownList ID="ddlSem" runat="server" style="width:200px;"></asp:DropDownList>
+                               <asp:DropDownList ID="ddlSem" runat="server" CssClass="form-control m-b" style="width:200px;"></asp:DropDownList>
                            </div>
                             <label class="col-sm-1 control-label">Year</label>
                            <div class="col-sm-5">
-                               <asp:DropDownList ID="ddlYear" runat="server" style="width:200px;"></asp:DropDownList>
+                               <asp:DropDownList ID="ddlYear" runat="server" CssClass="form-control m-b" style="width:200px;"></asp:DropDownList>
                            </div>
                         </div>
                      </fieldset>

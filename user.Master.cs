@@ -67,7 +67,8 @@ namespace KPMAMS
                 else if (role == "Teacher")
                 {
                     strSelect = "SELECT TeacherGUID, ProfilePic FROM Teacher WHERE TeacherGUID = @userGUID";
-                    resultDetails.Visible = false;  
+                    resultDetails.Visible = false;
+                    attendanceList.Visible = false;
                 }
                 else
                 {
