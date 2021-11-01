@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/admin.Master" AutoEventWireup="true" CodeBehind="ResultListing.aspx.cs" Inherits="KPMAMS.Admin.ResultListing" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/admin.Master" CodeBehind="ResultListing.aspx.cs" Inherits="KPMAMS.Admin.ResultListing" EnableEventValidation="false" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <div class="panel panel-default">
                <div class="panel-heading">Student</div>

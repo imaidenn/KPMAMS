@@ -72,6 +72,20 @@
                       <br />
                       <fieldset>
                         <div class="form-group">
+                           <label class="col-sm-1 control-label">Parent ID</label>
+                           <div class="col-sm-5">
+                               <asp:TextBox ID="txtParentID" runat="server" CssClass="form-control form-control-rounded" Enabled="false"></asp:TextBox>
+                           </div>
+
+                           <label class="col-sm-1 control-label">Parent Name</label>
+                           <div class="col-sm-5">
+                               <asp:TextBox ID="txtParentName" runat="server" CssClass="form-control form-control-rounded" Enabled="false"></asp:TextBox>
+                           </div>
+                        </div>
+                     </fieldset>
+                      <br />
+                      <fieldset>
+                        <div class="form-group">
                            <label class="col-sm-1 control-label">Birth Date</label>
                             <div class="col-sm-5">
                                    <asp:TextBox ID="txtBirthDate" CssClass="form-control form-control-rounded" runat="server" Enabled="False"></asp:TextBox>

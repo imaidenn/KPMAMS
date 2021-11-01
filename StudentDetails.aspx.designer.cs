@@ -96,6 +96,24 @@ namespace KPMAMS
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
 
         /// <summary>
+        /// txtParentID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtParentID;
+
+        /// <summary>
+        /// txtParentName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtParentName;
+
+        /// <summary>
         /// txtBirthDate control.
         /// </summary>
         /// <remarks>

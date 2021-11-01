@@ -11,34 +11,43 @@ namespace KPMAMS
 {
 
 
-    public partial class admin
+    public partial class ParentDetails
     {
 
         /// <summary>
-        /// btnLogout control.
+        /// txtParentID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogout;
+        protected global::System.Web.UI.WebControls.TextBox txtParentID;
 
         /// <summary>
-        /// btnLogout2 control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnLogout2;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
 
         /// <summary>
-        /// BodyContent control.
+        /// txtICno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder BodyContent;
+        protected global::System.Web.UI.WebControls.TextBox txtICno;
+
+        /// <summary>
+        /// GvStudentList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GvStudentList;
     }
 }
