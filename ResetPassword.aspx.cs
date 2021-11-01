@@ -129,7 +129,7 @@ namespace KPMAMS
 						cmdInsert.Dispose();
 
 						String url = ConfigurationManager.AppSettings["ResetPasswordURL"].ToString() + UserGUID + "&ResetPasswordGUID=" + ResetPasswordGUID.ToString() + "&UserType=" + userType;
-						String body = "<b>Hello " + Username + "<b><br />You recently requested to reset your password for your KPM account. Use the URL link below to change it.<br /><br />URL link: <a href= '" + url + "'><b>Reset Your Password<b></a><br />If you didn't request this, please ignore this email. Your password won't change until you access the link above and create a new one.";
+						String body = "<b>Hello " + Username + "</b><br />You recently requested to reset your password for your KPM account. Use the URL link below to change it.<br /><br />URL link: <a href= '" + url + "'><b>Reset Your Password<b></a><br />If you didn't request this, please ignore this email. Your password won't change until you access the link above and create a new one.";
 						mail.To.Add(email);
 						mail.Subject = "Reset Password";
 						mail.IsBodyHtml = true;
