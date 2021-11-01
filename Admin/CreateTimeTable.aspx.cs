@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Globalization;
-using System.IO;
-using System.Web.UI.HtmlControls;
+using System.Net;
+using System.Net.Mail;
 
+using System.Web.UI.WebControls;
 
 namespace KPMAMS
 {
@@ -282,6 +277,74 @@ namespace KPMAMS
             }
         }
 
+        private void getEmail()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection con = new SqlConnection(strCon);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            SqlCommand cmd = new SqlCommand(
+                "SELECT fullName,email " +
+                "FROM Student " +
+                "WHERE ClassroomGUID=@ClassroomGUID", con);
+
+            cmd.Parameters.AddWithValue("@ClassroomGUID", dlClassList.SelectedValue);
+            SqlDataReader dr = cmd.ExecuteReader();
+            dt.Load(dr);
+            DataTable dt2 = new DataTable();
+
+            string strSelect =
+                "SELECT fullName,email " +
+                "FROM Teacher a LEFT JOIN Teacher_Classroom b ON a.TeacherGUID=b.TeacherGUID " +
+                "WHERE ClassroomGUID=@ClassroomGUID";
+            cmd = new SqlCommand(strSelect, con);
+            cmd.Parameters.AddWithValue("@ClassroomGUID", dlClassList.SelectedValue);
+            dr = cmd.ExecuteReader();
+            dt2.Load(dr);
+
+            if (dt.Rows.Count != 0) {
+                for (int i = 0; i < dt.Rows.Count; i++) {
+                    sendEmail(dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString());
+                }
+            }
+            if (dt2.Rows.Count != 0) {
+                for (int i = 0; i < dt2.Rows.Count; i++)
+                {
+                    sendEmail(dt2.Rows[i][0].ToString(), dt.Rows[i][1].ToString());
+                }
+            }
+
+            con.Close();
+
+        }
+
+        private void sendEmail(string name, string email)
+        {
+            SmtpClient client = new SmtpClient();
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new NetworkCredential("kpmnoreply@gmail.com", "kpm12345");
+
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("kpmnoreply@gmail.com");
+
+            String body = 
+                "<b>Hello " + name + "</b><br />" +
+                "Timetable for class "+dlClassList.SelectedItem+" have been "+btnCreate.Text.ToLower()+"d, now you can view the timetable at the system <br /><br />" +
+                "KPM Academic Mamagement System.";
+            mail.To.Add(email);
+            mail.Subject = "Timetable for " +dlClassList.SelectedItem+"";
+            mail.IsBodyHtml = true;
+            mail.Body = body;
+
+            client.Send(mail);
+        }
+
         private void UpdateTimetable()
         {
             try
@@ -306,12 +369,12 @@ namespace KPMAMS
                     con.Open();
 
                     SqlCommand cmd = new SqlCommand(
-                      "UPDATE Timetable" +
+                      "UPDATE Timetable " +
                       "SET " +
-                      "LastUpdateDate=@LastUpdateDate," +
+                      "LastUpdateDate=@LastUpdateDate " +
                       "WHERE TimetableGUID=@TimetableGUID", con);
                     cmd.Parameters.AddWithValue("@TimetableGUID", Request.QueryString["TimetableGUID"]);
-                    cmd.Parameters.AddWithValue("@TimeSlot10", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@LastUpdateDate", DateTime.Now);
                     cmd.ExecuteNonQuery();
 
                     cmd = new SqlCommand(
@@ -346,7 +409,7 @@ namespace KPMAMS
                     d++;
                 }
 
-
+                getEmail();
                 Response.Write("<script language='javascript'>alert('Timetable update successfully');</script>");
                 Server.Transfer("TimetableList_Admin.aspx", true);
             }
@@ -424,9 +487,9 @@ namespace KPMAMS
                     cmd.Dispose();
                     con.Close();
                     d++;
-                }                
+                }
 
-
+                getEmail();
                 Response.Write("<script language='javascript'>alert('Timetable created successfully');</script>");
                 Server.Transfer("TimetableList_Admin.aspx", true);
             }
