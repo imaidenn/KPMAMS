@@ -196,6 +196,27 @@
                   </ul>
                   <!-- END SubMenu item-->
                </li>
+                 <li>
+                  <a href="#" title="Attendance" data-toggle="collapse-next" class="has-submenu">
+                     <em class="fa fa-book"></em>
+<%--                     <div class="label label-primary pull-right">12</div>--%>
+                     <span class="item-text">Attendance</span>
+                  </a>
+                  <!-- START SubMenu item-->
+                  <ul class="nav collapse in">
+                     <li id="markAttendance" runat="server">
+                        <a href="MarkAttendance.aspx" title="MarkAttendance" data-toggle="" class="no-submenu">
+                           <span class="item-text">Mark Attendance</span>
+                        </a>
+                     </li>
+                      <li id="attendanceList" runat="server" >
+                        <a href="AttendanceList.aspx" title="AttendanceList" data-toggle="" class="no-submenu">
+                            <span class="item-text">Attendance</span>
+                        </a>
+                        </li>
+                  </ul>
+                  <!-- END SubMenu item-->
+               </li>
 
                 <li>
                     <a href="#" title="Classroom" data-toggle="collapse-next" class="has-submenu">
@@ -225,11 +246,7 @@
                             <span class="item-text">Meeting List</span>
                         </a>
                         </li>
-                        <li id="attendanceList" runat="server" >
-                        <a href="AttendanceList.aspx" title="AttendanceList" data-toggle="" class="no-submenu">
-                            <span class="item-text">Attendance</span>
-                        </a>
-                        </li>
+
 
                     </ul>
                     <!-- END SubMenu item-->

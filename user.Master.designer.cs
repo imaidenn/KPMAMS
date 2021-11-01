@@ -87,6 +87,24 @@ namespace KPMAMS
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl uploadResult;
 
         /// <summary>
+        /// markAttendance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl markAttendance;
+
+        /// <summary>
+        /// attendanceList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl attendanceList;
+
+        /// <summary>
         /// forum control.
         /// </summary>
         /// <remarks>
@@ -112,15 +130,6 @@ namespace KPMAMS
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl livechat;
-
-        /// <summary>
-        /// attendanceList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl attendanceList;
 
         /// <summary>
         /// btnLogout2 control.

@@ -20,7 +20,7 @@ namespace KPMAMS
                 if(Session["userGUID"] != null && Session["role"] != null)
                 {
                     GetClass();
-                    UpdateMeeting();
+
                     GetMeetingListing();
                 }
                 
@@ -67,27 +67,6 @@ namespace KPMAMS
 
         }
 
-        protected void UpdateMeeting()
-        {
-            try
-            {
-                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-                SqlConnection con = new SqlConnection(strCon);
-
-                con.Open();
-                String strUpdate = "UPDATE Meeting SET Status = 'Inactive', LastUpdateDate = @LastUpdateDate WHERE DATEDIFF(MINUTE, CONVERT(nvarchar, MeetingTime, 8) , CONVERT(nvarchar, GETDATE(), 8)) > Duration";
-
-                SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
-                cmdUpdate.Parameters.AddWithValue("@LastUpdateDate", DateTime.Now);
-                SqlDataReader dtrSelect = cmdUpdate.ExecuteReader();
-
-                con.Close();
-            }
-            catch(Exception ex)
-            {
-                DisplayAlertMsg(ex.Message);
-            }
-        }
 
         protected void GetMeetingListing()
         {
@@ -109,7 +88,7 @@ namespace KPMAMS
                     strSelect = "SELECT MeetingGUID,MeetingTopic,MeetingTime,Duration,Class FROM Meeting a LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID WHERE a.TeacherGUID = @UserGUID AND a.Status = 'Active' AND CONVERT(DATE, MeetingTime) = @Date";
                     SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                     cmdSelect.Parameters.AddWithValue("@UserGUID", userGUID);
-                    cmdSelect.Parameters.AddWithValue("@Date", (DateTime.Now).ToShortDateString());
+                    cmdSelect.Parameters.AddWithValue("@Date", (DateTime.Now).ToString("dd-MMM-yyyy"));
                     SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
 
                     dt.Load(dtrSelect);
@@ -119,7 +98,7 @@ namespace KPMAMS
                     strSelect = "SELECT MeetingGUID,MeetingTopic,MeetingTime,Duration,Class FROM Meeting a LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID WHERE a.Status = 'Active' AND CONVERT(DATE, MeetingTime) = @Date";
                     SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                     cmdSelect.Parameters.AddWithValue("@Class", classGUID);
-                    cmdSelect.Parameters.AddWithValue("@Date", (DateTime.Now).ToShortDateString());
+                    cmdSelect.Parameters.AddWithValue("@Date", (DateTime.Now).ToString("dd-MMM-yyyy"));
                     SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
 
                     dt.Load(dtrSelect);

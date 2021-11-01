@@ -68,6 +68,7 @@ namespace KPMAMS
                     strSelect = "SELECT StudentGUID, ProfilePic FROM Student WHERE StudentGUID = @userGUID";
                     uploadResult.Visible = false;
                     livechat.Visible = false;
+                    markAttendance.Visible = false;
                 }
                 else if (role == "Teacher")
                 {

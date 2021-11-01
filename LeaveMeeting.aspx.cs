@@ -18,7 +18,38 @@ namespace KPMAMS
         {
             if(Session["AttendanceGUID"] != null && Session["MeetingGUID"] != null)
             {
-                GetAttendance();
+       
+                if(Session["Role"].ToString() == "Teacher")
+                {
+                    UpdateMeeting();
+                }
+                else
+                {
+                    GetAttendance();
+                }
+                
+            }
+        }
+
+        protected void UpdateMeeting()
+        {
+            try
+            {
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(strCon);
+
+                con.Open();
+                String strUpdate = "UPDATE Meeting SET Status = 'Inactive', LastUpdateDate = @LastUpdateDate WHERE DATEDIFF(MINUTE, CONVERT(nvarchar, MeetingTime, 8) , CONVERT(nvarchar, GETDATE(), 8)) > Duration";
+
+                SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
+                cmdUpdate.Parameters.AddWithValue("@LastUpdateDate", DateTime.Now);
+                SqlDataReader dtrSelect = cmdUpdate.ExecuteReader();
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                DisplayAlertMsg(ex.Message);
             }
         }
 
@@ -60,7 +91,7 @@ namespace KPMAMS
                 SqlConnection con = new SqlConnection(strCon);
 
                 con.Open();
-                String strSelect = "SELECT StartTime FROM Attendance WHERE AttendanceGUID = @AttendanceGUID";
+                String strSelect = "SELECT StartTime,EndTime,TotalTime FROM Attendance WHERE AttendanceGUID = @AttendanceGUID";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                 cmdSelect.Parameters.AddWithValue("@AttendanceGUID", AttendanceGUID);
@@ -69,11 +100,75 @@ namespace KPMAMS
                 dt.Load(dtrSelect);
 
                 DateTime startTime = DateTime.Parse(dt.Rows[0][0].ToString());
+                double total = double.Parse(dt.Rows[0][2].ToString());
+
                 con.Close();
 
-                InsertAttendance(startTime);
+                if(dt.Rows[0][1] == null)
+                {
+                    InsertAttendance(startTime);
+                }
+                else
+                {
+                    UpdateAttendance(startTime,total);
+                }
+
             }
             catch(Exception ex)
+            {
+                DisplayAlertMsg(ex.Message);
+            }
+        }
+
+        protected void UpdateAttendance(DateTime startTime,double total)
+        {
+            try
+            {
+                string AttendanceGUID = Session["AttendanceGUID"].ToString();
+                GetMeetingDetails();
+                double time = meetDuration * 0.8;
+
+                string studentGUID = Session["userGUID"].ToString();
+                DateTime endTime = DateTime.Now;
+                TimeSpan ts = endTime - startTime;
+                total += ts.TotalMinutes;
+                string status = "";
+
+                if (total > time)
+                {
+                    status = "Present";
+                }
+                else
+                {
+                    status = "Absent";
+                }
+
+
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(strCon);
+
+                con.Open();
+
+                String strUpdate = "UPDATE Attendance SET EndTime = @EndTime, TotalTime = @Total, Status = @Status, LastUpdateDate = @LastUpdateDate " +
+                    "WHERE AttendanceGUID = @AttendanceGUID";
+
+                SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
+
+                cmdUpdate.Parameters.AddWithValue("@AttendanceGUID", AttendanceGUID);
+                cmdUpdate.Parameters.AddWithValue("@EndTime", endTime);
+                cmdUpdate.Parameters.AddWithValue("@Total", total);
+                cmdUpdate.Parameters.AddWithValue("@Status", status);
+                cmdUpdate.Parameters.AddWithValue("@LastUpdateDate", DateTime.Now);
+
+                cmdUpdate.ExecuteNonQuery();
+
+                con.Close();
+
+                Session["MeetingGUID"] = null;
+                Session["AttendanceGUID"] = null;
+                Response.Redirect("Homepage.aspx");
+            }
+            catch (Exception ex)
             {
                 DisplayAlertMsg(ex.Message);
             }

@@ -68,7 +68,7 @@
                         <div class="form-group">
                             <div style="float:right">
                                         <asp:Button ID="btnCreate" CssClass="btn btn-primary" runat="server" Text="Create" OnClick="btnCreate_Click" />
-                            <asp:Button ID="btnBack" runat="server" CssClass="btn-danger" Text="Cancel" OnClick="btnBack_Click" Width="100px"/>
+                            <asp:Button ID="btnBack" runat="server" CssClass="btn btn-primary" Text="Cancel" OnClick="btnBack_Click"/>
                             </div>
                            
 

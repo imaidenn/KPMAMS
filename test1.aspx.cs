@@ -24,12 +24,89 @@ namespace KPMAMS
             {
                 if (Session["role"].ToString() == "Student")
                 {
-                    InsertAttendance();
+                    FindMeeting();
+
                 }
             }
 
 
         }
+
+        protected void FindMeeting()
+        {
+            try
+            {
+                string meetGUID = Session["MeetingGUID"].ToString();
+                string studentGUID = Session["userGUID"].ToString();
+                DataTable dt = new DataTable();
+
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(strCon);
+
+                con.Open();
+                String strSelect = "SELECT AttendanceGUID FROM Attendance WHERE MeetingGUID = @MeetingGUID AND StudentGUID = @StudentGUID";
+
+                SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+                cmdSelect.Parameters.AddWithValue("@MeetingGUID", meetGUID);
+                cmdSelect.Parameters.AddWithValue("@StudentGUID", studentGUID);
+                SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
+
+                dt.Load(dtrSelect);
+                string attendanceGUID = dt.Rows[0][0].ToString();
+
+                con.Close();
+
+                if (dt.Rows.Count != 0)
+                {
+                    UpdateTime(attendanceGUID);
+                }
+                else
+                {
+                    InsertAttendance();
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                string msg = ex.Message;
+            }
+        }
+
+        protected void UpdateTime(string attendanceGUID)
+        {
+            try
+            {
+                GetMeetingDetails();
+
+                string studentGUID = Session["userGUID"].ToString();
+                DateTime startTime = DateTime.Now;
+
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(strCon);
+
+                con.Open();
+
+                String strUpdate = "UPDATE Attendance SET StartTime = @StartTime " +
+                    "WHERE AttendanceGUID = @AttendanceGUID";
+
+                SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
+
+                cmdUpdate.Parameters.AddWithValue("@AttendanceGUID", attendanceGUID);
+                cmdUpdate.Parameters.AddWithValue("@StartTime", startTime);
+                cmdUpdate.Parameters.AddWithValue("@LastUpdateDate", DateTime.Now);
+
+                cmdUpdate.ExecuteNonQuery();
+
+                con.Close();
+
+                Session["AttendanceGUID"] = attendanceGUID.ToString();
+            }
+            catch(Exception ex)
+            {
+                string msg = ex.Message;
+            }
+        }
+
         protected void GetMeetingDetails()
         {
             string meetGUID = Session["MeetingGUID"].ToString();
@@ -63,6 +140,7 @@ namespace KPMAMS
             {
                 GetMeetingDetails();
                 Guid attendanceGUID = Guid.NewGuid();
+                string meetGUID = Session["MeetingGUID"].ToString();
 
                 DateTime startTime = DateTime.Now;
                 string studentGUID = Session["userGUID"].ToString();
@@ -72,14 +150,15 @@ namespace KPMAMS
 
                 con.Open();
 
-                String strInsert = "INSERT INTO Attendance(AttendanceGUID,StudentGUID,SubjectGUID,StartTime,CreateDate,LastUpdateDate) " +
-                    "VALUES (@AttendanceGUID,@StudentGUID,@SubjectGUID,@StartTime,@CreateDate,@LastUpdateDate)";
+                String strInsert = "INSERT INTO Attendance(AttendanceGUID,StudentGUID,SubjectGUID,MeetingGUID,StartTime,CreateDate,LastUpdateDate) " +
+                    "VALUES (@AttendanceGUID,@StudentGUID,@SubjectGUID,@MeetingGUID,@StartTime,@CreateDate,@LastUpdateDate)";
 
                 SqlCommand cmdInsert = new SqlCommand(strInsert, con);
 
                 cmdInsert.Parameters.AddWithValue("@AttendanceGUID", attendanceGUID);
                 cmdInsert.Parameters.AddWithValue("@StudentGUID", studentGUID);
                 cmdInsert.Parameters.AddWithValue("@SubjectGUID", subjectGUID);
+                cmdInsert.Parameters.AddWithValue("@MeetingGUID", meetGUID);
                 cmdInsert.Parameters.AddWithValue("@StartTime", startTime);
                 cmdInsert.Parameters.AddWithValue("@CreateDate", DateTime.Now);
                 cmdInsert.Parameters.AddWithValue("@LastUpdateDate", DateTime.Now);

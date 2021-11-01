@@ -266,6 +266,7 @@
     <Content Include="LeaveMeeting.aspx" />
     <Content Include="LiveChat.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MarkAttendance.aspx" />
     <Content Include="MeetingInfo.aspx" />
     <Content Include="MeetingList.aspx" />
     <Content Include="ParentDetails.aspx" />
@@ -903,6 +904,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MarkAttendance.aspx.cs">
+      <DependentUpon>MarkAttendance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MarkAttendance.aspx.designer.cs">
+      <DependentUpon>MarkAttendance.aspx</DependentUpon>
     </Compile>
     <Compile Include="MeetingInfo.aspx.cs">
       <DependentUpon>MeetingInfo.aspx</DependentUpon>

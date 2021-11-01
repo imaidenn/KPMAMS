@@ -267,15 +267,63 @@ namespace KPMAMS
 
 
                         string grade = "";
-                        string textGrade = ((HtmlInputText)row.FindControl("txtGrade")).Value;
-                        if (textGrade.Length > 1)
+                        if(mark >= 90)
                         {
-                            grade = textGrade.Substring(0, 1).ToUpper().ToString() + textGrade.Substring(1, 1).ToString();
+                            grade = "A+";
+                        }
+                        else if(mark >= 80 && mark <= 90)
+                        {
+                            grade = "A";
+                        }
+                        else if(mark >= 75 && mark <= 80)
+                        {
+                            grade = "A-";
+                        }
+                        else if (mark >= 70 && mark <= 75)
+                        {
+                            grade = "B+";
+                        }
+                        else if (mark >= 65 && mark <= 70)
+                        {
+                            grade = "B";
+                        }
+                        else if (mark >= 60 && mark <= 75)
+                        {
+                            grade = "B-";
+                        }
+                        else if (mark >= 55 && mark <= 60)
+                        {
+                            grade = "C+";
+                        }
+                        else if (mark >= 50 && mark <= 55)
+                        {
+                            grade = "C";
+                        }
+                        else if (mark >= 45 && mark <= 60)
+                        {
+                            grade = "C-";
+                        }
+                        else if (mark >= 40 && mark <= 45)
+                        {
+                            grade = "D";
+                        }
+                        else if (mark >= 30 && mark <= 40)
+                        {
+                            grade = "E";
                         }
                         else
                         {
-                            grade = textGrade.Substring(0, 1).ToUpper().ToString();
+                            grade = "F";
                         }
+                        //string textGrade = ((HtmlInputText)row.FindControl("txtGrade")).Value;
+                        //if (textGrade.Length > 1)
+                        //{
+                        //    grade = textGrade.Substring(0, 1).ToUpper().ToString() + textGrade.Substring(1, 1).ToString();
+                        //}
+                        //else
+                        //{
+                        //    grade = textGrade.Substring(0, 1).ToUpper().ToString();
+                        //}
 
                         string sem = ddlSem.SelectedValue;
                         string createBy = Session["userGUID"].ToString();
@@ -334,15 +382,53 @@ namespace KPMAMS
                     }
 
                     string grade = "";
-                    string textGrade = ((HtmlInputText)row.FindControl("txtGrade")).Value;
-
-                    if (textGrade.Length > 1)
+                    if (mark >= 90)
                     {
-                        grade = textGrade.Substring(0, 1).ToUpper().ToString() + textGrade.Substring(1, 1).ToString();
+                        grade = "A+";
+                    }
+                    else if (mark >= 80 && mark <= 90)
+                    {
+                        grade = "A";
+                    }
+                    else if (mark >= 75 && mark <= 80)
+                    {
+                        grade = "A-";
+                    }
+                    else if (mark >= 70 && mark <= 75)
+                    {
+                        grade = "B+";
+                    }
+                    else if (mark >= 65 && mark <= 70)
+                    {
+                        grade = "B";
+                    }
+                    else if (mark >= 60 && mark <= 75)
+                    {
+                        grade = "B-";
+                    }
+                    else if (mark >= 55 && mark <= 60)
+                    {
+                        grade = "C+";
+                    }
+                    else if (mark >= 50 && mark <= 55)
+                    {
+                        grade = "C";
+                    }
+                    else if (mark >= 45 && mark <= 60)
+                    {
+                        grade = "C-";
+                    }
+                    else if (mark >= 40 && mark <= 45)
+                    {
+                        grade = "D";
+                    }
+                    else if (mark >= 30 && mark <= 40)
+                    {
+                        grade = "E";
                     }
                     else
                     {
-                        grade = textGrade.Substring(0, 1).ToUpper().ToString();
+                        grade = "F";
                     }
 
 

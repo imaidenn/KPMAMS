@@ -61,12 +61,12 @@
                                     <asp:BoundField DataField="SubjectName" HeaderText="Subject Name" SortExpression="SubjectName" />
                                        <asp:TemplateField HeaderText ="Mark" SortExpression="Mark">
                                            <ItemTemplate>
-                                               <input type="text" id="txtMark" runat="server"/>
+                                               <input type="text" id="txtMark" runat="server" />
 <%--                                            <asp:TextBox ID="txtMark" runat="server" TextMode="Number" min="0" max="20" step="1" Enabled="true"></asp:TextBox>--%>
                                            </ItemTemplate>
 
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText ="Grade" SortExpression="Grade">
+                                    <asp:TemplateField HeaderText ="Grade" SortExpression="Grade" Visible="false">
                                            <ItemTemplate>
                                             <input type="text" id="txtGrade" runat="server"/>
                                            </ItemTemplate>
