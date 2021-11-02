@@ -84,7 +84,7 @@ namespace KPMAMS
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
 
@@ -179,8 +179,7 @@ namespace KPMAMS
             catch (SqlException ex)
             {
 
-                string msg = ex.Message;
-                Response.Write(msg);
+                Response.Write("<script>alert('" + ex.Message + "');</script>"); ;
             }
         }
 

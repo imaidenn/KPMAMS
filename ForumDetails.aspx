@@ -62,6 +62,7 @@
                                     <asp:Label ID="lbContent" runat="server" Text=" "></asp:Label>
                                     <div class="form-group">
                                         <asp:TextBox ID="tbContent" CssClass="form-control" Visible="false" TextMode="MultiLine" placeholder="Contents of forum" Rows="5" runat="server"></asp:TextBox>
+   
                                     </div>
                                 </p>
                             </div>

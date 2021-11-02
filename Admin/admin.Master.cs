@@ -28,7 +28,7 @@ namespace KPMAMS
             }
             catch (Exception ex)
             {
-                Response.Write(ex.ToString());
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
 

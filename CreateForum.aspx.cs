@@ -82,7 +82,7 @@ namespace KPMAMS
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
         protected void createForum()
@@ -114,7 +114,7 @@ namespace KPMAMS
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
     }

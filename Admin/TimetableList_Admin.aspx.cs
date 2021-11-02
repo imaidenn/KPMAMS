@@ -65,8 +65,7 @@ namespace KPMAMS.Admin
             catch (SqlException ex)
             {
 
-                string msg = ex.Message;
-                Response.Write(msg);
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
 
@@ -82,7 +81,7 @@ namespace KPMAMS.Admin
 
         protected void btnCreateTimetable_Click(object sender, EventArgs e)
         {
-            Response.Redirect("CreateTimeTable.aspx");
+            Response.Redirect("CreateTimetable.aspx");
         }
     }
 }

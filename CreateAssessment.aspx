@@ -48,6 +48,7 @@
                                  <label>Assessment Title:</label>
                                  <div class="form-group">
                                     <asp:TextBox class="form-control" ID="tbTitle" runat="server" placeholder="Title of assessment"></asp:TextBox>
+                                     <asp:RequiredFieldValidator runat="server" id="reqTitle" controltovalidate="tbTitle" errormessage="Please enter title" ForeColor="Red" />
                                  </div>
                              </div>
                              <div class="col-md-4">
@@ -82,6 +83,7 @@
                                  <label>Description :</label>
                                  <div class="form-group">
                                     <asp:TextBox CssClass="form-control" ID="tbDesc" runat="server" TextMode="MultiLine" placeholder="Description of assessment" Rows="5"></asp:TextBox>
+                                     <asp:RequiredFieldValidator runat="server" id="reqDesc" controltovalidate="tbDesc" errormessage="Please enter description" ForeColor="Red"/>
                                  </div>
                                  <div class="from-group">
                                      <asp:Button ID="btnCreate" runat="server" class="btn btn-block btn-info btn-lg" Text="Create Assessment" OnClick="btnCreate_Click" />

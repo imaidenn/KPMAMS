@@ -146,7 +146,7 @@ namespace KPMAMS.Admin
             }
             catch (SqlException ex)
             {
-                string msg = ex.Message;
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
 
@@ -191,7 +191,7 @@ namespace KPMAMS.Admin
             }
             catch (SqlException ex)
             {
-                string msg = ex.Message;
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
             
         }
@@ -238,7 +238,7 @@ namespace KPMAMS.Admin
             }
             catch (SqlException ex)
             {
-                string msg = ex.Message;
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
 
         }
@@ -335,7 +335,7 @@ namespace KPMAMS.Admin
             }
             catch (SqlException ex)
             {
-                string msg = ex.Message;
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
             return addBool;
         }
@@ -490,7 +490,7 @@ namespace KPMAMS.Admin
             }
             catch (SqlException ex)
             {
-                string msg = ex.Message;
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
 
             return updateBool;
@@ -516,21 +516,6 @@ namespace KPMAMS.Admin
             if (txtPhoneNo.Text.Equals(""))
             {
                 DisplayAlertMsg("Please enter the student phone number");
-                return false;
-            }
-
-            int i;
-            bool isNumeric2 = int.TryParse(txtPhoneNo.Text, out i);
-
-            if (!isNumeric2)
-            {
-                DisplayAlertMsg("Please enter only number of the phone");
-                return false;
-            }
-
-            if (txtPhoneNo.Text.Length > 11)
-            {
-                DisplayAlertMsg("Invalid phone number");
                 return false;
             }
 
