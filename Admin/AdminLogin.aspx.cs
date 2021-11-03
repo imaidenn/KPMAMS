@@ -19,7 +19,7 @@ namespace KPMAMS
 
             if (txtUserID.Text != "" || txtPassword.Text != "")
             {
-                if (txtUserID.Text == "admin" && txtPassword.Text == "asdf1234")
+                if (txtUserID.Text.ToLower() == "admin" && txtPassword.Text == "asdf1234")
                 {
 
                     //string strRedirect;
