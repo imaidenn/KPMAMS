@@ -120,7 +120,7 @@ namespace KPMAMS
 
                 if (txtUserID.Text != "" || txtPassword.Text != "")
                 {
-                    if (ValidateUser(txtUserID.Text, txtPassword.Text))
+                    if (ValidateUser(txtUserID.Text.ToLower(), txtPassword.Text.ToLower()))
                     {
 
                     string strRedirect;

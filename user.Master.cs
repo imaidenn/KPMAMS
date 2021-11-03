@@ -25,6 +25,8 @@ namespace KPMAMS
                     userGUID = Session["userGUID"].ToString();
                     fullname = Session["fullName"].ToString();
                     role = Session["role"].ToString();
+                    //refresh session
+
                     if (role == "Parent")
                     {
                         lblUser.Text = "Welcome, " + fullname;

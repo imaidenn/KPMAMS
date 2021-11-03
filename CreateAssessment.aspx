@@ -47,7 +47,7 @@
                              <div class="col-md-8">
                                  <label>Assessment Title:</label>
                                  <div class="form-group">
-                                    <asp:TextBox class="form-control" ID="tbTitle" runat="server" placeholder="Title of assessment"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="tbTitle" runat="server" placeholder="Title of assessment" AutoCompleteType="Disabled"></asp:TextBox>
                                      <asp:RequiredFieldValidator runat="server" id="reqTitle" controltovalidate="tbTitle" errormessage="Please enter title" ForeColor="Red" />
                                  </div>
                              </div>
@@ -63,7 +63,7 @@
                              <div class="col-md-6">
                                 <label>Due Date</label>
                                 <div class="datetimepicker input-group date mb-lg">
-                                    <asp:TextBox ID="tbDueDate" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tbDueDate" CssClass="form-control" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
                                     <span class="input-group-addon">
                                         <asp:LinkButton ID="lbClear" runat="server" OnClick="lbClear_Click"><i class="fas fa-minus-circle"></i></asp:LinkButton>
                                     </span>
@@ -82,7 +82,7 @@
                              <div class="col-md-12">
                                  <label>Description :</label>
                                  <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="tbDesc" runat="server" TextMode="MultiLine" placeholder="Description of assessment" Rows="5"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="tbDesc" runat="server" TextMode="MultiLine" placeholder="Description of assessment" Rows="5" AutoCompleteType="Disabled"></asp:TextBox>
                                      <asp:RequiredFieldValidator runat="server" id="reqDesc" controltovalidate="tbDesc" errormessage="Please enter description" ForeColor="Red"/>
                                  </div>
                                  <div class="from-group">

@@ -34,7 +34,7 @@
                   <%--<div class="text-right mb-sm"><a href="Register.aspx" class="text-muted">Need to Signup?</a>
                   </div>--%>
                   <div class="form-group has-feedback">
-                      <asp:TextBox runat="server" ID="txtUserID" placeholder="User ID" CssClass="form-control" ></asp:TextBox>
+                      <asp:TextBox runat="server" ID="txtUserID" placeholder="User ID" CssClass="form-control" AutoCompleteType="Disabled" ></asp:TextBox>
                      <span class="fa fa-user form-control-feedback text-muted"></span>
                   </div>
                   <div class="form-group has-feedback">
