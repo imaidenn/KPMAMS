@@ -231,7 +231,7 @@ namespace KPMAMS.Admin
                 }
                 else
                 {
-                    Session["ParentUserID"] = "p0001";
+                    Session["ParentUserID"] = "p1001";
                 }
 
                 con.Close();

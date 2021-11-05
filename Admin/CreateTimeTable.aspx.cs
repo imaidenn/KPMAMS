@@ -20,7 +20,6 @@ namespace KPMAMS
             }
             if (IsPostBack == false)
             {
-                BindGridView();
                 BindClasses();
                 if (Request.QueryString["TimetableGUID"] == null)
                 {
@@ -28,6 +27,7 @@ namespace KPMAMS
                     btnReset.Attributes["class"] = "btn btn-warning disabled";
                 }
                 else {
+                    BindGridView();
                     BindSubject();
                     btnCreate.Text = "Update";
                 }
@@ -81,10 +81,10 @@ namespace KPMAMS
                     "LEFT JOIN Classroom c ON b.ClassroomGUID=c.ClassroomGUID " +
                     "LEFT JOIN Subject_Classroom d ON c.ClassroomGUID=d.ClassroomGUID " +
                     "LEFT JOIN Subject e ON d.SubjectGUID=e.SubjectGUID " +
-                    "WHERE SubjectTeach=d.SubjectGUID AND c.TimetableGUID=@TimetableGUID";
+                    "WHERE SubjectTeach=d.SubjectGUID AND c.ClassroomGUID=@ClassroomGUID";
 
                 cmd = new SqlCommand(strSelect, con);
-                cmd.Parameters.AddWithValue("@TimetableGUID", Request.QueryString["TimetableGUID"]);
+                cmd.Parameters.AddWithValue("@ClassroomGUID", dlClassList.SelectedValue);
                 dr = cmd.ExecuteReader();
                 dt.Load(dr);
                 con.Close();
@@ -157,6 +157,7 @@ namespace KPMAMS
         {
             if (dlClassList.SelectedValue != "")
             {
+                BindGridView();
                 BindSubject();
                 btnCreate.Attributes["class"] = "btn btn-primary";
                 btnReset.Attributes["class"] = "btn btn-warning";
@@ -219,7 +220,6 @@ namespace KPMAMS
                     dt2.Load(dr);
                 }
                 
-
 
                 int d = 1;
                 int t = 1;
@@ -414,7 +414,8 @@ namespace KPMAMS
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                Response.Write("<script language='javascript'>alert('Timetable update successfully');</script>");
+                Server.Transfer("TimetableList_Admin.aspx", true);
             }
         }
 
@@ -494,7 +495,8 @@ namespace KPMAMS
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                Response.Write("<script language='javascript'>alert('Timetable update successfully');</script>");
+                Server.Transfer("TimetableList_Admin.aspx", true);
             }
         }
 

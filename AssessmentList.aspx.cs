@@ -77,7 +77,8 @@ namespace KPMAMS
                 }
                 else
                 {
-                    Response.Write("<script>alert('Error:no forum exist');</script>");
+                    Response.Write("<script>alert('Error:No class assigned yet');</script>");
+                    Server.Transfer("Homepage.aspx", true);
                 }
                 con.Close();
 

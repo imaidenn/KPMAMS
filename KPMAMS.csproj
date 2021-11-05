@@ -242,6 +242,8 @@
     <Content Include="Admin\TimetableDetails_Admin.aspx" />
     <Content Include="Admin\TimetableList_Admin.aspx" />
     <Content Include="AnnouncementDetails.aspx" />
+    <Content Include="App_Data\Insert_data.sql" />
+    <Content Include="App_Data\Insert_table.sql" />
     <Content Include="App_Data\KPMdb.mdf" />
     <Content Include="App_Data\KPMdb_log.ldf" />
     <Content Include="AssessmentDetails.aspx" />

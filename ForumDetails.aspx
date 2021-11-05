@@ -120,7 +120,7 @@
                                 </h3>
                                 <asp:GridView class="table table-striped table-bordered table-responsive-md" ID="GvCommentList" runat="server" AutoGenerateColumns="False" DataKeyNames="CommentGUID" OnRowDataBound="GvCommentList_RowDataBound" OnRowCommand="GvCommentList_RowCommand" >
                                     <Columns>
-                                        <asp:BoundField DataField="CommentGUID" HeaderText="Comment GUID" ReadOnly="True" SortExpression="CommentGUID" Visible="true"/>
+                                        <asp:BoundField DataField="CommentGUID" HeaderText="Comment GUID" ReadOnly="True" SortExpression="CreateDate" Visible="true"/>
                                         <asp:TemplateField HeaderText="Comment">
                                             <ItemTemplate>
                                                 <div class="container-fluid">

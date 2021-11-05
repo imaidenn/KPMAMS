@@ -72,8 +72,8 @@
                       <input type="text" name="meeting_lang" id="meeting_lang" value="en-US" Class="hidden">
 
                         <input type="text" name="display_name" id="display_name" value="2.0.1#CDN" maxlength="100" placeholder="Name" required="" Class="hidden">
-                        <input type="text" name="meeting_number" id="meeting_number" value="" maxlength="200" style="width:150px" placeholder="Meeting Number"  required=""  Class="hidden">
-                        <input type="text" name="meeting_pwd" id="meeting_pwd" value="" style="width:150px" maxlength="32" placeholder="Meeting Password" Class="hidden">
+                        <input type="text" name="meeting_number" id="meeting_number" value="" maxlength="200" style="width:150px" placeholder="Meeting Number"  required=""  >
+                        <input type="text" name="meeting_pwd" id="meeting_pwd" value="" style="width:150px" maxlength="32" placeholder="Meeting Password" >
                         <input type="text" name="meeting_email" id="meeting_email" value="" style="width:150px" maxlength="32" placeholder="Email option" Class="hidden" >
                   </form>
                </div>
