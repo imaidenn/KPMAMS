@@ -49,7 +49,7 @@ namespace KPMAMS
                 {
                     dt.Load(dr);
                     con.Close();
-                    lbClass.Text = "Class: " + dt.Rows[0][0].ToString();
+                    lbClass.Text = "Class(FORM): " + dt.Rows[0][0].ToString();
                     lbCreateDate.Text = "Create on " + dt.Rows[0][1].ToString();
                     lbLastUpdateDate.Text = "Last update " + dt.Rows[0][2].ToString();
                 }

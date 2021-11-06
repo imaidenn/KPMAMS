@@ -61,7 +61,7 @@
                         <div class="form-group">
                            <label class="col-sm-2 control-label">Title</label>
                            <div class="col-sm-10">
-                               <asp:TextBox ID="txtTitle" placeholder="Enter Title" runat="server" CssClass="form-control form-control-rounded"></asp:TextBox>
+                               <asp:TextBox ID="txtTitle" placeholder="Enter Title" runat="server" CssClass="form-control form-control-rounded" MaxLength="100"></asp:TextBox>
                            </div>
                         </div>
                      </fieldset>
@@ -71,7 +71,7 @@
     <asp:Label ID="lblSummernote" runat="server" Text="Description" AssociatedControlID="txtSummernote" CssClass="control-label col-md-2"></asp:Label>
     <br /><br />
         <div class="col-md-15">
-            <asp:TextBox ID="txtSummernote" runat="server" TextMode="MultiLine" Rows="2"></asp:TextBox>
+            <asp:TextBox ID="txtSummernote" runat="server" TextMode="MultiLine" Rows="2" MaxLength="500"></asp:TextBox>
 
       </div>
  </div> 

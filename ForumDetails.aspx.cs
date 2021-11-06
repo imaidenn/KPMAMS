@@ -100,7 +100,7 @@ namespace KPMAMS
                             }
                         }
                         lbCreated.Text = "Created " + totalTime + " " + dateFormat + " ago";
-                        lbClass.Text = "Class " + dt.Rows[0][2].ToString();
+                        lbClass.Text = "Class(FORM) " + dt.Rows[0][2].ToString();
                         lbCreatedDate.Text = "Created " + dt.Rows[0][5].ToString();
                         lbLastUpdate.Text = "Last Update " + dt.Rows[0][6].ToString();
                         lastUpdateDate = Convert.ToDateTime(dt.Rows[0][6].ToString());
@@ -175,11 +175,11 @@ namespace KPMAMS
                 con.Close();
 
                 Response.Write("<script language='javascript'>alert('Forum deleted successfully');</script>");
-                Server.Transfer("ForumList.aspx", true);
+                Server.Transfer("ForumList.aspx", false);
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                
             }
         }
 
@@ -204,7 +204,7 @@ namespace KPMAMS
 
                     cmd.ExecuteNonQuery();
                     con.Close();
-                    Page.Response.Redirect(Page.Request.Url.ToString(), false);
+                    Response.Redirect(Request.RawUrl, false);
                 }
                 catch (Exception ex)
                 {
@@ -246,7 +246,7 @@ namespace KPMAMS
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect(Page.Request.Url.ToString(), false);
+            Response.Redirect(Request.RawUrl, false);
         }
 
         protected void BindGridView()
@@ -316,7 +316,7 @@ namespace KPMAMS
                         cmd.Dispose();
                         con.Close();
                         tbComment.Text = "";
-                        Page.Response.Redirect(Page.Request.Url.ToString(), false);
+                        Response.Redirect(Request.RawUrl, false);
                     }
                     catch (Exception ex)
                     {
@@ -342,7 +342,7 @@ namespace KPMAMS
 
                             cmd.ExecuteNonQuery();
                             con.Close();
-                            Page.Response.Redirect(Page.Request.Url.ToString(), false);
+                            Response.Redirect(Request.RawUrl, false);
                         }
                         catch (Exception ex)
                         {
@@ -449,7 +449,7 @@ namespace KPMAMS
                 cmd.ExecuteNonQuery();
                 con.Close();
 
-                Page.Response.Redirect(Page.Request.Url.ToString(), false);
+                Response.Redirect(Request.RawUrl, false);
 
             }
             catch (Exception ex)
@@ -475,7 +475,7 @@ namespace KPMAMS
 
         protected void btnCancelModify_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect(Page.Request.Url.ToString(), false);
+            Response.Redirect(Request.RawUrl, false);
         }
 
     }

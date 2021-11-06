@@ -105,7 +105,7 @@ namespace KPMAMS
                     if (dlStatus.SelectedValue.Equals("Assign")) {
 
                         strSelect =
-                            "SELECT a.AssessmentGUID, '<b>'+FullName+'</b>'+' On '+convert(VARCHAR(20),a.CreateDate,100) as CreateBy, convert(VARCHAR(20),a.LastUpdateDate,100) as LastUpdateDate, a.ClassroomGUID, Title, " +
+                            "SELECT a.AssessmentGUID, '<b>'+t.FullName+'</b>'+' On '+convert(VARCHAR(20),a.CreateDate,100) as CreateBy, convert(VARCHAR(20),a.LastUpdateDate,100) as LastUpdateDate, a.ClassroomGUID, Title, " +
                             "CASE " +
                             "WHEN DueDate ='1/1/1900 12:00:00 AM' THEN 'No due date' " +
                             "ELSE convert(VARCHAR(20),a.DueDate,100) " +
@@ -114,11 +114,12 @@ namespace KPMAMS
                             "LEFT JOIN Classroom cl ON tc.ClassroomGUID = cl.ClassroomGUID " +
                             "LEFT JOIN Assessment a ON cl.ClassroomGUID = a.ClassroomGUID " +
                             "LEFT JOIN Submission s ON a.AssessmentGUID = s.AssessmentGUID " +
-                            "WHERE a.ClassroomGUID=@ClassroomGUID AND (DueDate > @CurrentDateTime OR DueDate ='1/1/1900 12:00:00 AM') AND s.StudentGUID=@userGUID AND s.Status='Pending'";
+                            "LEFT JOIN Student st ON cl.ClassroomGUID = st.ClassroomGUID " +
+                            "WHERE a.ClassroomGUID=@ClassroomGUID AND (DueDate > @CurrentDateTime OR DueDate ='1/1/1900 12:00:00 AM') AND s.StudentGUID=@userGUID AND s.Status='Pending' AND s.StudentGUID=@UserGUID AND st.StudentGUID=s.StudentGUID AND a.TeacherGUID=t.TeacherGUID";
 
                     } else if (dlStatus.SelectedValue.Equals("Submitted")) {
                         strSelect =
-                            "SELECT a.AssessmentGUID, '<b>'+FullName+'</b>'+' On '+convert(VARCHAR(20),a.CreateDate,100) as CreateBy, convert(VARCHAR(20),a.LastUpdateDate,100) as LastUpdateDate, a.ClassroomGUID, Title, " +
+                            "SELECT a.AssessmentGUID, '<b>'+t.FullName+'</b>'+' On '+convert(VARCHAR(20),a.CreateDate,100) as CreateBy, convert(VARCHAR(20),a.LastUpdateDate,100) as LastUpdateDate, a.ClassroomGUID, Title, " +
                             "CASE " +
                             "WHEN DueDate ='1/1/1900 12:00:00 AM' THEN 'No due date' " +
                             "ELSE convert(VARCHAR(20),a.DueDate,100) " +
@@ -127,16 +128,18 @@ namespace KPMAMS
                             "LEFT JOIN Classroom cl ON tc.ClassroomGUID = cl.ClassroomGUID " +
                             "LEFT JOIN Assessment a ON cl.ClassroomGUID = a.ClassroomGUID " +
                             "LEFT JOIN Submission s ON a.AssessmentGUID = s.AssessmentGUID " +
-                            "WHERE a.ClassroomGUID=@ClassroomGUID AND s.StudentGUID = @UserGUID AND s.Status='Submitted'";
+                            "LEFT JOIN Student st ON cl.ClassroomGUID = st.ClassroomGUID " +
+                            "WHERE a.ClassroomGUID=@ClassroomGUID AND s.StudentGUID = @UserGUID AND s.Status='Submitted' AND s.StudentGUID=@UserGUID AND st.StudentGUID=s.StudentGUID AND a.TeacherGUID=t.TeacherGUID";
                     }
                     else {
                         strSelect =
-                            "SELECT a.AssessmentGUID, '<b>'+FullName+'</b>'+' On '+convert(VARCHAR(20),a.CreateDate,100) as CreateBy, convert(VARCHAR(20),a.LastUpdateDate,100) as LastUpdateDate, a.ClassroomGUID, Title, convert(VARCHAR(20),a.DueDate,100) as DueDate " +
+                            "SELECT a.AssessmentGUID, '<b>'+t.FullName+'</b>'+' On '+convert(VARCHAR(20),a.CreateDate,100) as CreateBy, convert(VARCHAR(20),a.LastUpdateDate,100) as LastUpdateDate, a.ClassroomGUID, Title, convert(VARCHAR(20),a.DueDate,100) as DueDate " +
                             "FROM Teacher t LEFT JOIN Teacher_Classroom tc ON t.TeacherGUID =tc.TeacherGUID " +
                             "LEFT JOIN Classroom cl ON tc.ClassroomGUID = cl.ClassroomGUID " +
                             "LEFT JOIN Assessment a ON cl.ClassroomGUID = a.ClassroomGUID " +
                             "LEFT JOIN Submission s ON a.AssessmentGUID = s.AssessmentGUID " +
-                            "WHERE a.ClassroomGUID=@ClassroomGUID AND DueDate < @CurrentDateTime AND DueDate != '1/1/1900 12:00:00 AM' AND s.Status='Pending'";
+                            "LEFT JOIN Student st ON cl.ClassroomGUID = st.ClassroomGUID " +
+                            "WHERE a.ClassroomGUID=@ClassroomGUID AND DueDate < @CurrentDateTime AND DueDate != '1/1/1900 12:00:00 AM' AND s.Status='Pending' AND s.StudentGUID=@UserGUID AND st.StudentGUID=s.StudentGUID AND a.TeacherGUID=t.TeacherGUID";
                     }
                 }
                 else {
@@ -150,7 +153,7 @@ namespace KPMAMS
                         "FROM Teacher t LEFT JOIN Teacher_Classroom tc ON t.TeacherGUID =tc.TeacherGUID " +
                         "LEFT JOIN Classroom cl ON tc.ClassroomGUID = cl.ClassroomGUID " +
                         "LEFT JOIN Assessment a ON cl.ClassroomGUID = a.ClassroomGUID " +
-                        "WHERE a.ClassroomGUID=@ClassroomGUID AND a.TeacherGUID = @UserGUID";
+                        "WHERE a.ClassroomGUID=@ClassroomGUID AND a.TeacherGUID = @UserGUID AND a.TeacherGUID=t.TeacherGUID";
                 }
 
                 SqlCommand cmd = new SqlCommand(strSelect, con);
@@ -158,7 +161,7 @@ namespace KPMAMS
                 cmd.Parameters.AddWithValue("@CurrentDateTime", DateTime.Now);
                 cmd.Parameters.AddWithValue("@UserGUID", Session["userGUID"]);
                 SqlDataReader dr = cmd.ExecuteReader();
-                lbClass.Text = "Class : " + dlClassList.SelectedItem;
+                lbClass.Text = "Class(FORM) : " + dlClassList.SelectedItem;
                 dt.Load(dr);
                 con.Close();
 

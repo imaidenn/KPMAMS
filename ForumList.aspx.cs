@@ -119,12 +119,12 @@ namespace KPMAMS
                     "LEFT JOIN Classroom cl ON tc.ClassroomGUID = cl.ClassroomGUID " +
                     "LEFT JOIN Forum f ON cl.ClassroomGUID = f.ClassroomGUID " +
                     "LEFT JOIN Comment c ON f.ForumGUID = c.ForumGUID " +
-                    "WHERE f.ClassroomGUID=@ClassroomGUID " +
+                    "WHERE f.ClassroomGUID=@ClassroomGUID AND AuthorGUID=t.TeacherGUID " +
                     "GROUP BY f.ForumGUID, f.CreateDate, f.LastUpdateDate, f.ClassroomGUID, Title, FullName";
                 SqlCommand cmd = new SqlCommand(strSelect, con);
                 cmd.Parameters.AddWithValue("@ClassroomGUID", dlClassList.SelectedValue);
                 SqlDataReader dr = cmd.ExecuteReader();
-                lbClass.Text = "Class : " + dlClassList.SelectedItem;
+                lbClass.Text = "Class(FORM) : " + dlClassList.SelectedItem;
                 dt.Load(dr);
                 con.Close();
 

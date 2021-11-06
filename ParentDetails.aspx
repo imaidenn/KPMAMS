@@ -39,7 +39,7 @@
                                     <asp:BoundField DataField="StudentUserID" HeaderText="Student ID" ReadOnly="True" SortExpression="StudentUserID" />
                                     <asp:BoundField DataField="fullName" HeaderText="Student Name" ReadOnly="True" SortExpression="fullName"/>
                                     <asp:BoundField DataField="ICNo" HeaderText="IcNo" ReadOnly="True" SortExpression="ICNo"/>
-                                    <asp:BoundField DataField="Class" HeaderText="Class" ReadOnly="True" SortExpression="Class" />
+                                    <asp:BoundField DataField="Class(FORM)" HeaderText="Class" ReadOnly="True" SortExpression="Class" />
                                 </Columns>
                             </asp:GridView>
                         </div>

@@ -21,12 +21,12 @@
                              <div class="col-md-8">
                                  <label>Forum Title:</label>
                                  <div class="form-group">
-                                    <asp:TextBox class="form-control" ID="tbTitle" runat="server" placeholder="Title of forum" AutoCompleteType="Disabled"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="tbTitle" runat="server" placeholder="Title of forum" AutoCompleteType="Disabled" MaxLength="500"></asp:TextBox>
                                      <asp:RequiredFieldValidator runat="server" id="reqTitle" controltovalidate="tbTitle" errormessage="Please enter title" ForeColor="Red" />
                                  </div>
                              </div>
                              <div class="col-md-4">
-                                 <label>Class:</label>
+                                 <label>Class(FORM):</label>
                                  <div class="from-group">
                                     <asp:DropDownList class="form-control" ID="dlClassList" runat="server">
                                     </asp:DropDownList>
@@ -37,7 +37,7 @@
                              <div class="col-md-12">
                                  <label>Forum Content:</label>
                                  <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="tbContent" runat="server" TextMode="MultiLine" placeholder="Contents of forum" Rows="5" AutoCompleteType="Disabled"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="tbContent" runat="server" TextMode="MultiLine" placeholder="Contents of forum" Rows="5" AutoCompleteType="Disabled" MaxLength="1000"></asp:TextBox>
                                      <asp:RequiredFieldValidator runat="server" id="reqContent" controltovalidate="tbContent" errormessage="Please enter content" ForeColor="Red" />
                                  </div>
                                  <div class="from-group">

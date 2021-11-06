@@ -22,9 +22,9 @@ DROP TABLE [dbo].[Announcement];
 
 CREATE TABLE [dbo].[Announcement] (
     [AnnouncementGUID]  UNIQUEIDENTIFIER NOT NULL,
-    [AnnouncementTitle] NVARCHAR (100)   NOT NULL,
-    [AnnouncementDesc]  NVARCHAR (500)   NOT NULL,
-    [Status]            NVARCHAR (50)    NOT NULL,
+    [AnnouncementTitle] NVARCHAR (500)   NOT NULL,
+    [AnnouncementDesc]  NVARCHAR (1000)   NOT NULL,
+    [Status]            NVARCHAR (10)    NOT NULL,
     [CreateDate]        DATETIME         NOT NULL,
     [LastUpdateDate]    DATETIME         NOT NULL,
     PRIMARY KEY CLUSTERED ([AnnouncementGUID] ASC)
@@ -172,8 +172,8 @@ CREATE TABLE [dbo].[Assessment] (
     [AssessmentGUID] UNIQUEIDENTIFIER NOT NULL,
     [ClassroomGUID]  UNIQUEIDENTIFIER NOT NULL,
     [TeacherGUID]    UNIQUEIDENTIFIER NOT NULL,
-    [Title]          NVARCHAR (50)    NOT NULL,
-    [Description]    NVARCHAR (100)   NOT NULL,
+    [Title]          NVARCHAR (500)    NOT NULL,
+    [Description]    NVARCHAR (1000)   NOT NULL,
     [CreateDate]     DATETIME         NOT NULL,
     [LastUpdateDate] DATETIME         NOT NULL,
     [DueDate]        DATETIME         NULL,
@@ -189,7 +189,7 @@ CREATE TABLE [dbo].[Submission] (
     [Status]         NVARCHAR (10)    NOT NULL,
     [File]           NVARCHAR (100)   NULL,
     [LastUpdateDate] DATETIME         NOT NULL,
-    PRIMARY KEY CLUSTERED ([AssessmentGUID] ASC),
+    PRIMARY KEY CLUSTERED ([SubmissionGUID] ASC),
     CONSTRAINT [FK_Submission_Assessment] FOREIGN KEY ([AssessmentGUID]) REFERENCES [dbo].[Assessment] ([AssessmentGUID])
 );
 
