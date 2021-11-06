@@ -252,6 +252,7 @@
     <Content Include="CreateForum.aspx" />
     <Content Include="Admin\CreateTimeTable.aspx" />
     <Content Include="CreateMeeting.aspx" />
+    <Content Include="CreateQuiz.aspx" />
     <Content Include="css\app.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\ForumDetails.css" />
@@ -270,6 +271,10 @@
     <Content Include="MeetingInfo.aspx" />
     <Content Include="MeetingList.aspx" />
     <Content Include="ParentDetails.aspx" />
+    <Content Include="QuestionEntry.aspx" />
+    <Content Include="QuizAnswer.aspx" />
+    <Content Include="QuizListing.aspx" />
+    <Content Include="QuizScore.aspx" />
     <Content Include="ResetPassword.aspx" />
     <Content Include="Scripts\date.format.js" />
     <Content Include="Admin\admin.Master" />
@@ -863,6 +868,13 @@
     <Compile Include="Admin\CreateTimeTable.aspx.designer.cs">
       <DependentUpon>CreateTimeTable.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CreateQuiz.aspx.cs">
+      <DependentUpon>CreateQuiz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateQuiz.aspx.designer.cs">
+      <DependentUpon>CreateQuiz.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -935,6 +947,34 @@
       <DependentUpon>ParentDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionEntry.aspx.cs">
+      <DependentUpon>QuestionEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionEntry.aspx.designer.cs">
+      <DependentUpon>QuestionEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuizAnswer.aspx.cs">
+      <DependentUpon>QuizAnswer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuizAnswer.aspx.designer.cs">
+      <DependentUpon>QuizAnswer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuizListing.aspx.cs">
+      <DependentUpon>QuizListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuizListing.aspx.designer.cs">
+      <DependentUpon>QuizListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuizScore.aspx.cs">
+      <DependentUpon>QuizScore.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuizScore.aspx.designer.cs">
+      <DependentUpon>QuizScore.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

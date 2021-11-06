@@ -55,8 +55,8 @@ namespace KPMAMS
                         int TotalClass = int.Parse(row["TotalClass"].ToString());
                         int TotalAttend = int.Parse(row["TotalAttend"].ToString());
 
-                        int percent = (TotalAttend / TotalClass) * 100;
-                        double radialPercent = Math.Round(double.Parse((percent / 5).ToString())) * 5;
+                        double percent = Math.Round(((double)TotalAttend / (double)TotalClass) * 100);
+                        double radialPercent = Math.Round(percent / 5) * 5;
                         string strRadialType = "";
 
                         if(radialPercent <= 25)

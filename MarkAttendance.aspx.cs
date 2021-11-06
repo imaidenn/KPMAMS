@@ -34,8 +34,53 @@ namespace KPMAMS
 
         protected void ddlMeeting_SelectedIndexChanged(object sender, EventArgs e)
         {
+            GridView1.DataSource = null;
+            GridView1.DataBind();
+            GetClass();
             GetClassStudent();
+        }
 
+        protected void GetClass()
+        {
+            try
+            {
+                string teacherGUID = Session["userGUID"].ToString();
+                DateTime date = DateTime.Parse(txtDate.Text);
+                DataTable dt = new DataTable();
+
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(strCon);
+
+                con.Open();
+
+                String strSelect = "SELECT b.Class,b.ClassroomGUID,c.SubjectTeach,d.SubjectName,a.MeetingTopic FROM Meeting a " +
+                    "LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID LEFT JOIN Teacher_Classroom c ON b.ClassroomGUID = c.ClassroomGUID LEFT JOIN Subject d ON c.SubjectTeach = d.SubjectGUID " +
+                    "WHERE a.TeacherGUID = @TeacherGUID AND MeetingGUID = @MeetingGUID";
+
+
+                SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+                cmdSelect.Parameters.AddWithValue("@TeacherGUID", teacherGUID);
+                cmdSelect.Parameters.AddWithValue("@MeetingGUID", ddlMeeting.SelectedValue);
+
+                SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
+
+                dt.Load(dtrSelect);
+
+                con.Close();
+
+                if (dt.Rows.Count != 0)
+                {
+                    classroomGUID = dt.Rows[0][1].ToString();
+                    subjectGUID = dt.Rows[0][2].ToString();
+                    
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                DisplayAlertMsg(ex.Message);
+            }
         }
 
         protected void GetMeeting()
@@ -51,7 +96,7 @@ namespace KPMAMS
 
                 con.Open();
 
-                String strSelect = "SELECT a.MeetingGUID,b.Class,b.ClassroomGUID,c.SubjectTeach,d.SubjectName FROM Meeting a " +
+                String strSelect = "SELECT a.MeetingGUID,b.Class,b.ClassroomGUID,c.SubjectTeach,d.SubjectName,a.MeetingTopic FROM Meeting a " +
                     "LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID LEFT JOIN Teacher_Classroom c ON b.ClassroomGUID = c.ClassroomGUID LEFT JOIN Subject d ON c.SubjectTeach = d.SubjectGUID " +
                     "WHERE a.TeacherGUID = @TeacherGUID AND CONVERT(date,a.MeetingTime) = @Date";
 
@@ -70,7 +115,7 @@ namespace KPMAMS
                 {
                     classroomGUID = dt.Rows[0][2].ToString();
                     subjectGUID = dt.Rows[0][3].ToString();
-                    ddlMeeting.DataTextField = dt.Columns["Class"].ToString();
+                    ddlMeeting.DataTextField = dt.Columns["MeetingTopic"].ToString();
                     ddlMeeting.DataValueField = dt.Columns["MeetingGUID"].ToString();
                     ddlMeeting.DataSource = dt;
                     ddlMeeting.DataBind();
@@ -182,7 +227,7 @@ namespace KPMAMS
 
                 con.Close();
 
-                if (dt.Rows.Count != 0)
+                  if (dt.Rows.Count != 0)
                 {
                     lblInfo.Visible = true;
                     GridView1.DataSource = dt;

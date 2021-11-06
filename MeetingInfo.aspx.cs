@@ -18,6 +18,11 @@ namespace KPMAMS
             {
                 Session["MeetingGUID"] = Request.QueryString["MeetingGUID"];
                 GetMeetingListing();
+                if(IsPostBack != false)
+                {
+                    //Request.Form["meeting_number"] = txtMeetingID.Text;
+                    //string meetingpass = txtMeetingPass.Text;
+                }
             }
 
         }

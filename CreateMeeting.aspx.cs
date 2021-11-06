@@ -144,7 +144,7 @@ namespace KPMAMS
                 return false;
             }
 
-            if (int.Parse(txtDuration.Text) < 10)
+            if (int.Parse(txtDuration.Text) < 5)
             {
                 DisplayAlertMsg("Duration of the meeting cannot less than 10 minutes");
                 return false;

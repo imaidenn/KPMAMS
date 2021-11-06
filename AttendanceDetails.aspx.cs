@@ -38,10 +38,7 @@ namespace KPMAMS
                 SqlConnection con = new SqlConnection(strCon);
 
                 con.Open();
-                String strSelect = "SELECT a.AttendanceGUID,a.Status, " +
-                    "CAST(a.StartTime AS Date) AS Date,CAST(c.MeetingTime AS time) AS StartTime,CAST(DATEADD(MINUTE, c.Duration, c.MeetingTime) AS Time) AS EndTime " +
-                    "FROM Attendance a LEFT JOIN Student b ON b.StudentGUID = a.StudentGUID LEFT JOIN Meeting c ON c.ClassroomGUID = b.ClassroomGUID  " +
-                    "WHERE a.StudentGUID = @StudentGUID AND a.SubjectGUID = @SubjectGUID";
+                String strSelect = "SELECT AttendanceGUID,Status,cast(StartTime as date) AS Date FROM Attendance WHERE StudentGUID = @StudentGUID AND SubjectGUID = @SubjectGUID";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                 cmdSelect.Parameters.AddWithValue("@StudentGUID", userGUID);
@@ -91,10 +88,8 @@ namespace KPMAMS
                 SqlConnection con = new SqlConnection(strCon);
 
                 con.Open();
-                String strSelect = "SELECT COUNT(a.AttendanceGUID) AS TotalClass,SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) AS TotalAttend,b.SubjectName " +
-                    "FROM Attendance a LEFT JOIN Subject b ON a.SubjectGUID = b.SubjectGUID " +
-                    "WHERE a.StudentGUID = @StudentGUID AND a.SubjectGUID = @SubjectGUID " +
-                    "GROUP BY a.AttendanceGUID,b.SubjectName";
+                String strSelect = "SELECT COUNT(a.AttendanceGUID) AS TotalClass,SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) AS TotalAttend,a.SubjectGUID,b.SubjectName FROM Attendance a LEFT JOIN Subject b ON a.SubjectGUID = b.SubjectGUID WHERE a.StudentGUID = @StudentGUID " +
+                    "GROUP BY b.SubjectName,a.SubjectGUID";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                 cmdSelect.Parameters.AddWithValue("@StudentGUID", userGUID);
@@ -108,7 +103,7 @@ namespace KPMAMS
 
                 if (dt.Rows.Count != 0)
                 {
-                    lblSubject.Text = dt.Rows[0][2].ToString();
+                    lblSubject.Text = dt.Rows[0][3].ToString();
                     lblTotalClass.Text = "Total Class Meeting = " + dt.Rows[0][0].ToString();
                     lblTotalAttend.Text = "Total Class Attended = " + dt.Rows[0][1].ToString();
                 }
