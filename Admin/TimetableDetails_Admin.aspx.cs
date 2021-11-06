@@ -57,7 +57,7 @@ namespace KPMAMS.Admin
                 {
                     dt.Load(dr);
                     con.Close();
-                    lbClass.Text = "Class: "+dt.Rows[0][0].ToString();
+                    lbClass.Text = "Class(FORM): "+dt.Rows[0][0].ToString();
                     lbCreateDate.Text = "Create on "+ dt.Rows[0][1].ToString();
                     lbLastUpdateDate.Text = "Last update " + dt.Rows[0][2].ToString();
                 }
@@ -109,14 +109,13 @@ namespace KPMAMS.Admin
 
                 GvTimetable.DataSource = dt;
                 GvTimetable.DataBind();
-                GridRow(GvTimetable);
+                //GridRow(GvTimetable);
 
             }
             catch (SqlException ex)
             {
 
-                string msg = ex.Message;
-                Response.Write(msg);
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
 
@@ -148,6 +147,7 @@ namespace KPMAMS.Admin
                 "WHEN SubjectName ='Bahasa Cina' THEN 'BC' " +
                 "END AS Shortform " +
                 "FROM Subject";
+
             SqlCommand cmd = new SqlCommand(strSelect, con);
             
             SqlDataReader dr = cmd.ExecuteReader();
@@ -200,29 +200,29 @@ namespace KPMAMS.Admin
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                ;
             }
         }
 
-        public void GridRow(GridView gridView)
-        {
-            for (int rowIndex = gridView.Rows.Count - 1; rowIndex >= 0; rowIndex--)
-            {
-                for (int i = 0; i < gridView.Rows[rowIndex].Cells.Count - 1; i++)
-                {
-                    TableCell oldTc = gridView.Rows[rowIndex].Cells[i];
-                    TableCell tc = gridView.Rows[rowIndex].Cells[i + 1];
-                    if (oldTc.Text == tc.Text)
-                    {
-                        oldTc.ColumnSpan = tc.ColumnSpan < 2 ? 2 : tc.ColumnSpan + 1;
-                        tc.Visible = false;
-                        oldTc.HorizontalAlign = HorizontalAlign.Center;
+        //public void GridRow(GridView gridView)
+        //{
+        //    for (int rowIndex = gridView.Rows.Count - 1; rowIndex >= 0; rowIndex--)
+        //    {
+        //        for (int i = 0; i < gridView.Rows[rowIndex].Cells.Count - 1; i++)
+        //        {
+        //            TableCell oldTc = gridView.Rows[rowIndex].Cells[i];
+        //            TableCell tc = gridView.Rows[rowIndex].Cells[i + 1];
+        //            if (oldTc.Text == tc.Text)
+        //            {
+        //                oldTc.ColumnSpan = tc.ColumnSpan < 2 ? 2 : tc.ColumnSpan + 1;
+        //                tc.Visible = false;
+        //                oldTc.HorizontalAlign = HorizontalAlign.Center;
 
-                    }
+        //            }
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         private void BindGridView()
         {
@@ -236,7 +236,7 @@ namespace KPMAMS.Admin
                 }
 
                 String strSelect =
-                    "SELECT SubjectGUID, SubjectName, " +
+                    "SELECT a.SubjectGUID, SubjectName, " +
                     "CASE " +
                     "WHEN SubjectName ='English' THEN 'BI' " +
                     "WHEN SubjectName ='Kimia' THEN 'KM' " +
@@ -256,7 +256,10 @@ namespace KPMAMS.Admin
                     "WHEN SubjectName ='Pendidikan Islam' THEN 'PI' " +
                     "WHEN SubjectName ='Bahasa Cina' THEN 'BC' " +
                     "END AS Shortform " +
-                    "FROM Subject";
+                    "FROM Subject a LEFT JOIN Subject_Classroom b ON a.SubjectGUID=b.SubjectGUID " +
+                    "LEFT JOIN Classroom c ON b.ClassroomGUID = c.ClassroomGUID " +
+                    "LEFT JOIN Timetable d ON c.TimetableGUID=d.TimetableGUID " +
+                    "WHERE d.TimetableGUID='" + Request.QueryString["TimetableGUID"] + "'";
                 SqlCommand cmd = new SqlCommand(strSelect, con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 dt.Load(dr);
@@ -283,9 +286,7 @@ namespace KPMAMS.Admin
             }
             catch (SqlException ex)
             {
-
-                string msg = ex.Message;
-                Response.Write(msg);
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
     }

@@ -50,7 +50,7 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="TimetableGUID" HeaderText="Timetable GUID" ReadOnly="True" SortExpression="TimetableGUID" Visible="false"/>
-                        <asp:BoundField DataField="Class" HeaderText="Class" ReadOnly="True" SortExpression="Class"/>
+                        <asp:BoundField DataField="Class" HeaderText="Class(FORM)" ReadOnly="True" SortExpression="Class"/>
                         <asp:BoundField DataField="CreateDate" HeaderText="Create Date" ReadOnly="True" SortExpression="CreateDate" />
                         <asp:BoundField DataField="LastUpdateDate" HeaderText="Last Update Date" ReadOnly="True" SortExpression="LastUpdateDate" />
                     </Columns>

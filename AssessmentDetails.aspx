@@ -34,7 +34,6 @@
                     clear: 'fa fa-trash',
                     close: 'fa fa-remove'
                 },
-                minDate: moment()
             });
         });
     </script>
@@ -51,7 +50,7 @@
                                 <h3>
                                     <asp:Label ID="lbTitle" runat="server" Text=" "></asp:Label>
                                 </h3>
-                                <asp:TextBox ID="tbTitle" style="font-size: 1.17em; font-weight: bolder" class="form-control" runat="server" Visible="false" placeholder="Title of forum" ></asp:TextBox>
+                                <asp:TextBox ID="tbTitle" style="font-size: 1.17em; font-weight: bolder" class="form-control" runat="server" Visible="false" placeholder="Title of assessment" AutoCompleteType="Disabled" MaxLength="500"></asp:TextBox>
                             </div>
                             <div class="col-md-2">
                                 <div class="dropdown">
@@ -76,7 +75,7 @@
                             <div class="col-md-3">
                             <asp:Label ID="lbDueDate" runat="server" Text=" "></asp:Label>
                                 <div id="divDueDate" class="datetimepicker input-group date mb-lg" runat="server">
-                                    <asp:TextBox ID="tbDueDate" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tbDueDate" CssClass="form-control" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
                                     <span class="input-group-addon">
                                         <asp:LinkButton ID="lbClear" runat="server" OnClick="lbClear_Click"><i class="fas fa-minus-circle"></i></asp:LinkButton>
                                     </span>
@@ -93,7 +92,7 @@
                                 <p>
                                     <asp:Label ID="lbDesc" runat="server" Text=" "></asp:Label>
                                     <div class="form-group">
-                                        <asp:TextBox ID="tbDesc" CssClass="form-control" Visible="false" TextMode="MultiLine" placeholder="Contents of forum" Rows="5" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="tbDesc" CssClass="form-control" Visible="false" TextMode="MultiLine" placeholder="Description of aseessment" Rows="5" runat="server" AutoCompleteType="Disabled" MaxLength="1000"></asp:TextBox>
                                     </div>
                                 </p>
                                 <div id="divFile" style="margin-top:30px;" runat="server">

@@ -241,6 +241,11 @@
                             <span class="item-text">Assessment</span>
                         </a>
                         </li>
+                        <li id="Li1" runat="server" >
+                        <a href="TimetableList.aspx" title="timetable" data-toggle="" class="no-submenu">
+                            <span class="item-text">Timetable</span>
+                        </a>
+                        </li>
                         <li >
                         <a href="CreateMeeting.aspx" title="CreateMeeting" data-toggle="" class="no-submenu">
                             <span class="item-text">Create Meeting</span>

@@ -28,7 +28,7 @@
                                 <h3>
                                     <asp:Label ID="lbTitle" runat="server" Text=" "></asp:Label>
                                 </h3>
-                                <asp:TextBox ID="tbTitle" style="font-size: 1.17em; font-weight: bolder" class="form-control" runat="server" Visible="false" placeholder="Title of forum" ></asp:TextBox>
+                                <asp:TextBox ID="tbTitle" style="font-size: 1.17em; font-weight: bolder" class="form-control" runat="server" Visible="false" placeholder="Title of forum" AutoCompleteType="Disabled" MaxLength="500"></asp:TextBox>
                             </div>
                             <div class="col-md-2">
                                 <div class="dropdown">
@@ -61,7 +61,8 @@
                                 <p>
                                     <asp:Label ID="lbContent" runat="server" Text=" "></asp:Label>
                                     <div class="form-group">
-                                        <asp:TextBox ID="tbContent" CssClass="form-control" Visible="false" TextMode="MultiLine" placeholder="Contents of forum" Rows="5" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="tbContent" CssClass="form-control" Visible="false" TextMode="MultiLine" placeholder="Contents of forum" Rows="5" runat="server" AutoCompleteType="Disabled" MaxLength="1000"></asp:TextBox>
+   
                                     </div>
                                 </p>
                             </div>
@@ -119,7 +120,7 @@
                                 </h3>
                                 <asp:GridView class="table table-striped table-bordered table-responsive-md" ID="GvCommentList" runat="server" AutoGenerateColumns="False" DataKeyNames="CommentGUID" OnRowDataBound="GvCommentList_RowDataBound" OnRowCommand="GvCommentList_RowCommand" >
                                     <Columns>
-                                        <asp:BoundField DataField="CommentGUID" HeaderText="Comment GUID" ReadOnly="True" SortExpression="CommentGUID" Visible="true"/>
+                                        <asp:BoundField DataField="CommentGUID" HeaderText="Comment GUID" ReadOnly="True" SortExpression="CreateDate" Visible="true"/>
                                         <asp:TemplateField HeaderText="Comment">
                                             <ItemTemplate>
                                                 <div class="container-fluid">
@@ -151,7 +152,7 @@
                             <div class="col-md-12">
                                 <label>Comment :</label>
                                 <div class="form-group">
-                                <asp:TextBox CssClass="form-control" ID="tbComment" runat="server" TextMode="MultiLine" placeholder="Contents of comment" Rows="5"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="tbComment" runat="server" TextMode="MultiLine" placeholder="Contents of comment" Rows="5" AutoCompleteType="Disabled" MaxLength="1000"></asp:TextBox>
                                 </div>
                                 <div class="from-group">
                                     <asp:Button ID="btnSubmit" runat="server" class="btn btn-block btn-info btn-lg" Text="Post comment" OnClick="btnSubmit_Click"/>

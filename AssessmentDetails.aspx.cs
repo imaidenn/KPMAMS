@@ -63,7 +63,7 @@ namespace KPMAMS
                     "FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID =b.ClassroomGUID " +
                     "LEFT JOIN Assessment c ON b.ClassroomGUID = c.ClassroomGUID " +
                     "LEFT JOIN Submission d ON c.AssessmentGUID = d.AssessmentGUID " +
-                    "WHERE d.AssessmentGUID=@AssessmentGUID AND d.Status='Submitted' AND DueDate > d.LastUpdateDate";
+                    "WHERE d.AssessmentGUID=@AssessmentGUID AND d.Status='Submitted' AND DueDate > d.LastUpdateDate AND a.StudentGUID=d.StudentGUID";
                 } else if (dlStatus.SelectedValue == "lateSubmit") {
 
                     strSelect =
@@ -71,7 +71,7 @@ namespace KPMAMS
                     "FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID =b.ClassroomGUID " +
                     "LEFT JOIN Assessment c ON b.ClassroomGUID = c.ClassroomGUID " +
                     "LEFT JOIN Submission d ON c.AssessmentGUID = d.AssessmentGUID " +
-                    "WHERE d.AssessmentGUID=@AssessmentGUID AND d.Status='Submitted' AND DueDate < d.LastUpdateDate";
+                    "WHERE d.AssessmentGUID=@AssessmentGUID AND d.Status='Submitted' AND DueDate < d.LastUpdateDate AND a.StudentGUID=d.StudentGUID";
                 }
                 else 
                 {
@@ -83,7 +83,7 @@ namespace KPMAMS
                     "FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID =b.ClassroomGUID " +
                     "LEFT JOIN Assessment c ON b.ClassroomGUID = c.ClassroomGUID " +
                     "LEFT JOIN Submission d ON c.AssessmentGUID = d.AssessmentGUID " +
-                    "WHERE d.AssessmentGUID=@AssessmentGUID AND d.Status='Pending'";
+                    "WHERE d.AssessmentGUID=@AssessmentGUID AND d.Status='Pending' AND a.StudentGUID=d.StudentGUID";
                 }
                 
                 SqlCommand cmd = new SqlCommand(strSelect, con);
@@ -109,8 +109,7 @@ namespace KPMAMS
             }
             catch (SqlException ex)
             {
-                string msg = ex.Message;
-                Response.Write(msg);
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
 
@@ -162,7 +161,7 @@ namespace KPMAMS
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
 
@@ -246,7 +245,7 @@ namespace KPMAMS
                         }
                         divDueDate.Visible = false;
                         lbCreated.Text = "Created " + totalTime + " " + dateFormat + " ago";
-                        lbClass.Text = "Class " + dt.Rows[0][2].ToString();
+                        lbClass.Text = "Class(FORM) " + dt.Rows[0][2].ToString();
                         lbCreatedDate.Text = "Created " + dt.Rows[0][5].ToString();
                         lbLastUpdate.Text = "Last Update " + dt.Rows[0][6].ToString();
                         lastUpdateDate = Convert.ToDateTime(dt.Rows[0][6].ToString());
@@ -287,7 +286,7 @@ namespace KPMAMS
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
 
@@ -374,7 +373,7 @@ namespace KPMAMS
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
 
@@ -466,11 +465,11 @@ namespace KPMAMS
                         }
 
                     }
-                    Page.Response.Redirect(Page.Request.Url.ToString(), false);
+                    Response.Redirect(Request.RawUrl, false);
                 }
                 catch (Exception ex)
                 {
-                    Response.Write(ex.Message);
+                    Response.Write("<script>alert('" + ex.Message + "');</script>");
                 }
             }
             else
@@ -481,7 +480,7 @@ namespace KPMAMS
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect(Page.Request.Url.ToString(), false);
+            Response.Redirect(Request.RawUrl, false);
         }
 
         protected void lbClearFile_Click(object sender, EventArgs e)
@@ -558,7 +557,7 @@ namespace KPMAMS
                         }
                     }
 
-                    Page.Response.Redirect(Page.Request.Url.ToString(), false);
+                    Response.Redirect(Request.RawUrl, false);
                 }
                 catch (Exception ex)
                 {

@@ -42,33 +42,20 @@ namespace KPMAMS
                     con.Open();
                 }
 
-                string strSelect = "";
 
-                if (Session["role"].Equals("Parent"))
-                {
-                    strSelect =
-                    "SELECT TimetableGUID " +
-                    "FROM Parent a LEFT JOIN Student b ON a.ParentGUID=b.ParentGUID " +
-                    "LEFT JOIN Classroom c ON b.ClassroomGUID=c.ClassroomGUID " +
-                    "WHERE a.ParentGUID='" + Session["userGUID"] + "'";
-                }
-                else {
-
-                    strSelect =
+                String strSelect =
                         "SELECT TimetableGUID " +
                         "FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID=b.ClassroomGUID " +
                         "WHERE StudentGUID='" + Session["userGUID"] + "'";
-
-                }
 
                 SqlCommand cmd = new SqlCommand(strSelect, con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 dt.Load(dr);
                 con.Close();
 
-                if (dt.Rows.Count == 0)
+                if (dt.Rows[0][0].ToString() == "")
                 {
-                    Response.Write("<script language='javascript'>alert('Error:No timetable found');</script>");
+                    Response.Write("<script language='javascript'>alert('Error:No timetable yet');</script>");
                     Server.Transfer("Homepage.aspx", true);
                 }
                 else
@@ -78,8 +65,7 @@ namespace KPMAMS
             }
             catch (SqlException ex)
             {
-                string msg = ex.Message;
-                Response.Write(msg);
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
 
@@ -136,8 +122,7 @@ namespace KPMAMS
             catch (SqlException ex)
             {
 
-                string msg = ex.Message;
-                Response.Write(msg);
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
 

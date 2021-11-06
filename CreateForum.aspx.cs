@@ -75,14 +75,14 @@ namespace KPMAMS
                 else
                 {
                     Response.Write("<script language='javascript'>alert('Error:No Class, can't create forum');</script>");
-                    Server.Transfer("ForumList.aspx", true);
+                    Server.Transfer("ForumList.aspx", false) ;
                 }
                 con.Close();
 
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                
             }
         }
         protected void createForum()
@@ -110,11 +110,11 @@ namespace KPMAMS
                 cmd.Dispose();
                 con.Close();
                 Response.Write("<script language='javascript'>alert('Forum created successfully');</script>");
-                Server.Transfer("ForumList.aspx", true);
+                Server.Transfer("ForumList.aspx", false);
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                
             }
         }
     }

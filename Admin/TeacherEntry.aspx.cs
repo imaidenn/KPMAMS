@@ -261,12 +261,9 @@ namespace KPMAMS.Admin
                 return false;
             }
 
-            int n;
-            bool isNumeric = int.TryParse(txtICno.Text, out n);
-
-            if (!isNumeric)
+            if (!(checkNo(txtICno.Text)))
             {
-                DisplayAlertMsg("Please enter only number of the IC");
+                DisplayAlertMsg("Plases enter number only IC");
                 return false;
             }
 
@@ -285,7 +282,7 @@ namespace KPMAMS.Admin
                 return false;
             }
 
-            if (txtICno.Text.Length > 12)
+            if (txtICno.Text.Length != 12)
             {
                 DisplayAlertMsg("Invalid IC number");
                 return false;
@@ -299,6 +296,17 @@ namespace KPMAMS.Admin
 
 
             return true;
+        }
+
+        private bool checkNo(string number)
+        {
+            string pattern = @"^[0-9]+$";
+            Match m = Regex.Match(number, pattern, RegexOptions.IgnoreCase);
+            if (m.Success)
+            {
+                return true;
+            }
+            return false;
         }
 
         protected void btnSave_Click(object sender, EventArgs e)

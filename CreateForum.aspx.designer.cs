@@ -24,6 +24,15 @@ namespace KPMAMS
         protected global::System.Web.UI.WebControls.TextBox tbTitle;
 
         /// <summary>
+        /// reqTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqTitle;
+
+        /// <summary>
         /// dlClassList control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace KPMAMS
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbContent;
+
+        /// <summary>
+        /// reqContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqContent;
 
         /// <summary>
         /// btnCreate control.

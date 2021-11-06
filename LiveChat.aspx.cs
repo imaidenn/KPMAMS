@@ -69,7 +69,7 @@ namespace KPMAMS
                 con.Close();
             } catch (Exception ex) {
 
-                Response.Write(ex.Message);
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
 
             }
         }

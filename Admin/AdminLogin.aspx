@@ -20,7 +20,7 @@
    <div style=" height: 100%; padding: 50px 0; background-color: #2c3037" class="row row-table">
       <div class="col-lg-3 col-md-6 col-sm-8 col-xs-12 align-middle">
          <!-- START panel-->
-         <div data-toggle="play-animation" data-play="fadeInUp" data-offset="0" class="panel panel-default panel-flat anim-running anim-done" style="">
+         <div data-toggle="play-animation" data-play="fadeInUp" data-offset="0" class="panel panel-default panel-flat anim-running anim-done" style="" >
             <p class="text-center mb-lg">
                <br>
                <a href="#">
@@ -35,7 +35,7 @@
                   <%--<div class="text-right mb-sm"><a href="Register.aspx" class="text-muted">Need to Signup?</a>
                   </div>--%>
                   <div class="form-group has-feedback">
-                      <asp:TextBox runat="server" ID="txtUserID" placeholder="User ID" CssClass="form-control" ></asp:TextBox>
+                      <asp:TextBox runat="server" ID="txtUserID" placeholder="User ID" CssClass="form-control" AutoCompleteType="Disabled" ></asp:TextBox>
                      <span class="fa fa-user form-control-feedback text-muted"></span>
                   </div>
                   <div class="form-group has-feedback">
