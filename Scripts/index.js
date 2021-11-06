@@ -31,12 +31,13 @@ function websdkready() {
   //  testTool.detectOS() +
   //  "#" +
   //  testTool.getBrowserInfo();
-  document.getElementById("meeting_number").value = testTool.getCookie(
-    "meeting_number"
-  );
-  document.getElementById("meeting_pwd").value = testTool.getCookie(
-    "meeting_pwd"
-  );
+
+  //document.getElementById("meeting_number").value = testTool.getCookie(
+  //  "meeting_number"
+  //);
+  //document.getElementById("meeting_pwd").value = testTool.getCookie(
+  //  "meeting_pwd"
+  //);
   if (testTool.getCookie("meeting_lang"))
     document.getElementById("meeting_lang").value = testTool.getCookie(
       "meeting_lang"
@@ -54,6 +55,8 @@ function websdkready() {
         document.getElementById("meeting_lang").value
       );
     });
+
+
   // copy zoom invite link to mn, autofill mn and pwd.
   document
     .getElementById("meeting_number")
@@ -96,8 +99,8 @@ function websdkready() {
       }
 
       
-      testTool.setCookie("meeting_number", meetingConfig.mn);
-      testTool.setCookie("meeting_pwd", meetingConfig.pwd);
+      //testTool.setCookie("meeting_number", meetingConfig.mn);
+      //testTool.setCookie("meeting_pwd", meetingConfig.pwd);
 
       var signature = ZoomMtg.generateSignature({
         meetingNumber: meetingConfig.mn,

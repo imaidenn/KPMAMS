@@ -126,7 +126,7 @@ namespace KPMAMS
             {
                 string AttendanceGUID = Session["AttendanceGUID"].ToString();
                 GetMeetingDetails();
-                double time = meetDuration * 0.8;
+                double time = meetDuration * 0.5;
 
                 string studentGUID = Session["userGUID"].ToString();
                 DateTime endTime = DateTime.Now;
@@ -166,7 +166,6 @@ namespace KPMAMS
 
                 Session["MeetingGUID"] = null;
                 Session["AttendanceGUID"] = null;
-                Response.Redirect("Homepage.aspx");
             }
             catch (Exception ex)
             {
@@ -180,7 +179,7 @@ namespace KPMAMS
             {
                 string AttendanceGUID = Session["AttendanceGUID"].ToString();
                 GetMeetingDetails();
-                double time = meetDuration * 0.8;
+                double time = meetDuration * 0.5;
 
                 string studentGUID = Session["userGUID"].ToString();
                 DateTime endTime = DateTime.Now;

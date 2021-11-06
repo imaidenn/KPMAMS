@@ -71,6 +71,7 @@ namespace KPMAMS
                     uploadResult.Visible = false;
                     livechat.Visible = false;
                     markAttendance.Visible = false;
+
                 }
                 else if (role == "Teacher")
                 {

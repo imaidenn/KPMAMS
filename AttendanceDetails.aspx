@@ -26,9 +26,9 @@
                         <asp:GridView ID="GridView1" runat="server" AllowSorting="True" CssClass="table table-bordered table-condensed table-responsive table-hover" Enabled="False" Width="100%" AutoGenerateColumns="False" DataKeyNames="AttendanceGUID" > 
                                 <Columns>
                                     <asp:BoundField DataField="AttendanceGUID" HeaderText="AttendanceGUID" ReadOnly="True" SortExpression="AttendanceGUID" Visible="false"/>
-                                    <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" />
-                                    <asp:BoundField DataField="StartTime" HeaderText="StartTime" SortExpression="StartTime" />
-                                    <asp:BoundField DataField="EndTime" HeaderText="EndTime" SortExpression="EndTime" />
+                                    <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" DataFormatString="{0:dd/MM/yyyy}"/>
+<%--                                    <asp:BoundField DataField="StartTime" HeaderText="StartTime" SortExpression="StartTime" />
+                                    <asp:BoundField DataField="EndTime" HeaderText="EndTime" SortExpression="EndTime" />--%>
                                     <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
 
                                 </Columns>

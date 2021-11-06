@@ -8,6 +8,7 @@
          display:none;
      }
 </style>
+
     <div class="panel panel-default">
                <div class="panel-heading">Meeting Info</div>
                <div class="panel-body">
@@ -72,8 +73,8 @@
                       <input type="text" name="meeting_lang" id="meeting_lang" value="en-US" Class="hidden">
 
                         <input type="text" name="display_name" id="display_name" value="2.0.1#CDN" maxlength="100" placeholder="Name" required="" Class="hidden">
-                        <input type="text" name="meeting_number" id="meeting_number" value="" maxlength="200" style="width:150px" placeholder="Meeting Number"  required=""  >
-                        <input type="text" name="meeting_pwd" id="meeting_pwd" value="" style="width:150px" maxlength="32" placeholder="Meeting Password" >
+                        <input type="text" name="meeting_number" id="meeting_number" value="<%= this.txtMeetingID.Text %>" maxlength="200" style="width:150px" placeholder="Meeting Number"  required="" Class="hidden">
+                        <input type="text" name="meeting_pwd" id="meeting_pwd" value="<%= this.txtMeetingPass.Text %>" style="width:150px" maxlength="32" placeholder="Meeting Password" Class="hidden">
                         <input type="text" name="meeting_email" id="meeting_email" value="" style="width:150px" maxlength="32" placeholder="Email option" Class="hidden" >
                   </form>
                </div>
@@ -90,12 +91,11 @@
 	<script src="https://source.zoom.us/2.0.1/lib/vendor/redux.min.js"></script>
 	<script src="https://source.zoom.us/2.0.1/lib/vendor/redux-thunk.min.js"></script>
 	<script src="https://source.zoom.us/2.0.1/lib/vendor/lodash.min.js"></script>
-<%--            <script src="https://source.zoom.us/2.0.1/lib/vendor/jquery.min.js"></script>--%>
+            <script src="https://source.zoom.us/2.0.1/lib/vendor/jquery.min.js"></script>
 
-	
-	<!-- For Client View -->
-	<!-- For Client View -->
-	<script src="https://source.zoom.us/zoom-meeting-2.0.1.min.js"></script>
+
+    <!-- For Component View -->
+<%--    <script src="https://source.zoom.us/2.0.1/zoom-meeting-embedded-2.0.1.min.js"></script>--%>
 
         <script>
 
@@ -105,11 +105,11 @@
         var role = document.getElementById('<%=txtRole.ClientID%>').value;
         var name = document.getElementById('<%=txtName.ClientID%>').value;
 
-            $('#meeting_number').val(meetingnum);
-            $('#meeting_pwd').val(meetingpwd);
-/*            document.getElementById('meeting_number').value = meetingnum;*/
-/*            document.getElementById('meeting_pwd').value = meetingpwd;*/
+            document.getElementById('meeting_number').value = meetingnum;
+            document.getElementById('meeting_pwd').value = meetingpwd;
             document.getElementById('meeting_role').value = role;
             document.getElementById('display_name').value = name;
         </script>
+    	<!-- For Client View -->
+	<script src="https://source.zoom.us/zoom-meeting-2.0.1.min.js"></script>
 </asp:Content>
