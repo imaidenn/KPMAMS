@@ -68,7 +68,6 @@
                                             <asp:Button ID="btnDelete" runat="server" class="btn btn-link" Text="Delete" CommandName="DeleteTeacher" CommandArgument="<%# Container.DataItemIndex %>" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <%--<asp:CommandField ShowDeleteButton="True" ButtonType="Button" />--%>
                                 </Columns>
                             </asp:GridView>
                             <asp:Label id="lblNoData" runat="server" Visible="false" Text="No data to Display"></asp:Label>
