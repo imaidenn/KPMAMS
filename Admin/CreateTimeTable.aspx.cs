@@ -139,11 +139,6 @@ namespace KPMAMS
                     if (Request.QueryString["TimetableGUID"] == null)
                         dlClassList.Items.Insert(0, new ListItem("---Please Select---", String.Empty));
                 }
-                else
-                {
-                    Response.Write("<script language='javascript'>alert('Error:No Class, can't create forum');</script>");
-                    Server.Transfer("AssessmentList.aspx", true);
-                }
                 con.Close();
 
             }
@@ -495,7 +490,7 @@ namespace KPMAMS
             }
             catch (Exception ex)
             {
-                Response.Write("<script language='javascript'>alert('Timetable update successfully');</script>");
+                Response.Write("<script language='javascript'>alert('Timetable updated successfully');</script>");
                 Server.Transfer("TimetableList_Admin.aspx", true);
             }
         }
