@@ -112,7 +112,7 @@
                          <asp:Label ID="lblTotalQty" runat="server"></asp:Label>
                      </div>
                      <div class="panel-body">
-                        <asp:GridView ID="GridView1" runat="server" AllowSorting="True" CssClass="table table-bordered table-condensed table-responsive table-hover" AllowPaging="true" PageSize="10" Enabled="False" Width="100%" AutoGenerateColumns="False" DataKeyNames="TeacherGUID" OnRowDataBound="GridView1_RowDataBound" > 
+                        <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive table-hover" Enabled="False" Width="100%" AutoGenerateColumns="False" DataKeyNames="TeacherGUID" OnRowDataBound="GridView1_RowDataBound" > 
                                 <Columns>
                                     <asp:TemplateField>
                                         <ItemTemplate>

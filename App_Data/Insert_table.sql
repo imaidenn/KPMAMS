@@ -1,5 +1,6 @@
-DROP TABLE [dbo].[Question];
 DROP TABLE [dbo].[Quiz];
+DROP TABLE [dbo].[Question];
+DROP TABLE [dbo].[Answer];
 DROP TABLE [dbo].[Exam];
 DROP TABLE [dbo].[Result];
 DROP TABLE [dbo].[ResetPassword];
@@ -269,9 +270,13 @@ CREATE TABLE [dbo].[Exam] (
 
 CREATE TABLE [dbo].[Quiz] (
     [QuizGUID]       UNIQUEIDENTIFIER NOT NULL,
+    [CreateBy]       UNIQUEIDENTIFIER NOT NULL,
+    [Class]          UNIQUEIDENTIFIER NOT NULL,
+    [QuizTitle]      NVARCHAR (500)   NOT NULL,
     [CreateDate]     DATETIME         NOT NULL,
     [LastUpdateDate] DATETIME         NOT NULL,
-    PRIMARY KEY CLUSTERED ([QuizGUID] ASC)
+    PRIMARY KEY CLUSTERED ([QuizGUID] ASC),
+    CONSTRAINT [FK_Quiz_Teacher] FOREIGN KEY ([CreateBy]) REFERENCES [dbo].[Teacher] ([TeacherGUID])
 );
 
 CREATE TABLE [dbo].[Question] (
@@ -287,4 +292,17 @@ CREATE TABLE [dbo].[Question] (
     [LastUpdateDate] DATETIME         NOT NULL,
     PRIMARY KEY CLUSTERED ([QuestionGUID] ASC),
     CONSTRAINT [FK_Question_Quiz] FOREIGN KEY ([QuizGUID]) REFERENCES [dbo].[Quiz] ([QuizGUID])
+);
+
+CREATE TABLE [dbo].[Answer] (
+    [AnswerGUID]   UNIQUEIDENTIFIER NOT NULL,
+    [QuizGUID]     UNIQUEIDENTIFIER NOT NULL,
+    [StudentGUID]  UNIQUEIDENTIFIER NOT NULL,
+    [TotalCorrect] INT              NOT NULL,
+    [TotalScore]   INT              NOT NULL,
+    [TimeUse]      INT              NOT NULL,
+    [CreateDate]   DATETIME         NOT NULL,
+    PRIMARY KEY CLUSTERED ([AnswerGUID] ASC),
+    CONSTRAINT [FK_Answer_Student] FOREIGN KEY ([StudentGUID]) REFERENCES [dbo].[Student] ([StudentGUID]),
+    CONSTRAINT [FK_Answer_Quiz] FOREIGN KEY ([QuizGUID]) REFERENCES [dbo].[Quiz] ([QuizGUID])
 );

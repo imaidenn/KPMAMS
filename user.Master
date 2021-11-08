@@ -62,51 +62,7 @@
             <ul class="nav navbar-nav navbar-right">
                
                <!-- END Messages menu (dropdown-list)-->
-               <!-- START Alert menu-->
-               <li class="dropdown dropdown-list">
-                  <a href="javascript:void(0);" data-toggle="dropdown" data-play="bounceIn" class="dropdown-toggle">
-                     <em class="fa fa-bell"></em>
-                     <div class="label label-info">120</div>
-                  </a>
-                  <!-- START Dropdown menu-->
-                  <ul class="dropdown-menu">
-                     <li>
-                        <!-- START list group-->
-                        <div class="list-group">
-                           <!-- list item-->
-                           <a href="javascript:void(0);" class="list-group-item">
-                              <div class="media">
-                                 <div class="pull-left">
-                                    <em class="fa fa-envelope-o fa-2x text-success"></em>
-                                 </div>
-                                 <div class="media-body clearfix">
-                                    <div class="media-heading">Unread messages</div>
-                                    <p class="m0">
-                                       <small>You have 10 unread messages</small>
-                                    </p>
-                                 </div>
-                              </div>
-                           </a>
-                           <!-- list item-->
-                           <a href="javascript:void(0);" class="list-group-item">
-                              <div class="media">
-                                 <div class="pull-left">
-                                    <em class="fa fa-cog fa-2x"></em>
-                                 </div>
-                                 <div class="media-body clearfix">
-                                    <div class="media-heading">New settings</div>
-                                    <p class="m0">
-                                       <small>There are new settings available</small>
-                                    </p>
-                                 </div>
-                              </div>
-                           </a>
-                            </div>
-                     </li>
-                  </ul>
-                  <!-- END Dropdown menu-->
-               </li>
-               <!-- END Alert menu-->
+
                <!-- START User menu-->
                <li class="dropdown">
                   <a href="javascript:void(0);" data-toggle="dropdown" data-play="bounceIn" class="dropdown-toggle">

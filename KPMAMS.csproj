@@ -237,6 +237,7 @@
     <Content Include="Admin\ResultListing.aspx" />
     <Content Include="Admin\StudentEntry.aspx" />
     <Content Include="Admin\StudentListing.aspx" />
+    <Content Include="Admin\TeacherClassroom.aspx" />
     <Content Include="Admin\TeacherEntry.aspx" />
     <Content Include="Admin\TeacherListing.aspx" />
     <Content Include="Admin\TimetableDetails_Admin.aspx" />
@@ -777,6 +778,13 @@
     </Compile>
     <Compile Include="Admin\StudentListing.aspx.designer.cs">
       <DependentUpon>StudentListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TeacherClassroom.aspx.cs">
+      <DependentUpon>TeacherClassroom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TeacherClassroom.aspx.designer.cs">
+      <DependentUpon>TeacherClassroom.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\TeacherEntry.aspx.cs">
       <DependentUpon>TeacherEntry.aspx</DependentUpon>
