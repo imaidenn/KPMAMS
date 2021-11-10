@@ -49,6 +49,10 @@ namespace KPMAMS
         {
             try
             {
+                if (lbDueDate.Text == "No due date") {
+                    dlStatus.Items.FindByText("Submitted(On time)").Attributes.Add("style", "display:none");
+                    dlStatus.Items.FindByText("Late submit").Attributes.Add("style", "display:none");
+                }
                 DataTable dt = new DataTable();
                 SqlConnection con = new SqlConnection(strcon);
                 if (con.State == ConnectionState.Closed)
@@ -56,7 +60,7 @@ namespace KPMAMS
                     con.Open();
                 }
                 String strSelect = "";
-                if (dlStatus.SelectedValue == "Submitted")
+                if (dlStatus.SelectedValue == "submitOnTime")
                 {
                     strSelect =
                     "SELECT SubmissionGUID, a.FullName, convert(VARCHAR(20),d.LastUpdateDate,100) As LastUpdateDate,d.[File] " +
@@ -64,7 +68,16 @@ namespace KPMAMS
                     "LEFT JOIN Assessment c ON b.ClassroomGUID = c.ClassroomGUID " +
                     "LEFT JOIN Submission d ON c.AssessmentGUID = d.AssessmentGUID " +
                     "WHERE d.AssessmentGUID=@AssessmentGUID AND d.Status='Submitted' AND DueDate > d.LastUpdateDate AND a.StudentGUID=d.StudentGUID";
-                } else if (dlStatus.SelectedValue == "lateSubmit") {
+                }else if (dlStatus.SelectedValue == "Submitted")
+                {
+                    strSelect =
+                   "SELECT SubmissionGUID, a.FullName, convert(VARCHAR(20),d.LastUpdateDate,100) As LastUpdateDate,d.[File] " +
+                   "FROM Student a LEFT JOIN Classroom b ON a.ClassroomGUID =b.ClassroomGUID " +
+                   "LEFT JOIN Assessment c ON b.ClassroomGUID = c.ClassroomGUID " +
+                   "LEFT JOIN Submission d ON c.AssessmentGUID = d.AssessmentGUID " +
+                   "WHERE d.AssessmentGUID=@AssessmentGUID AND d.Status='Submitted' AND a.StudentGUID=d.StudentGUID";
+                } 
+                else if (dlStatus.SelectedValue == "lateSubmit") {
 
                     strSelect =
                     "SELECT SubmissionGUID, a.FullName, convert(VARCHAR(20),d.LastUpdateDate,100) As LastUpdateDate,d.[File] " +
@@ -200,6 +213,8 @@ namespace KPMAMS
                         if (dt.Rows[0][8].ToString() == "Jan  1 1900 12:00AM")
                         {
                             lbDueDate.Text = "No due date";
+                            dlStatus.Items.FindByText("Submitted(On time)").Attributes.Add("style", "display:none");
+                            dlStatus.Items.FindByText("Late submit").Attributes.Add("style", "display:none");
                         }
                         else {
                             lbDueDate.Text = "Due date is " + dt.Rows[0][8].ToString() ;
@@ -373,7 +388,7 @@ namespace KPMAMS
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                
             }
         }
 
@@ -465,11 +480,12 @@ namespace KPMAMS
                         }
 
                     }
-                    Response.Redirect(Request.RawUrl, false);
+                    Response.Write("<script language='javascript'>alert('Assessment updated successfully');</script>");
+                    Server.Transfer(Request.RawUrl, false);
                 }
                 catch (Exception ex)
                 {
-                    Response.Write("<script>alert('" + ex.Message + "');</script>");
+                    
                 }
             }
             else
@@ -557,11 +573,12 @@ namespace KPMAMS
                         }
                     }
 
-                    Response.Redirect(Request.RawUrl, false);
+                    Response.Write("<script language='javascript'>alert('File submited');</script>");
+                    Server.Transfer(Request.RawUrl, false);
                 }
                 catch (Exception ex)
                 {
-                    Response.Write(ex.Message);
+                    
                 }
             }
             else
