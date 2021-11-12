@@ -110,7 +110,10 @@ namespace KPMAMS
                 if (tbDueDate.Text != "")
                 {
                     /*DateTime dueDate = DateTime.ParseExact(tbDueDate.Text, "dd/MM/yyyy HH:mm tt", CultureInfo.InvariantCulture);*/
-                    DateTime dueDate = DateTime.Parse(tbDueDate.Text);
+                    //DateTime dueDate = DateTime.Parse(tbDueDate.Text);
+                    CultureInfo culture = new CultureInfo("ms-MY");
+                    DateTime dueDate = Convert.ToDateTime(tbDueDate.Text, culture);
+
                     cmd.Parameters.AddWithValue("@DueDate", dueDate);
                 }
                 else {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -448,7 +449,8 @@ namespace KPMAMS
 
                     if (tbDueDate.Text != "")
                     {
-                        DateTime dueDate = DateTime.Parse(tbDueDate.Text.Trim());
+                        CultureInfo culture = new CultureInfo("ms-MY");
+                        DateTime dueDate = Convert.ToDateTime(tbDueDate.Text, culture);
                         cmd.Parameters.AddWithValue("@DueDate", dueDate);
                     }
                     else

@@ -342,11 +342,11 @@ namespace KPMAMS
 
                             cmd.ExecuteNonQuery();
                             con.Close();
-                            Response.Redirect(Request.RawUrl, false);
+                            Response.Write("<script language='javascript'>alert('Comment updated successfully');</script>");
+                            Server.Transfer(Request.RawUrl, false);
                         }
                         catch (Exception ex)
                         {
-                            Response.Write("<script>alert('" + ex.Message + "');</script>");
                         }
                     }
                     else

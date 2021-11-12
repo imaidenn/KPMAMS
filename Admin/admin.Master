@@ -175,7 +175,7 @@
                   <!-- START button group-->
                   <div class="btn-group text-center">
                      <button id="btnLogout2" type="button" data-toggle="tooltip" data-title="Logout" class="btn btn-link" data-original-title="" title="" runat="server" onserverclick="btnLogout_Click">
-                        <em class="fa fa-sign-out text-muted"></em>
+                        <i class="fas fa-sign-out-alt"></i>
                      </button>
                   </div>
                   <!-- END button group-->

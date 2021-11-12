@@ -139,7 +139,7 @@
                                                 </div>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Date">
                                             <ItemTemplate>
                                             <asp:Button ID="btnModifyComment" runat="server" class="btn btn-block btn-info btn-sm" Text="Modify" CommandName="selectModify" CommandArgument="<%# Container.DataItemIndex %>" />
                                             </ItemTemplate>
