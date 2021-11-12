@@ -204,11 +204,11 @@ namespace KPMAMS
 
                     cmd.ExecuteNonQuery();
                     con.Close();
-                    Response.Redirect(Request.RawUrl, false);
+                    Response.Write("<script language='javascript'>alert('Forum updated successfully');</script>");
+                    Server.Transfer(Request.RawUrl, false);
                 }
                 catch (Exception ex)
                 {
-                    Response.Write("<script>alert('" + ex.Message + "');</script>");
                 }
             }
             else
@@ -316,11 +316,11 @@ namespace KPMAMS
                         cmd.Dispose();
                         con.Close();
                         tbComment.Text = "";
-                        Response.Redirect(Request.RawUrl, false);
+                        Response.Write("<script language='javascript'>alert('Comment posted successfully');</script>");
+                        Server.Transfer(Request.RawUrl, false);
                     }
                     catch (Exception ex)
                     {
-                        Response.Write("<script>alert('" + ex.Message + "');</script>");
                     }
                 }
                 else
@@ -449,7 +449,8 @@ namespace KPMAMS
                 cmd.ExecuteNonQuery();
                 con.Close();
 
-                Response.Redirect(Request.RawUrl, false);
+                Response.Write("<script language='javascript'>alert('Comment deleted successfully');</script>");
+                Server.Transfer(Request.RawUrl, false);
 
             }
             catch (Exception ex)

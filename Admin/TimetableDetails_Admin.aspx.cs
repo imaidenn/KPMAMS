@@ -200,7 +200,7 @@ namespace KPMAMS.Admin
             }
             catch (Exception ex)
             {
-                ;
+                
             }
         }
 

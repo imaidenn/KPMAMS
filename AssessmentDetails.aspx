@@ -205,6 +205,7 @@
                                 <asp:DropDownList class="form-control" ID="dlStatus" runat="server" Visible="true" OnSelectedIndexChanged ="dlStatus_SelectedIndexChanged" AutoPostBack="true" >
                                     <asp:ListItem Text="Submitted" Value="Submitted" />
                                     <asp:ListItem Text="Pending" Value="Pending" />
+                                    <asp:ListItem Text="Submitted(On time)" Value="submitOnTime" />
                                     <asp:ListItem Text="Late submit" Value="lateSubmit" />
                                 </asp:DropDownList>
                             </div>
