@@ -60,10 +60,10 @@
             //send button click
             $('#btnSendMsg').click(function () {
 
-                $textBox = $div.find("#txtMessage");
+                var msg = $("#txtMessage").val();
 
-                var msg = $textBox.val();
                 if (msg.length > 0) {
+
                     var userName = $('#hdUserName').val();
 
                     var date = GetCurrentDateTime(new Date());
