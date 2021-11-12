@@ -136,6 +136,24 @@ namespace KPMAMS
             int i;
             bool isNumeric = int.TryParse(txtDuration.Text, out i);
 
+            if(txtTopic.Text == "")
+            {
+                DisplayAlertMsg("Please enter Meeting Topic");
+                return false;
+            }
+
+            if (txtDuration.Text == "")
+            {
+                DisplayAlertMsg("Please enter Meeting Duration");
+                return false;
+            }
+
+            if (txtStart.Text == "")
+            {
+                DisplayAlertMsg("Please enter Meeting Date");
+                return false;
+            }
+
             if (!isNumeric)
             {
                 DisplayAlertMsg("Please enter only digit for the duration minute");

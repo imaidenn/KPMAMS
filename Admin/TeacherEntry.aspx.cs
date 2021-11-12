@@ -254,6 +254,16 @@ namespace KPMAMS.Admin
                 DisplayAlertMsg("Please enter the Teacher phone number");
                 return false;
             }
+            if (txtBirthDate.Text.Equals(""))
+            {
+                DisplayAlertMsg("Please enter the Teacher birth date");
+                return false;
+            }
+            if (txtJoinDate.Text.Equals(""))
+            {
+                DisplayAlertMsg("Please enter the Teacher join date");
+                return false;
+            }
 
             if (!(imageUpload.HasFile))
             {
@@ -276,7 +286,7 @@ namespace KPMAMS.Admin
                 return false;
             }
 
-            if(txtPhoneNo.Text.Length > 11)
+            if (!(ValidatephoneNo(txtPhoneNo.Text)))
             {
                 DisplayAlertMsg("Invalid phone number");
                 return false;
@@ -380,6 +390,22 @@ namespace KPMAMS.Admin
                 DisplayAlertMsg("Please enter the Teacher phone number");
                 return false;
             }
+            if (txtBirthDate.Text.Equals(""))
+            {
+                DisplayAlertMsg("Please enter the Teacher birth date");
+                return false;
+            }
+            if (txtJoinDate.Text.Equals(""))
+            {
+                DisplayAlertMsg("Please enter the Teacher join date");
+                return false;
+            }
+
+            if (!(checkNo(txtICno.Text)))
+            {
+                DisplayAlertMsg("Plases enter number only IC");
+                return false;
+            }
 
             int i;
             bool isNumeric2 = int.TryParse(txtPhoneNo.Text, out i);
@@ -390,7 +416,7 @@ namespace KPMAMS.Admin
                 return false;
             }
 
-            if (txtPhoneNo.Text.Length > 11)
+            if (!(ValidatephoneNo(txtPhoneNo.Text)))
             {
                 DisplayAlertMsg("Invalid phone number");
                 return false;
@@ -403,6 +429,17 @@ namespace KPMAMS.Admin
             }
 
             return true;
+        }
+
+        private bool ValidatephoneNo(string phoneNo)
+        {
+            string pattern = @"^(\+?6?01)[02-46-9]-*[0-9]{7}$|^(\+?6?01)[1]-*[0-9]{8}$";
+            Match m = Regex.Match(phoneNo, pattern, RegexOptions.IgnoreCase);
+            if (m.Success)
+            {
+                return true;
+            }
+            return false;
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)

@@ -234,7 +234,7 @@ namespace KPMAMS.Admin
 
                 con.Open();
 
-                String strSelect = "SELECT * FROM Teacher_Classroom WHERE TeacherGUID = @TeacherGUID AND ClassroomGUID = @ClassroomGUID AND SubjectTeach = @SubjectGUID";
+                String strSelect = "SELECT * FROM Teacher_Classroom WHERE TeacherGUID = @TeacherGUID AND ClassroomGUID = @ClassroomGUID";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                 cmdSelect.Parameters.AddWithValue("@TeacherGUID", TeacherGUID);

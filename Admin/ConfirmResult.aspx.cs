@@ -56,7 +56,7 @@ namespace KPMAMS.Admin
 
                 String strSelect = "SELECT e.Class,b.FullName,a.ExamSemester,c.FullName,a.CreateDate,a.LastUpdateDate,a.SubjectGUID,d.SubjectName,a.Mark,a.Grade,SUM(Mark) over (partition by a.StudentGUID) as TotalMark, a.ExamGUID " +
                     "FROM Exam a LEFT JOIN Student b ON a.StudentGUID = b.StudentGUID LEFT JOIN Teacher c ON a.CreatedBy = c.TeacherGUID LEFT JOIN Subject d ON a.SubjectGUID = d.SubjectGUID LEFT JOIN Classroom e ON b.ClassroomGUID = e.ClassroomGUID " +
-                    "WHERE a.StudentGUID = @StudentGUID AND a.ExamSemester = @ExamSemester";
+                    "WHERE a.StudentGUID = @StudentGUID AND a.ExamSemester = @ExamSemester AND a.Status <> 'Rejected'";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                 cmdSelect.Parameters.AddWithValue("@StudentGUID", StudentGUID);
@@ -108,7 +108,7 @@ namespace KPMAMS.Admin
 
                     con.Open();
 
-                    String strUpdate = "UPDATE Exam SET LastUpdateDate = @LastUpdateDate, Status = 'Confirmed' WHERE StudentGUID='" + Guid.Parse(Request.QueryString["StudentGUID"]) + "' AND ExamSemester = '" + Request.QueryString["ExamSemester"] + "'";
+                    String strUpdate = "UPDATE Exam SET LastUpdateDate = @LastUpdateDate, Status = 'Confirmed' WHERE StudentGUID='" + Guid.Parse(Request.QueryString["StudentGUID"]) + "' AND ExamSemester = '" + Request.QueryString["ExamSemester"] + "' AND Status = 'Pending'";
 
                     SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
 
@@ -138,7 +138,7 @@ namespace KPMAMS.Admin
 
                 con.Open();
 
-                String strUpdate = "UPDATE Exam SET LastUpdateDate = @LastUpdateDate, Status = 'Rejected' WHERE StudentGUID='" + Guid.Parse(Request.QueryString["StudentGUID"]) + "' AND ExamSemester = '" + Request.QueryString["ExamSemester"] + "'";
+                String strUpdate = "UPDATE Exam SET LastUpdateDate = @LastUpdateDate, Status = 'Rejected' WHERE StudentGUID='" + Guid.Parse(Request.QueryString["StudentGUID"]) + "' AND ExamSemester = '" + Request.QueryString["ExamSemester"] + "' AND Status = 'Pending'";
 
                 SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
 

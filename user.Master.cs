@@ -34,7 +34,6 @@ namespace KPMAMS
                         forum.Visible = false;
                         assessment.Visible = false;
                         uploadResult.Visible = false;
-                        livechat.Visible = false;
                         markAttendance.Visible = false;
                         meeting.Visible = false;
                         meetinglist.Visible = false;

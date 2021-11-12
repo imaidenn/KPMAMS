@@ -68,6 +68,10 @@ namespace KPMAMS
                     ddlSem.DataBind();
                     GetResult(studentguid);
                 }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Current still have no result to show');window.location ='Homepage.aspx';", true);
+                }
 
 
 

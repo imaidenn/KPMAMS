@@ -368,6 +368,16 @@ namespace KPMAMS.Admin
                 DisplayAlertMsg("Please enter the student phone number");
                 return false;
             }
+            if (txtBirthDate.Text.Equals(""))
+            {
+                DisplayAlertMsg("Please enter the student birth date");
+                return false;
+            }
+            if (txtJoinDate.Text.Equals(""))
+            {
+                DisplayAlertMsg("Please enter the student join date");
+                return false;
+            }
 
             if (!(imageUpload.HasFile))
             {
@@ -518,6 +528,32 @@ namespace KPMAMS.Admin
                 DisplayAlertMsg("Please enter the student phone number");
                 return false;
             }
+            if (txtBirthDate.Text.Equals(""))
+            {
+                DisplayAlertMsg("Please enter the student birth date");
+                return false;
+            }
+            if (txtJoinDate.Text.Equals(""))
+            {
+                DisplayAlertMsg("Please enter the student join date");
+                return false;
+            }
+
+            int i;
+            bool isNumeric2 = int.TryParse(txtPhoneNo.Text, out i);
+
+            if (!isNumeric2)
+            {
+                DisplayAlertMsg("Please enter only number of the phone");
+                return false;
+            }
+
+            if (!(ValidatephoneNo(txtPhoneNo.Text)))
+            {
+                DisplayAlertMsg("Invalid phone number");
+                return false;
+            }
+
 
             if (!(Validateemail(txtEmail.Text)))
             {

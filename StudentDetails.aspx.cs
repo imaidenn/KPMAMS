@@ -4,6 +4,8 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -122,7 +124,53 @@ namespace KPMAMS
                 return false;
             }
 
+            int i;
+            bool isNumeric2 = int.TryParse(txtPhoneNo.Text, out i);
+
+            if (!isNumeric2)
+            {
+                DisplayAlertMsg("Please enter only number of the phone");
+                return false;
+            }
+
+            if (!(ValidatephoneNo(txtPhoneNo.Text)))
+            {
+                DisplayAlertMsg("Invalid phone number");
+                return false;
+            }
+
+            if (!(Validateemail(txtEmail.Text)))
+            {
+                DisplayAlertMsg("Invalid email");
+                return false;
+            }
+
             return true;
+        }
+
+        private bool ValidatephoneNo(string phoneNo)
+        {
+            string pattern = @"^(\+?6?01)[02-46-9]-*[0-9]{7}$|^(\+?6?01)[1]-*[0-9]{8}$";
+            Match m = Regex.Match(phoneNo, pattern, RegexOptions.IgnoreCase);
+            if (m.Success)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        protected bool Validateemail(String email)
+        {
+            try
+            {
+                MailAddress address = new MailAddress(email);
+                bool IsValid = (address.Address == email);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         protected bool UpdateStudent()

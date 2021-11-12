@@ -3,6 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <!-- include libraries(jQuery, bootstrap) -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .modal-backdrop {
+  z-index: -1;
+}
+    </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -32,8 +37,9 @@
 
     <script src="/Content/SummerNote/summernote.js"></script>
     <script>
-        $(function () {
-            // Set up your summernote instance
+      $(function () {
+
+          // Set up your summernote instance
             $("#<%= txtSummernote.ClientID %>").summernote();
             focus: true
             // When the summernote instance loses focus, update the content of your <textarea>
@@ -52,7 +58,8 @@
     </script>
 
 
-    <div class="panel panel-default">
+
+  <div class="panel panel-default">
                <div class="panel-heading"><h3>Announcement Details</h3></div>
                <div class="panel-body">
                   <form method="get" action="/" class="form-horizontal">
@@ -70,7 +77,7 @@
 <div class="form-group">
     <asp:Label ID="lblSummernote" runat="server" Text="Description" AssociatedControlID="txtSummernote" CssClass="control-label col-md-2"></asp:Label>
     <br /><br />
-        <div class="col-md-15">
+        <div class="col-md-15" style="height:600px;">
             <asp:TextBox ID="txtSummernote" runat="server" TextMode="MultiLine" Rows="2" MaxLength="500"></asp:TextBox>
 
       </div>

@@ -36,7 +36,7 @@
                            <div class="col-sm-5">
                                <asp:TextBox ID="txtTopic" placeholder="Enter Class Meeting Title" runat="server" CssClass="form-control form-control-rounded"></asp:TextBox>
                            </div>
-                           <label class="col-sm-1 control-label">Meeting Duration</label>
+                           <label class="col-sm-1 control-label">Meeting Duration (Minutes)</label>
                            <div class="col-sm-5">
                                <asp:TextBox ID="txtDuration" runat="server" CssClass="form-control form-control-rounded"></asp:TextBox>
                            </div>
