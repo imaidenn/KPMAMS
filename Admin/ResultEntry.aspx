@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/admin.Master" AutoEventWireup="true" CodeBehind="ResultEntry.aspx.cs" Inherits="KPMAMS.Admin.ResultEntry" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <div class="panel panel-default">
-               <div class="panel-heading">Result</div>
+               <div class="panel-heading"><h3>Student Result</h3></div>
                <div class="panel-body">
                    <br />
                     <div class="row">

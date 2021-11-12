@@ -20,13 +20,17 @@ namespace KPMAMS
         string subjectGUID = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userGUID"] != null)
+            if (Session["userGUID"] != null || Session["MeetingGUID"] != null)
             {
                 if (Session["role"].ToString() == "Student")
                 {
                     FindMeeting();
 
                 }
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
             }
 
 
@@ -52,12 +56,13 @@ namespace KPMAMS
                 SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
 
                 dt.Load(dtrSelect);
-                string attendanceGUID = dt.Rows[0][0].ToString();
+
 
                 con.Close();
 
                 if (dt.Rows.Count != 0)
                 {
+                    string attendanceGUID = dt.Rows[0][0].ToString();
                     UpdateTime(attendanceGUID);
                 }
                 else
@@ -116,8 +121,10 @@ namespace KPMAMS
             SqlConnection con = new SqlConnection(strCon);
 
             con.Open();
-            String strSelect = "SELECT a.SubjectGUID,a.SubjectName,c.Duration FROM Subject a LEFT JOIN Teacher_Classroom b ON a.SubjectGUID = b.SubjectTeach LEFT JOIN Meeting c ON b.ClassroomGUID = c.ClassroomGUID " +
-                "WHERE c.MeetingGUID = @MeetingGUID";
+            String strSelect = "SELECT c.SubjectGUID,c.SubjectName,a.Duration FROM Meeting a " +
+                "LEFT JOIN Teacher_Classroom b ON a.TeacherGUID = b.TeacherGUID AND a.ClassroomGUID = b.ClassroomGUID " +
+                "LEFT JOIN Subject c ON b.SubjectTeach = c.SubjectGUID  " +
+                "WHERE a.MeetingGUID = @MeetingGUID";
 
             SqlCommand cmdSelect = new SqlCommand(strSelect, con);
             cmdSelect.Parameters.AddWithValue("@MeetingGUID", meetGUID);
@@ -150,8 +157,8 @@ namespace KPMAMS
 
                 con.Open();
 
-                String strInsert = "INSERT INTO Attendance(AttendanceGUID,StudentGUID,SubjectGUID,MeetingGUID,StartTime,CreateDate,LastUpdateDate) " +
-                    "VALUES (@AttendanceGUID,@StudentGUID,@SubjectGUID,@MeetingGUID,@StartTime,@CreateDate,@LastUpdateDate)";
+                String strInsert = "INSERT INTO Attendance(AttendanceGUID,StudentGUID,SubjectGUID,MeetingGUID,StartTime,TotalTime,CreateDate,LastUpdateDate) " +
+                    "VALUES (@AttendanceGUID,@StudentGUID,@SubjectGUID,@MeetingGUID,@StartTime,@Total,@CreateDate,@LastUpdateDate)";
 
                 SqlCommand cmdInsert = new SqlCommand(strInsert, con);
 
@@ -160,6 +167,7 @@ namespace KPMAMS
                 cmdInsert.Parameters.AddWithValue("@SubjectGUID", subjectGUID);
                 cmdInsert.Parameters.AddWithValue("@MeetingGUID", meetGUID);
                 cmdInsert.Parameters.AddWithValue("@StartTime", startTime);
+                cmdInsert.Parameters.AddWithValue("@Total", 0);
                 cmdInsert.Parameters.AddWithValue("@CreateDate", DateTime.Now);
                 cmdInsert.Parameters.AddWithValue("@LastUpdateDate", DateTime.Now);
 

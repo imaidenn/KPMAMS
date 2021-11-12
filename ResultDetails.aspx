@@ -23,7 +23,7 @@
 }
     </script>
     <div class="panel panel-default">
-               <div class="panel-heading">Result</div>
+               <div class="panel-heading"><h3>Result</h3></div>
                <div class="panel-body">
                    <div class="form-group">
                            <label class="col-sm-2 control-label">Exam Semester For:</label>

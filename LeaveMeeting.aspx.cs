@@ -19,39 +19,37 @@ namespace KPMAMS
             if(Session["AttendanceGUID"] != null && Session["MeetingGUID"] != null)
             {
        
-                if(Session["Role"].ToString() == "Teacher")
-                {
-                    UpdateMeeting();
-                }
-                else
+                if(Session["Role"].ToString() == "Student")
                 {
                     GetAttendance();
+                    //UpdateMeeting();
                 }
+
                 
             }
         }
 
-        protected void UpdateMeeting()
-        {
-            try
-            {
-                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-                SqlConnection con = new SqlConnection(strCon);
+        //protected void UpdateMeeting()
+        //{
+        //    try
+        //    {
+        //        string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        //        SqlConnection con = new SqlConnection(strCon);
 
-                con.Open();
-                String strUpdate = "UPDATE Meeting SET Status = 'Inactive', LastUpdateDate = @LastUpdateDate WHERE DATEDIFF(MINUTE, CONVERT(nvarchar, MeetingTime, 8) , CONVERT(nvarchar, GETDATE(), 8)) > Duration";
+        //        con.Open();
+        //        String strUpdate = "UPDATE Meeting SET Status = 'Inactive', LastUpdateDate = @LastUpdateDate WHERE DATEDIFF(MINUTE, CONVERT(nvarchar, MeetingTime, 8) , CONVERT(nvarchar, GETDATE(), 8)) > Duration";
 
-                SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
-                cmdUpdate.Parameters.AddWithValue("@LastUpdateDate", DateTime.Now);
-                SqlDataReader dtrSelect = cmdUpdate.ExecuteReader();
+        //        SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
+        //        cmdUpdate.Parameters.AddWithValue("@LastUpdateDate", DateTime.Now);
+        //        SqlDataReader dtrSelect = cmdUpdate.ExecuteReader();
 
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                DisplayAlertMsg(ex.Message);
-            }
-        }
+        //        con.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DisplayAlertMsg(ex.Message);
+        //    }
+        //}
 
         protected void GetMeetingDetails()
         {
@@ -166,6 +164,7 @@ namespace KPMAMS
 
                 Session["MeetingGUID"] = null;
                 Session["AttendanceGUID"] = null;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Back to Homepage');window.location ='Homepage.aspx';", true);
             }
             catch (Exception ex)
             {
@@ -184,7 +183,7 @@ namespace KPMAMS
                 string studentGUID = Session["userGUID"].ToString();
                 DateTime endTime = DateTime.Now;
                 TimeSpan ts = endTime - startTime;
-                double Total = ts.TotalMinutes;
+                int Total = int.Parse(ts.TotalMinutes.ToString());
                 string status = "";
 
                 if(Total > time)
@@ -219,7 +218,7 @@ namespace KPMAMS
 
                 Session["MeetingGUID"] = null;
                 Session["AttendanceGUID"] = null;
-                Response.Redirect("Homepage.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Back to Homepage');window.location ='Homepage.aspx';", true);
             }
             catch(Exception ex)
             {

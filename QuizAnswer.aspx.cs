@@ -213,7 +213,7 @@ namespace KPMAMS
                     {
                         no += 1;
                     }
-
+                    dt.Clear();
 
                 }
 
@@ -225,7 +225,9 @@ namespace KPMAMS
 
                 TimeSpan ts = (DateTime.Now).Subtract(start);
                 double duration = Double.Parse(ts.TotalSeconds.ToString());
-                int score = (correct/(correct+wrong)) * 100;
+                int total = correct + wrong;
+                double rate = (double)correct / (double)total;
+                int score = int.Parse((rate * 100).ToString());
                 Guid AnswerGUID = Guid.NewGuid();
 
                 String strInsert = "INSERT INTO Answer VALUES (@AnswerGUID,@QuizGUID,@StudentGUID,@TotalCorrect,@TotalScore,@Duration,@CreateDate)";

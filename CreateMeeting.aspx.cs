@@ -22,7 +22,11 @@ namespace KPMAMS
         {
             if (Session["userGUID"] != null)
             {
-                GetClass();
+                if(IsPostBack == false)
+                {
+                    GetClass();
+                }
+                
             }
             
         }
@@ -163,7 +167,7 @@ namespace KPMAMS
 
                 con.Open();
 
-                String strSelect = "SELECT c.SubjectName, b.Class, a.ClassroomGUID FROM Teacher_Classroom a LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID LEFT JOIN Subject c ON a.SubjectTeach = c.SubjectGUID " +
+                String strSelect = "SELECT b.Class, a.ClassroomGUID FROM Teacher_Classroom a LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID " +
                         "WHERE a.TeacherGUID = @TeacherGUID";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);

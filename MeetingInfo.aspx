@@ -10,7 +10,7 @@
 </style>
 
     <div class="panel panel-default">
-               <div class="panel-heading">Meeting Info</div>
+               <div class="panel-heading"><h3>Meeting Info</h3></div>
                <div class="panel-body">
                   <form method="get" action="/" class="form-horizontal">
                      <fieldset>
@@ -56,7 +56,7 @@
                         <div class="form-group">
                             <div style="float:right">
                                  <button type="submit" class="btn btn-primary" id="join_meeting">Join</button>
-                                <button type="submit" class="btn btn-primary" id="back" runat="server" OnClick="btnBack_Click">Back</button>
+                                <asp:Button class="btn btn-primary" ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click"/>
 <%--                                <asp:Button ID="btnDelete" runat="server" CssClass="btn-danger" Text="Delete" OnClick="btnDelete_Click" Width="100px"/>--%>
 <%--                            <asp:Button ID="btnBack" runat="server" CssClass="btn-default" Text="Back" OnClick="btnBack_Click" Width="100px"/>--%>
                             </div>

@@ -36,7 +36,7 @@ namespace KPMAMS
 
                 con.Open();
                 String strSelect = "SELECT ROW_NUMBER() OVER(ORDER BY a.TotalScore DESC) AS Position, a.AnswerGUID,b.FullName,a.TotalScore FROM Answer a LEFT JOIN Student b ON a.StudentGUID = b.StudentGUID " +
-                    "WHERE a.QuizGUID = @QuizGUID ORDER BY a.TimeUse";
+                    "WHERE a.QuizGUID = @QuizGUID ORDER BY a.TimeUse ASC";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                 cmdSelect.Parameters.AddWithValue("@QuizGUID", Request.QueryString["QuizGUID"].ToString());

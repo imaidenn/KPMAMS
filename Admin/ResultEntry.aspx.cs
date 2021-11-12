@@ -40,7 +40,7 @@ namespace KPMAMS.Admin
 
                 con.Open();
 
-                String strSelect = "SELECT a.Class, b.Class, * FROM Exam a LEFT JOIN Classroom b ON a.Class = b.ClassroomGUID LEFT JOIN Subject c ON a.SubjectGUID = c.SubjectGUID " +
+                String strSelect = "SELECT a.ClassroomGUID, b.Class, * FROM Exam a LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID LEFT JOIN Subject c ON a.SubjectGUID = c.SubjectGUID " +
                     "WHERE a.StudentGUID = @StudentGUID AND a.ExamSemester = @ExamSemester AND a.Status = 'Confirmed' ORDER BY c.SubjectName";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
@@ -135,7 +135,7 @@ namespace KPMAMS.Admin
 
                 String strSelect = "SELECT ROW_NUMBER() OVER(ORDER BY AverageMark DESC) AS PlaceInClass, a.AverageMark, a.GPA, a.CGPA, b.StudentGUID, b.ResultGUID " +
                     "FROM Result a LEFT JOIN Exam b ON b.ResultGUID = a.ResultGUID " +
-                    "WHERE b.ExamSemester = @ExamSemester AND b.Class = @ClassroomGUID " +
+                    "WHERE b.ExamSemester = @ExamSemester AND b.ClassroomGUID = @ClassroomGUID " +
                     "GROUP BY b.StudentGUID,AverageMark,b.ResultGUID,a.AverageMark,a.GPA,a.CGPA";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
@@ -162,7 +162,7 @@ namespace KPMAMS.Admin
 
                 }
 
-                GetSummary2();
+                GetClass(classGUID);
 
                 con.Close();
 
@@ -174,7 +174,44 @@ namespace KPMAMS.Admin
             }
         }
 
-        protected void GetSummary2()
+        protected void GetClass(string classguid)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(strCon);
+
+                con.Open();
+
+                string strSelect = "SELECT Form FROM Classroom WHERE ClassroomGUID = @Class";
+
+                SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+                cmdSelect.Parameters.AddWithValue("@Class", classguid);
+
+                SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
+
+                dt.Load(dtrSelect);
+
+                if (dt.Rows.Count > 0)
+                {
+                    string form = dt.Rows[0][0].ToString();
+                    GetSummary2(form);
+                }
+
+
+                con.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                DisplayAlertMsg(ex.Message);
+            }
+        }
+
+        protected void GetSummary2(string form)
         {
             try
             {
@@ -189,12 +226,13 @@ namespace KPMAMS.Admin
                 con.Open();
 
                 string strSelect = "SELECT ROW_NUMBER() OVER(ORDER BY AverageMark DESC) AS PlaceInForm,b.StudentGUID,b.ResultGUID " +
-                    "FROM Result a LEFT JOIN Exam b ON b.ResultGUID = a.ResultGUID " +
-                    "WHERE b.ExamSemester = @ExamSemester " +
+                    "FROM Result a LEFT JOIN Exam b ON b.ResultGUID = a.ResultGUID LEFT JOIN Classroom c ON b.ClassroomGUID = c.ClassroomGUID " +
+                    "WHERE b.ExamSemester = @ExamSemester AND c.Form = @form " +
                     "GROUP BY b.StudentGUID,AverageMark,b.ResultGUID";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                 cmdSelect.Parameters.AddWithValue("@ExamSemester", ExamSemester);
+                cmdSelect.Parameters.AddWithValue("@form", form);
 
                 SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
 

@@ -22,7 +22,7 @@
 </style>
 
     <div class="panel panel-default">
-               <div class="panel-heading">Student</div>
+               <div class="panel-heading"><h3>Mark Attendance</h3></div>
                <div class="panel-body">
                       <fieldset>
                         <div class="form-group">

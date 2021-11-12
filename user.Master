@@ -143,6 +143,11 @@
                            <span class="item-text">Result</span>
                         </a>
                      </li>
+                     <li id="resultParent" runat="server">
+                        <a href="ExamParent.aspx" title="ResultParent" data-toggle="" class="no-submenu">
+                           <span class="item-text">Result</span>
+                        </a>
+                     </li>
                       <li id="uploadResult" runat="server">
                         <a href="UploadResult.aspx" title="UploadResult" data-toggle="" class="no-submenu">
                            <span class="item-text">Upload Result</span>
@@ -175,6 +180,11 @@
                             <span class="item-text">Attendance</span>
                         </a>
                         </li>
+                      <li id="attendanceParent" runat="server" >
+                        <a href="AttendanceParent.aspx" title="AttendanceParent" data-toggle="" class="no-submenu">
+                            <span class="item-text">Attendance</span>
+                        </a>
+                        </li>
                   </ul>
                   <!-- END SubMenu item-->
                </li>
@@ -202,12 +212,12 @@
                             <span class="item-text">Timetable</span>
                         </a>
                         </li>
-                        <li >
+                        <li id="meeting" runat="server">
                         <a href="CreateMeeting.aspx" title="CreateMeeting" data-toggle="" class="no-submenu">
                             <span class="item-text">Create Meeting</span>
                         </a>
                         </li>
-                        <li >
+                        <li id="meetinglist" runat="server">
                         <a href="MeetingList.aspx" title="MeetingList" data-toggle="" class="no-submenu">
                             <span class="item-text">Meeting List</span>
                         </a>

@@ -67,6 +67,55 @@ namespace KPMAMS
 
         }
 
+        protected void UpdateMeeting()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(strCon);
+
+                con.Open();
+                String strSelect = "SELECT MeetingGUID,MeetingTopic,MeetingTime,Duration FROM Meeting WHERE Status = 'Active' ";
+
+                SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+                SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
+
+                dt.Load(dtrSelect);
+
+                if (dt.Rows.Count != 0)
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        DateTime now = DateTime.Now;
+                        int duration = int.Parse(dt.Rows[0][3].ToString());
+                        DateTime start = DateTime.Parse(dt.Rows[0][2].ToString());
+
+                        if (start.AddMinutes(duration) < now)
+                        {
+                            String strUpdate = "UPDATE Meeting SET Status = 'Inactive', LastUpdateDate = @LastUpdateDate WHERE MeetingGUID = @MeetingGUID";
+
+                            SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
+
+                            cmdUpdate.Parameters.AddWithValue("@MeetingGUID", dt.Rows[0][0].ToString());
+                            cmdUpdate.Parameters.AddWithValue("@LastUpdateDate", DateTime.Now);
+
+                            cmdUpdate.ExecuteNonQuery();
+
+                        }
+
+                    }
+                }
+
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                DisplayAlertMsg(ex.Message);
+            }
+        }
+
 
         protected void GetMeetingListing()
         {
@@ -74,6 +123,8 @@ namespace KPMAMS
             {
                 string usertype = Session["role"].ToString();
                 string userGUID = Session["userGUID"].ToString();
+
+                UpdateMeeting();
 
                 DataTable dt = new DataTable();
 
@@ -95,7 +146,8 @@ namespace KPMAMS
                 }
                 else if (usertype == "Student")
                 {
-                    strSelect = "SELECT MeetingGUID,MeetingTopic,MeetingTime,Duration,Class FROM Meeting a LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID WHERE a.Status = 'Active' AND CONVERT(DATE, MeetingTime) = @Date";
+                    strSelect = "SELECT MeetingGUID,MeetingTopic,MeetingTime,Duration,Class FROM Meeting a LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID " +
+                        "WHERE a.Status = 'Active' AND CONVERT(DATE, MeetingTime) = @Date AND a.ClassroomGUID = @Class";
                     SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                     cmdSelect.Parameters.AddWithValue("@Class", classGUID);
                     cmdSelect.Parameters.AddWithValue("@Date", (DateTime.Now).ToString("dd-MMM-yyyy"));
@@ -104,12 +156,8 @@ namespace KPMAMS
                     dt.Load(dtrSelect);
                 }
 
-
-                con.Close();
-
                 object totalQty;
                 totalQty = dt.Rows.Count;
-
 
                 if (dt.Rows.Count == 0)
                 {
@@ -120,11 +168,12 @@ namespace KPMAMS
                 {
                     lblNoData.Visible = false;
                     lblTotalQty.Text = "Total Meeting = " + totalQty;
-
                 }
-
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
+
+                con.Close();
+
 
             }
             catch (SqlException ex)

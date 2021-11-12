@@ -33,6 +33,14 @@ namespace KPMAMS
                         imgAvatar.Visible = false;
                         forum.Visible = false;
                         assessment.Visible = false;
+                        uploadResult.Visible = false;
+                        livechat.Visible = false;
+                        markAttendance.Visible = false;
+                        meeting.Visible = false;
+                        meetinglist.Visible = false;
+                        attendanceList.Visible = false;
+                        resultDetails.Visible = false;
+                        createQuiz.Visible = false;
                     }
                     else {
                         LoadData();
@@ -71,6 +79,9 @@ namespace KPMAMS
                     uploadResult.Visible = false;
                     livechat.Visible = false;
                     markAttendance.Visible = false;
+                    meeting.Visible = false;
+                    attendanceParent.Visible = false;
+                    resultParent.Visible = false;
 
                 }
                 else if (role == "Teacher")
@@ -78,7 +89,14 @@ namespace KPMAMS
                     strSelect = "SELECT TeacherGUID, ProfilePic FROM Teacher WHERE TeacherGUID = @userGUID";
                     resultDetails.Visible = false;
                     attendanceList.Visible = false;
+                    attendanceParent.Visible = false;
+                    resultParent.Visible = false;
                 }
+                //else if (role == "Parent")
+                //{
+                //    //strSelect = "SELECT TeacherGUID, ProfilePic FROM Teacher WHERE TeacherGUID = @userGUID";
+
+                //}
 
 
 
@@ -101,6 +119,7 @@ namespace KPMAMS
                     }
                     if (Session["role"].Equals("Parent")){
                         imgAvatar.Visible = false;
+
                     }
                     else{
                         imgAvatar.ImageUrl = image;

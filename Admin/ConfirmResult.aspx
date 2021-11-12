@@ -7,7 +7,7 @@
      }
 </style>
     <div class="panel panel-default">
-               <div class="panel-heading">Student Exam</div>
+               <div class="panel-heading"><h3>Student Exam Confirmation</h3></div>
                <div class="panel-body">
                   <form method="get" action="/" class="form-horizontal">
                      <fieldset>

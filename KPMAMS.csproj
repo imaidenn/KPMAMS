@@ -251,6 +251,7 @@
     <Content Include="AssessmentList.aspx" />
     <Content Include="AttendanceDetails.aspx" />
     <Content Include="AttendanceList.aspx" />
+    <Content Include="AttendanceParent.aspx" />
     <Content Include="CreateAssessment.aspx" />
     <Content Include="CreateForum.aspx" />
     <Content Include="Admin\CreateTimeTable.aspx" />
@@ -261,6 +262,7 @@
     <Content Include="css\ForumDetails.css" />
     <Content Include="css\LiveChat.css" />
     <Content Include="css\meeting.css" />
+    <Content Include="ExamParent.aspx" />
     <Content Include="ForgotPassword.aspx" />
     <Content Include="ForumDetails.aspx" />
     <Content Include="ForumList.aspx" />
@@ -849,6 +851,13 @@
     <Compile Include="AttendanceList.aspx.designer.cs">
       <DependentUpon>AttendanceList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AttendanceParent.aspx.cs">
+      <DependentUpon>AttendanceParent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AttendanceParent.aspx.designer.cs">
+      <DependentUpon>AttendanceParent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ChatHub.cs" />
     <Compile Include="CreateAssessment.aspx.cs">
       <DependentUpon>CreateAssessment.aspx</DependentUpon>
@@ -884,6 +893,13 @@
     </Compile>
     <Compile Include="CreateQuiz.aspx.designer.cs">
       <DependentUpon>CreateQuiz.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExamParent.aspx.cs">
+      <DependentUpon>ExamParent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExamParent.aspx.designer.cs">
+      <DependentUpon>ExamParent.aspx</DependentUpon>
     </Compile>
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>

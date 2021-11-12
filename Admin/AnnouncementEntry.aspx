@@ -53,7 +53,7 @@
 
 
     <div class="panel panel-default">
-               <div class="panel-heading">Announcement Details</div>
+               <div class="panel-heading"><h3>Announcement Details</h3></div>
                <div class="panel-body">
                   <form method="get" action="/" class="form-horizontal">
                      <fieldset>

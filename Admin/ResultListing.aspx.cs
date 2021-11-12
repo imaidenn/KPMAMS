@@ -17,9 +17,13 @@ namespace KPMAMS.Admin
             
             if (IsPostBack == false)
             {
-                GetYear();
-                GetSemester();
-                LoadData();
+                if(Session["role"] != null && Session["role"].ToString() == "Admin")
+                {
+                    GetYear();
+                    GetSemester();
+                    LoadData();
+                }
+                
             }
         }
 
@@ -91,7 +95,7 @@ namespace KPMAMS.Admin
 
                 String strSelect = "SELECT a.ExamSemester, a.StudentGUID, c.FullName, d.Class, b.AverageMark, b.GPA, b.CGPA FROM Exam a " +
                     "LEFT JOIN Result b ON a.ResultGUID = b.ResultGUID LEFT JOIN Student c ON a.StudentGUID = c.StudentGUID " +
-                    "LEFT JOIN Classroom d ON a.Class = d.ClassroomGUID WHERE a.ExamSemester = @Sem AND a.Status = 'Confirmed' " +
+                    "LEFT JOIN Classroom d ON a.ClassroomGUID = d.ClassroomGUID WHERE a.ExamSemester = @Sem AND a.Status = 'Confirmed' " +
                     "AND CASE WHEN @StudentName = '' THEN @StudentName ELSE c.FullName END LIKE '%'+@StudentName+'%' " +
                     "AND CASE WHEN @Class = '' THEN @Class ELSE d.Class END LIKE '%'+@Class+'%' " +
                     "GROUP BY a.ExamSemester,a.StudentGUID,c.FullName,d.Class,b.AverageMark,b.GPA,b.CGPA ORDER BY FullName";

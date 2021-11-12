@@ -15,10 +15,11 @@ namespace KPMAMS.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetSemester();
-            GetYear();
+            
             if (IsPostBack == false)
             {
+                GetSemester();
+                GetYear();
                 GetExamListing();
             }
         }

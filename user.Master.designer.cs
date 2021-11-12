@@ -78,6 +78,15 @@ namespace KPMAMS
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl resultDetails;
 
         /// <summary>
+        /// resultParent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl resultParent;
+
+        /// <summary>
         /// uploadResult control.
         /// </summary>
         /// <remarks>
@@ -114,6 +123,15 @@ namespace KPMAMS
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl attendanceList;
 
         /// <summary>
+        /// attendanceParent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl attendanceParent;
+
+        /// <summary>
         /// forum control.
         /// </summary>
         /// <remarks>
@@ -139,6 +157,24 @@ namespace KPMAMS
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li1;
+
+        /// <summary>
+        /// meeting control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl meeting;
+
+        /// <summary>
+        /// meetinglist control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl meetinglist;
 
         /// <summary>
         /// livechat control.

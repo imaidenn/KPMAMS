@@ -6,7 +6,7 @@
                      <div class="col-lg-12">
                         <!-- START panel-->
                         <div class="panel panel-default">
-                           <div class="panel-heading">Announcements
+                           <div class="panel-heading"><h3>Announcements</h3>
 <%--                              <a href="javascript:void(0);" data-perform="panel-dismiss" data-toggle="tooltip" title="" class="pull-right" data-original-title="Close Panel">
                                  <em class="fa fa-times"></em>
                               </a>--%>

@@ -245,13 +245,30 @@ namespace KPMAMS.Admin
 
                 dt.Load(dtrSelect);
 
-                con.Close();
+                
 
                 if (dt.Rows.Count > 0)
                 {
                     DisplayAlertMsg("One teacher only can teach a subject in a class");
                     return save;
                 }
+
+                strSelect = "SELECT * FROM Teacher_Classroom WHERE ClassroomGUID = @ClassroomGUID AND SubjectTeach = @SubjectGUID";
+                cmdSelect = new SqlCommand(strSelect, con);
+                cmdSelect.Parameters.AddWithValue("@ClassroomGUID", ClassroomGUID);
+                cmdSelect.Parameters.AddWithValue("@SubjectGUID", SubjectGUID);
+
+                dtrSelect = cmdSelect.ExecuteReader();
+
+                dt.Load(dtrSelect);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DisplayAlertMsg("Please do unassign teacher first before updating");
+                    return save;
+                }
+
+                con.Close();
 
                 if (ddlClass.SelectedValue == null)
                 {

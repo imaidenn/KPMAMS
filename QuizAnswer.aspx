@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
      <div class="panel panel-default">
-               <div class="panel-heading">Answer Quiz</div>
+               <div class="panel-heading"><h3>Answer Quiz</h3></div>
                <div class="panel-body">
                <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
                    <ItemTemplate>

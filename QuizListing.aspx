@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
     <div class="panel panel-default">
-               <div class="panel-heading">Quiz</div>
+               <div class="panel-heading"><h3>Quiz</h3></div>
                <div class="panel-body">
                    <div class="col-lg-12">
                         <fieldset>

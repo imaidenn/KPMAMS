@@ -7,7 +7,7 @@
      }
 </style>
      <div class="panel panel-default">
-               <div class="panel-heading">Teacher Classroom</div>
+               <div class="panel-heading"><h3>Teacher Classroom Assign</h3></div>
                <div class="panel-body">
                   <form method="get" action="/" class="form-horizontal">
                      <fieldset>
@@ -56,7 +56,7 @@
                      </div>
                      <div class="panel-body">
                         <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive table-hover" Width="100%" AutoGenerateColumns="False"
-                            DataKeyNames="TeacherGUID" OnRowDeleting="GridView1_RowDeleting" OnRowCommand="GridView1_RowCommand" > 
+                            DataKeyNames="TeacherGUID" OnRowCommand="GridView1_RowCommand" > 
                                 <Columns>
                                     <asp:BoundField DataField="ClassroomGUID" HeaderText="ClassroomGUID" ReadOnly="True" SortExpression="ClassroomGUID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
                                     <asp:BoundField DataField="TeacherGUID" HeaderText="TeacherGUID" ReadOnly="True" SortExpression="TeacherGUID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>

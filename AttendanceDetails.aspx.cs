@@ -16,20 +16,24 @@ namespace KPMAMS
         {
             if (IsPostBack == false)
             {
-                if (Session["userGUID"] != null)
+                if (Session["userGUID"] != null && Session["role"].ToString() == "Student")
                 {
-                    GetAttendance();
+                    GetAttendance(Session["userGUID"].ToString());
+                }
+                else if(Session["userGUID"] != null &&  Session["role"].ToString() == "Parent" && Request.QueryString["StudentGUID"] != null)
+                {
+                    GetAttendance(Request.QueryString["StudentGUID"].ToString());
                 }
 
             }
         }
 
-        protected void GetAttendance()
+        protected void GetAttendance(string studentguid)
         {
             try
             {
-                GetDetails();
-                string userGUID = Session["userGUID"].ToString();
+                GetDetails(studentguid);
+                string userGUID = studentguid;
                 string subjectGUID = Request.QueryString["SubjectGUID"].ToString();
 
                 DataTable dt = new DataTable();
@@ -75,11 +79,11 @@ namespace KPMAMS
             }
         }
 
-        protected void GetDetails()
+        protected void GetDetails(string studentguid)
         {
             try
             {
-                string userGUID = Session["userGUID"].ToString();
+                string userGUID = studentguid;
                 string subjectGUID = Request.QueryString["SubjectGUID"].ToString();
 
                 DataTable dt = new DataTable();
@@ -88,7 +92,8 @@ namespace KPMAMS
                 SqlConnection con = new SqlConnection(strCon);
 
                 con.Open();
-                String strSelect = "SELECT COUNT(a.AttendanceGUID) AS TotalClass,SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) AS TotalAttend,a.SubjectGUID,b.SubjectName FROM Attendance a LEFT JOIN Subject b ON a.SubjectGUID = b.SubjectGUID WHERE a.StudentGUID = @StudentGUID " +
+                String strSelect = "SELECT COUNT(a.AttendanceGUID) AS TotalClass,SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) AS TotalAttend,a.SubjectGUID,b.SubjectName FROM Attendance a LEFT JOIN Subject b ON a.SubjectGUID = b.SubjectGUID " +
+                    "WHERE a.StudentGUID = @StudentGUID AND b.SubjectGUID = @SubjectGUID " +
                     "GROUP BY b.SubjectName,a.SubjectGUID";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
@@ -106,6 +111,10 @@ namespace KPMAMS
                     lblSubject.Text = dt.Rows[0][3].ToString();
                     lblTotalClass.Text = "Total Class Meeting = " + dt.Rows[0][0].ToString();
                     lblTotalAttend.Text = "Total Class Attended = " + dt.Rows[0][1].ToString();
+                }
+                else
+                {
+
                 }
 
             }

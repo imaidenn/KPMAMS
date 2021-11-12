@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
         <div class="panel panel-default">
-               <div class="panel-heading">Attendance</div>
+               <div class="panel-heading"><h3>Attendance</h3></div>
                <div class="panel-body">
                      <asp:Literal ID="litAttendancePanels" runat="server"></asp:Literal>
             <%--<div class="col-xs-6">

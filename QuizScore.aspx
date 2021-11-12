@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
     <div class="panel panel-default">
-               <div class="panel-heading">Scoreboard</div>
+               <div class="panel-heading"><h3>Scoreboard</h3></div>
                <div class="panel-body">
                <asp:Repeater ID="Repeater1" runat="server" >
                    <ItemTemplate>

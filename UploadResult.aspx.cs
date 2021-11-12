@@ -18,9 +18,13 @@ namespace KPMAMS
             
             if (Page.IsPostBack == false)
             {
-                GetClass();
-                GetYear();
-                GetSemester();
+                if(Session["userGUID"] != null && Session["role"].ToString() == "Teacher")
+                {
+                    GetClass();
+                    GetYear();
+                    GetSemester();
+                }
+                
 
             }
 
@@ -92,9 +96,10 @@ namespace KPMAMS
 
                 con.Open();
 
-                String strSelect = "SELECT ClassroomGUID, Class FROM Classroom ORDER BY Class ASC";
+                String strSelect = "SELECT a.ClassroomGUID, a.Class FROM Classroom a LEFT JOIN Teacher_Classroom b ON a.ClassroomGUID = b.ClassroomGUID WHERE b.TeacherGUID = @TeacherGUID ORDER BY Class ASC";
 
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+                cmdSelect.Parameters.AddWithValue("@TeacherGUID", Session["userGUID"].ToString());
 
                 SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
 
@@ -329,7 +334,7 @@ namespace KPMAMS
                         string createBy = Session["userGUID"].ToString();
 
 
-                        String strInsert = "INSERT INTO Exam(ExamGUID,SubjectGUID,StudentGUID,Class,Mark,Grade,ExamSemester,SemText,Status,CreatedBy,CreateDate,LastUpdateDate) VALUES(@examGUID,@subjectGUID,@studentGUID,@class,@mark,@grade,@examSem,@SemText,@status,@createdby,@createDate,@lastUpdateDate)";
+                        String strInsert = "INSERT INTO Exam(ExamGUID,SubjectGUID,StudentGUID,ClassroomGUID,Mark,Grade,ExamSemester,SemText,Status,CreatedBy,CreateDate,LastUpdateDate) VALUES(@examGUID,@subjectGUID,@studentGUID,@class,@mark,@grade,@examSem,@SemText,@status,@createdby,@createDate,@lastUpdateDate)";
 
                         SqlCommand cmdInsert = new SqlCommand(strInsert, con);
 

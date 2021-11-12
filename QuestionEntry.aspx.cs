@@ -259,7 +259,7 @@ namespace KPMAMS
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("QuizListing.aspx");
+            Response.Redirect("CreateQuiz.aspx");
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)

@@ -96,8 +96,8 @@ namespace KPMAMS
 
                 con.Open();
 
-                String strSelect = "SELECT a.MeetingGUID,b.Class,b.ClassroomGUID,c.SubjectTeach,d.SubjectName,a.MeetingTopic FROM Meeting a " +
-                    "LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID LEFT JOIN Teacher_Classroom c ON b.ClassroomGUID = c.ClassroomGUID LEFT JOIN Subject d ON c.SubjectTeach = d.SubjectGUID " +
+                String strSelect = "SELECT a.MeetingGUID,b.Class,a.ClassroomGUID,c.SubjectTeach,a.MeetingTopic FROM Meeting a " +
+                    "LEFT JOIN Classroom b ON a.ClassroomGUID = b.ClassroomGUID LEFT JOIN Teacher_Classroom c ON a.TeacherGUID = c.TeacherGUID AND a.ClassroomGUID = c.ClassroomGUID " +
                     "WHERE a.TeacherGUID = @TeacherGUID AND CONVERT(date,a.MeetingTime) = @Date";
 
 

@@ -18,17 +18,25 @@ namespace KPMAMS
             {
                 if(Session["userGUID"] != null)
                 {
-                    GetAttendance();
+                    if(Session["role"].ToString() == "Student")
+                    {
+                        GetAttendance(Session["userGUID"].ToString());
+                    }
+                    else if(Session["role"].ToString() == "Parent" && Request.QueryString["StudentGUID"] != null)
+                    {
+                        GetAttendance(Request.QueryString["StudentGUID"].ToString());
+                    }
+                    
                 }
                 
             }
         }
 
-        protected void GetAttendance()
+        protected void GetAttendance(string studentGUID)
         {
             try
             {
-                string userGUID = Session["userGUID"].ToString();
+                string userGUID = studentGUID;
                 string strPanels = "";
 
                 DataTable dt = new DataTable();
@@ -78,7 +86,7 @@ namespace KPMAMS
 
                         strPanels += "  <div class=\"col-xs-6\">";
                         strPanels += "      <div class=\"panel panel-default\">";
-                        strPanels += "          <div class=\"panel-heading\">" + subjectName + "<a class=\"pull-right\" href=\"AttendanceDetails.aspx?SubjectGUID=" + subjectGUID + "\">To attendance details</a></div>";
+                        strPanels += "          <div class=\"panel-heading\">" + subjectName + "<a class=\"pull-right\" href=\"AttendanceDetails.aspx?SubjectGUID=" + subjectGUID + "&StudentGUID="+ studentGUID + "\">To attendance details</a></div>";
                         strPanels += "          <div class=\"panel-body text-center\">";
                         strPanels += "              <div class=\"row d-flex justify-content-center\">";
                         strPanels += "                  <div class=\"col-md-3\">";

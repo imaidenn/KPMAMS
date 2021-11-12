@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
 
     <div class="panel panel-default">
-               <div class="panel-heading">Profile Info</div>
+               <div class="panel-heading"><h3>Profile Info</h3></div>
                <div class="panel-body">
                   <form method="get" action="/" class="form-horizontal">
                                             <fieldset>
