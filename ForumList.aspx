@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col">
                 <center>
-                    <h3>ForumList</h3>
+                    <h3>Forum List</h3>
                 </center>
             </div>
         </div>
