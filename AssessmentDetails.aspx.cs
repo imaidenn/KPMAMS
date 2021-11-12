@@ -448,7 +448,7 @@ namespace KPMAMS
 
                     if (tbDueDate.Text != "")
                     {
-                        DateTime dueDate = DateTime.Parse(tbDueDate.Text);
+                        DateTime dueDate = DateTime.Parse(tbDueDate.Text.Trim());
                         cmd.Parameters.AddWithValue("@DueDate", dueDate);
                     }
                     else

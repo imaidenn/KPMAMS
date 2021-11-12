@@ -148,7 +148,7 @@ namespace KPMAMS.Admin
 
                 con.Close();
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('New Exam Mark Confirmed');window.location ='ApproveExam.aspx';", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('New Exam Mark Rejected');window.location ='ApproveExam.aspx';", true);
 
             }
             catch (Exception ex)
