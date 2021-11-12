@@ -158,7 +158,7 @@ namespace KPMAMS
                         string submitFilePath = "~/Assessment/"+ Request.QueryString["AssessmentGUID"] + "/Submission/" + dt.Rows[0][3].ToString() + "/" + dt.Rows[0][0].ToString();
                         hlSubmitFile.Text = dt.Rows[0][0].ToString();
                         hlSubmitFile.Attributes["href"] = ResolveUrl(submitFilePath);
-                        btnSubmit.Text = "Unsumit";
+                        btnSubmit.Text = "Unsubmit";
                         btnSubmit.Attributes["class"] = "btn btn-block btn-danger btn-sm";
                         lbSubmitDate.Text = "Submitted " + dt.Rows[0][2].ToString();
                     }
@@ -574,9 +574,16 @@ namespace KPMAMS
                             dir.Delete(true);
                         }
                     }
-
-                    Response.Write("<script language='javascript'>alert('File submited');</script>");
-                    Server.Transfer(Request.RawUrl, false);
+                    if (btnSubmit.Text == "Submit")
+                    {
+                        Response.Write("<script language='javascript'>alert('File submited');</script>");
+                        Server.Transfer(Request.RawUrl, false);
+                    }
+                    else {
+                        Response.Write("<script language='javascript'>alert('File unsubmited');</script>");
+                        Server.Transfer(Request.RawUrl, false);
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
