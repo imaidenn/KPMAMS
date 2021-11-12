@@ -235,7 +235,7 @@
                  <div class="btn-group text-center">
 <%--                      <asp:Button ID="btnLogout" runat="server" data-toggle="tooltip" data-title="Logout" class="btn btn-link" OnClick="btnLogout_Click"/>--%>
                      <button id="btnLogout2" type="button" data-toggle="tooltip" data-title="Logout" class="btn btn-link" data-original-title="" title="" runat="server" onserverclick="btnLogout_Click">
-                        <em class="fa fa-sign-out text-muted"></em>
+                        <i class="fas fa-sign-out-alt"></i>
                      </button>
                   </div>
                   <!-- END button group-->
