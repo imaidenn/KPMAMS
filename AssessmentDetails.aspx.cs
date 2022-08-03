@@ -626,6 +626,5 @@ namespace KPMAMS
         {
             BindGrivView();
         }
-
     }
 }
