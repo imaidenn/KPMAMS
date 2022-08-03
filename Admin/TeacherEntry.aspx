@@ -17,7 +17,9 @@
                 changeMonth: true,
                 changeYear: true,
                 format: "dd/mm/yyyy",
-                language: "tr"
+                language: "tr",
+                endDate: '+0d',
+                autoclose: true
             });
         });
     </script>

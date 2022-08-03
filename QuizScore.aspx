@@ -5,6 +5,10 @@
     <div class="panel panel-default">
                <div class="panel-heading"><h3>Scoreboard</h3></div>
                <div class="panel-body">
+                   <asp:Label ID="Position" runat="server"><h3>Position &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Student Name &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Total Score &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Total Correct Answer</h3></asp:Label>
+                   <hr />
                <asp:Repeater ID="Repeater1" runat="server" >
                    <ItemTemplate>
             <div style="float:left" class="col-lg-12">
@@ -12,6 +16,7 @@
                 <asp:Label ID="lblPosition" runat="server" class="col-sm-1 control-label" Text='<%#Eval("Position")%>' Font-Bold="true" Font-Size="X-Large"></asp:Label>&nbsp
             <asp:Label ID="lblStudentName" runat="server" class="col-sm-6 control-label" Text='<%#Eval("FullName")%>' Font-Bold="true" Font-Size="X-Large"></asp:Label>&nbsp
                 <asp:Label ID="lblScore" runat="server" class="col-sm-3 control-label" Text='<%#Eval("TotalScore")%>' Font-Bold="true" Font-Size="X-Large"></asp:Label>&nbsp
+                <asp:Label ID="lblCorrect" runat="server" class="col-sm-1 control-label" Text='<%#Eval("TotalCorrect")%>' Font-Bold="true" Font-Size="X-Large"></asp:Label>&nbsp
             </div>
                        <br />
 

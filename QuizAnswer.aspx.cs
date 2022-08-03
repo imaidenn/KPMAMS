@@ -83,7 +83,8 @@ namespace KPMAMS
 
                 con.Open();
 
-                String strSelect = "SELECT QuestionGUID,Question,Option1,Option2,Option3,Option4 FROM Question WHERE QuizGUID = @QuizGUID";
+                String strSelect = "SELECT CONCAT(ROW_NUMBER() OVER(ORDER BY a.CreateDate ASC), ')') AS Position,a.QuestionGUID,a.Question,a.Option1,a.Option2,a.Option3,a.Option4,b.QuizTitle FROM Question a " +
+                    "LEFT JOIN Quiz b ON a.QuizGUID = b.QuizGUID WHERE a.QuizGUID = @QuizGUID";
                 SqlCommand cmdSelect = new SqlCommand(strSelect, con);
                 cmdSelect.Parameters.AddWithValue("@QuizGUID", Request.QueryString["QuizGUID"].ToString());
                 SqlDataReader dtrSelect = cmdSelect.ExecuteReader();
@@ -92,6 +93,7 @@ namespace KPMAMS
 
                 if (dt.Rows.Count > 0)
                 {
+                    lblTitle.Text = dt.Rows[0][7].ToString();
                     Repeater1.DataSource = dt;
                     Repeater1.DataBind();
 
@@ -144,7 +146,8 @@ namespace KPMAMS
                             string opt = dr[dc].ToString();
                             ListItem nItem = new ListItem(opt);
                             rBtnList.Items.Add(nItem);
-                            nItem.Attributes.CssStyle.Add("margin-left", "25px");
+                            nItem.Attributes.CssStyle.Add("margin-left", "50px");
+                            nItem.Attributes.CssStyle.Add("font-size", "Large");
                         }
                     }
                     //DataRow row = dt.Rows[0];
